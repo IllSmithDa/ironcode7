@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
 import { useQuery } from '@tanstack/react-query';
 import TopicMenu from './TopicMenu';
-import { ConceptTopic, Language } from '../../types';
+import { ConceptTopic } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import iron from '../../assets/images/iron.svg';
@@ -29,14 +29,6 @@ export default function Navbar({
     },
   }); 
 
-  const languageQuery = useQuery({
-    queryKey:["languages"],
-    queryFn: async () => {
-      const res = await axiosFetch.get("/api/language/all-languages");
-      return res.data.data;
-    },
-  });
- 
   const selectLanguageQuery = useQuery({
     queryKey:['select-language', languageId],
     queryFn: async () => {
@@ -113,7 +105,6 @@ export default function Navbar({
           {
             languageDropdown ?
             <LanguageMenu 
-              languages = {languageQuery.data as unknown as Language[]}
               selectedId={languageId}
             />:
             <></>

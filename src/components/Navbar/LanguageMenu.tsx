@@ -1,15 +1,16 @@
-import React from 'react'
 import { Language } from '../../types'
 import { Link } from 'react-router-dom'
+import UseAllLanguages from '../../hooks/LanguageHook';
 
 export default function LanguageMenu({
-    languages,
     selectedId,
   } : {
-  languages: Language[],
   selectedId ?: string,
 }) {
-  const renderData = languages.map((entry) => (
+
+  const languages:Language[] = UseAllLanguages();
+
+  const renderData = languages?.map((entry) => (
     <>
     {
       selectedId === entry.id ? 
