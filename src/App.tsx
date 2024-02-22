@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import Topics from './pages/Topics/Topics';
 import NoMatch from './NoMatch';
 import Languages from './pages/Languages/Languages';
+import TopicLayout from "./pages/Topics/TopicLayout";
 
 function App() {
 
@@ -16,9 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="topic/:topicId" element={<Topics />} />
           <Route path="language/:languageId" element={<Languages />} />
           <Route path="*" element={<NoMatch />} />
+          <Route path="topic/" element={<TopicLayout />}>
+            <Route path=":topicId" element={<Topics />} /> 
+          </Route>
         </Route>
       </Routes>
     </Router>
