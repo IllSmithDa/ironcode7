@@ -1,21 +1,33 @@
-'use client';
+import { useEffect, useState } from 'react';
 import { ActiveConceptItem, ActiveLanguages, ConceptItem, Language } from '../../types';
 import LanguageSelect from './LanguageSelect';
 import { axiosFetch } from '../../axios';
 import { useParams } from 'react-router-dom';
 import UseAllLanguages from '../../hooks/LanguageHook';
 import { useQuery } from '@tanstack/react-query';
+import { parseConcepts } from '../../helper/parseData';
+
 export default function Topic() {
   const { topicId } = useParams<"topicId">();
-  // const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
+  const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
   const languages:Language[] = UseAllLanguages();
 
-  const ActiveConceptQuery = useQuery({
+  const ConceptItemsQuery = useQuery({
     queryKey: ["activeConcepts"],
     queryFn: async () => {
       const conceptLink = `/api/concept/topic-id/${topicId}`;
       const conceptRes = await axiosFetch.get(conceptLink);
-      const conceptItems: ConceptItem[] = conceptRes.data.data;
+      const result: ConceptItem[] = conceptRes.data.data;
+
+      return result;
+    },
+    enabled: !!languages
+  })
+
+  const conceptItems: ConceptItem[] = ConceptItemsQuery.data as ConceptItem[];
+
+  useEffect(() => {
+    if(conceptItems?.length) {
       let activeLanguages: ActiveLanguages = {};
       if (localStorage.getItem('iron_code_languages') === null) {
         languages.forEach((entry) => {
@@ -32,53 +44,23 @@ export default function Topic() {
           checked: activeLanguages[entry.language],
         }
       });
-      return result;
-    },
-    enabled: !!languages
-  })
+      setConceptsAndLangauges(result);
+    }
+  }, [conceptItems, languages])
 
-  const conceptsAndLanguages = ActiveConceptQuery.data;
+  useEffect(() => {
+    if (conceptsAndLanguages?.length) {
+      for(let i = 0; i < conceptsAndLanguages.length; i += 1) {
+        parseConcepts(conceptsAndLanguages[i].text, `${conceptsAndLanguages[i].id}_code`);
+      }
+    }
 
-  // useEffect(() => {
-  //   const setupData = async () => {
-  //     const conceptLink = `/api/concept/topic-id/${topicId}`;
-  //     const conceptRes = await axiosFetch.get(conceptLink);
-  //     
-  //     const languageLink = `/api/language/all-languages`;
-  //     const languageRes = await axiosFetch.get(languageLink);
-  //   
-  //     
-  //     const conceptItems: ConceptItem[] = conceptRes.data.data;
-  //     const languages:Language[] = languageRes.data.data;
-  //   
-  //     // get active languages from 
-  //     let activeLanguages: ActiveLanguages = {};
-  //     if (localStorage.getItem('iron_code_languages') === null) {
-  //       (languages as Language []).forEach((entry) => {
-  //         activeLanguages[entry.name] = true;
-  //       })
-  //       localStorage.setItem('iron_code_languages', JSON.stringify(activeLanguages))
-  //     } else {
-  //       activeLanguages = JSON.parse(localStorage.getItem('iron_code_languages') as string);
-  //     }
-  //     
-  //     const result:ActiveConceptItem[] = conceptItems.map((entry) => {
-  //       return {
-  //         ...entry,
-  //         checked: activeLanguages[entry.language],
-  //       }
-  //     });
-  //     setConceptsAndLangauges(result);
-  //   }
-  //   if (topicId) {
-  //     setupData();
-  //   }
-  // }, [topicId])
+  }, [conceptsAndLanguages])
 
 
   const updateLanguages = (updatedData: ActiveConceptItem[]) => {
-    // setConceptsAndLangauges([...updatedData])
-    console.log(updatedData);
+    setConceptsAndLangauges([...updatedData])
+
   }
 
   const renderData = (conceptsAndLanguages as ActiveConceptItem[])?.map((data) => (

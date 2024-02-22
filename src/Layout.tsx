@@ -6,9 +6,9 @@ export default function Layout() {
   const { languageId } = useParams<"languageId">();
 
   return (
-    <div>
+    <main>
       <Navbar topicId={topicId} languageId={languageId} />
       <Outlet />
-    </div>
+    </main>
   )
 }
