@@ -1,26 +1,20 @@
-import { useQuery } from '@tanstack/react-query';
+
 import { ConceptTopic } from '../../types';
 import { Link } from 'react-router-dom';
-import { axiosFetch } from '../../axios';
+import UseConceptTopics from '../../hooks/ConceptTopicsHooks';
 
 export default function TopicsTab({
   selectedId,
 }: {
   selectedId ?: string
 }) {
-  const topicsQuery = useQuery({
-    queryKey:["conceptTopic"],
-    queryFn: async () => {
-      const res = await axiosFetch.get("/api/concept/all-topics");
-      return res.data.data;
-    },
-  });
+  const topics:ConceptTopic[] = UseConceptTopics();
 
   const renderData = (category: string) => {
     return (
       <>
       {
-        (topicsQuery.data as ConceptTopic[]).filter(topic => topic.category === category).map((topic) => (
+        topics?.filter(topic => topic.category === category).map((topic) => (
           <section key={topic.id}>
             {
               topic.id === selectedId ?
@@ -52,7 +46,7 @@ export default function TopicsTab({
     >
       <h4>Basics</h4>
       {
-        topicsQuery?.data?.length ? 
+        topics?.length ? 
         <>
           {renderData('basic')}
         </>:
@@ -60,7 +54,7 @@ export default function TopicsTab({
       }
       <h4>Data Structure</h4>
       {
-        topicsQuery?.data?.length ? 
+        topics?.length ? 
         <>
           {renderData('data')}
         </>:
@@ -68,7 +62,7 @@ export default function TopicsTab({
       }
       <h4>Iterables</h4>
       {
-        topicsQuery?.data?.length ? 
+        topics?.length ? 
         <>
           {renderData('iterables')}
         </>:
@@ -76,7 +70,7 @@ export default function TopicsTab({
       }
       <h4>Classes</h4>
       {
-        topicsQuery?.data?.length ? 
+        topics?.length ? 
         <>
           {renderData('class')}
         </>:
@@ -84,7 +78,7 @@ export default function TopicsTab({
       }
       <h4>Regex</h4>
       {
-        topicsQuery?.data?.length ? 
+        topics?.length ? 
         <>
           {renderData('regex')}
         </>:

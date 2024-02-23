@@ -36,7 +36,6 @@ export default function Languages() {
     queryFn: async () => {
       const res = await axiosFetch.post(link, { language: languageData?.name})
       const data: ConceptItem[] = res.data.data;
-      console.log(data);
       return data;
     },
     enabled: !!languageData,

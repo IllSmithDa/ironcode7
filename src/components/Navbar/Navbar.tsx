@@ -1,13 +1,14 @@
-import  { useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
 import { useQuery } from '@tanstack/react-query';
 import TopicMenu from './TopicMenu';
 import { ConceptTopic } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import iron from '../../assets/images/iron.svg';
 import LanguageMenu from './LanguageMenu';
+import ProfileDropdown from './ProfileDropdown';
 
 
 export default function Navbar({
@@ -19,7 +20,11 @@ export default function Navbar({
 }) {
   const [languageDropdown, setLanguageDropdown] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
+  const [username, setUsername] = useState();
+  const [pathname, setPathname] = useState<string>();
+  const location = useLocation();
   const isDark = false;
+  const link = '/api/users/get-user-session';
 
   const topicsQuery = useQuery({
     queryKey:["conceptTopic"],
@@ -41,6 +46,23 @@ export default function Navbar({
   const toggleTopicsMenu = (val: boolean) => {
     setMobileNav(val);
   }
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const response = await axiosFetch.get(link, { withCredentials: true });
+        const { username:user } = response.data;
+        console.log(user)
+        setPathname(location.pathname);
+        setUsername(user);
+      } catch(err) {
+        setUsername(undefined);
+      }
+    }
+    if (link) checkUser();
+  }, [link])
+
+
   return (
     <section>
       <ul>
@@ -110,6 +132,13 @@ export default function Navbar({
             <></>
           }
         </li>
+        <li  className='app-icons'>
+            {
+              username && pathname === "/admin"? 
+              <ProfileDropdown username={username} />:
+              <></>
+            }
+            </li>
       </ul>
     </section>
   )
