@@ -20,11 +20,13 @@ import Login from "./components/Login/Login";
 import Auth from "./components/Auth/Auth";
 import Admin from "./pages/Admin/Admin";
 import './index.css';
+import ScrollToTop from "./ScrollTop";
 
 function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route element={<HomeLayout />}>

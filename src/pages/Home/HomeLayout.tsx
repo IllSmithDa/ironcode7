@@ -7,12 +7,13 @@ export default function HomeLayout() {
     <div
       className={`
         2xl:w-[1600px]
-        w-[100%] mx-auto flex
+        w-[100%] mx-auto flex bg-[#F1F1F1]
+        dark:bg-[#1E1E1E]
       `}
     >
       <TopicsTab />
       <section className={`
-        relative w-[100%]
+        relative w-[100%] z-0
       `}>
         <Outlet />
         <Footer />

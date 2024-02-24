@@ -81,8 +81,9 @@ export default function Topic() {
         data.checked ? 
         <article key={data.language}
           className={`
-            w-[100%]  bg-[#F6F6F6] p-[1.5rem]
+            w-[100%]  bg-[#F0F0F0] p-[1.5rem]
             lg:w-[auto]
+            dark:bg-[#292929]
           `}
         >
           <h4>{data.language}</h4>

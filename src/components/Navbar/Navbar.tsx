@@ -11,18 +11,20 @@ import LanguageMenu from './LanguageMenu';
 import ProfileDropdown from './ProfileDropdown';
 
 export default function Navbar({
+  darkMode,
   topicId,
-  languageId
+  languageId,
 }: {
+  darkMode: boolean,
   topicId ?: string,
   languageId ?: string
 }) {
-  const [languageDropdown, setLanguageDropdown] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
   const [username, setUsername] = useState();
+  const [isDark, setIsDark] = useState<boolean>();
   const [pathname, setPathname] = useState<string>();
   const location = useLocation();
-  const isDark = false;
+
   const link = '/api/users/get-user-session';
 
   const topicsQuery = useQuery({
@@ -42,14 +44,15 @@ export default function Navbar({
     }
   })
 
+  const languageName = selectLanguageQuery.data;
+
   const toggleTopicsMenu = (val: boolean) => {
     setMobileNav(val);
   }
 
-  const closeLanguageNav = () => {
-    setLanguageDropdown(false);
-  }
-
+  useEffect(() => {
+    setIsDark(darkMode);
+  }, [darkMode])
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -63,13 +66,24 @@ export default function Navbar({
       }
     }
     if (link) checkUser();
-  }, [link])
+  }, [link, location.pathname,])
+
+  const toggleDarkMode = (val :boolean) => {
+    localStorage.setItem('iron_code_dark', JSON.stringify(val))
+    if (val) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    setIsDark(val);
+  }
 
 
   return (
     <section
       className={`
-       w-[100%] bg-[#EEE]
+       w-[100%] bg-[#F0F0F0] h-[47px] fixed z-[100] top-0
+       dark:bg-[#222]
       `}
     >
       <section
@@ -113,7 +127,7 @@ export default function Navbar({
             <Link to='/'>
               <img src={iron} alt='app-icon' 
                 className={`
-                  w-[42px]
+                  w-[47px]
                 `}
               />
             </Link>
@@ -144,7 +158,7 @@ export default function Navbar({
             {
               isDark ?
               <button
-                // onClick={() => toggleTheme()}
+                onClick={() => toggleDarkMode(false)}
                 className={`
                   w-[47px] h-[47px]
                 `}
@@ -153,11 +167,13 @@ export default function Navbar({
                   icon={faMoon}
                   tabIndex={-1}
                   style={{ color: '#00AAFF'}}
-                  
+                  className={`
+                  text-[26px]
+                `}
                 />
               </button>:
               <button
-                //onClick={() => toggleTheme()}
+                onClick={() => toggleDarkMode(true)}
                 className={`
                   w-[47px] h-[47px]
                 `}
@@ -173,27 +189,11 @@ export default function Navbar({
               </button>
             }
           </li>
-          <li
-            className={`
-              w-[150px]
-            `}
-            >
-            <button
-              onClick={() => setLanguageDropdown(!languageDropdown)}
-              className={`
-                h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#DDD] hover:bg-[#FAFAFA]
-              `}
-            >
-              {languageId ? selectLanguageQuery.data : `Select`} {languageDropdown ? <>▲</> : <>▼</>}
-            </button>
-            {
-              languageDropdown ?
-              <LanguageMenu 
-                selectedId={languageId}
-                closeModal={closeLanguageNav}
-              />:
-              <></>
-            }
+          <li>              
+            <LanguageMenu 
+              selectedId={languageId}
+              languageName={languageName}
+            />
           </li>
           <li  className='app-icons'>
               {
@@ -214,11 +214,10 @@ export default function Navbar({
         }
       </section>
       {
-        languageDropdown || mobileNav? 
+        mobileNav? 
         <div className={`
           fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
         `} onClick={() => {
-          setLanguageDropdown(false);
           setMobileNav(false);
         }}></div>:
         <></>

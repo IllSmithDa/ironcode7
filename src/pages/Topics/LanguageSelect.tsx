@@ -74,6 +74,7 @@ export default function LanguageSelect({
         className={`
           grid gap-[1rem] bg-[#F1F1F1] p-4
           xl:grid-cols-4 xl:w-[500px]
+          dark:bg-[#292929]
         `}
       >
         {renderData}

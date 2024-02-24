@@ -16,7 +16,8 @@ export default function TopicLayout() {
       />
       <section
         className={`
-        relative w-[100%]
+        relative w-[100%] bg-[#F8F8F8]
+        dark:bg-[#1E1E1E]
         `}
       >
         <Outlet />

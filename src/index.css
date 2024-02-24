@@ -47,10 +47,50 @@ h4 {
   margin-bottom: 1rem;
 }
 
-p {
+p, a {
   font-size: 1.5rem;
 }
 
 pre {
   font-size: 1.4rem;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark p, .dark pre, .dark a, .dark button {
+ color: #F1F1F1;
+}
+
+@media (max-width: 500px) {
+
+  h4 {
+    font-size: 1.4rem;
+  }
+  p, a {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+  }
+  pre, font {
+    font-size: 1rem;
+    line-height: 15px;
+
+  }
+  
+}
+@media (max-width:  400px) {
+  pre, font, p, a  {
+    font-size: 8px;
+    line-height: 12px;
+
+  }
+}
+
+@media (max-width:  300px) {
+  pre, font, p, a {
+    font-size: 7px;
+    line-height: 12px;
+
+  }
 }

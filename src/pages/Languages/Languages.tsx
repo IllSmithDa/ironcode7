@@ -56,7 +56,8 @@ export default function Languages() {
           concepts?.filter(topic => topic.category === category).map((data) => (
             <li
               className={`
-                w-[[200]%] bg-[#F1F1F1] p-[2rem] my-[2rem]
+                w-[[200]%] bg-[#F1F1F1] p-[2rem] my-[2rem] 
+                dark:bg-[#222]
               `}
               key={data.id}
             >
@@ -98,6 +99,7 @@ export default function Languages() {
               className={`
                 w-[200px] h-[47px] bg-[#DDD] text-[1.5rem]
                 hover:bg-[#EEE]
+                dark:bg-[#292929] dark:hover:bg-[#444]
               `}
             >
               {title} {categoryDrop ? <>▲</> : <>▼</>}
@@ -105,13 +107,14 @@ export default function Languages() {
           {
             categoryDrop ?
             <section className={`
-              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EFEFEF]
+              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EFEFEF] 
             `}>
               <button
                 onClick={() => handleTabChange('basic', 'Basics') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   hover:bg-[#F8F8F8]
+                  dark:bg-[#292929] dark:hover:bg-[#444]
                 `}
               >
                 Basics
@@ -121,6 +124,7 @@ export default function Languages() {
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   hover:bg-[#F8F8F8]
+                  dark:bg-[#292929] dark:hover:bg-[#444]
                 `}
               >
                 Data Structures
@@ -130,6 +134,7 @@ export default function Languages() {
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   hover:bg-[#F8F8F8]
+                  dark:bg-[#292929] dark:hover:bg-[#444]
                 `}
               >
                 Iterables
@@ -139,6 +144,7 @@ export default function Languages() {
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   hover:bg-[#F8F8F8]
+                  dark:bg-[#292929] dark:hover:bg-[#444]
                 `}
               >
                 Classes
@@ -148,6 +154,7 @@ export default function Languages() {
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   hover:bg-[#F8F8F8]
+                  dark:bg-[#292929] dark:hover:bg-[#444]
                 `}
               >
                 Regex
@@ -165,7 +172,7 @@ export default function Languages() {
         categoryDrop ? 
         <div
           className={`
-            fixed z-[150] left-0 top-0 w-[100%] h-[[200]%] justify-center flex-col overflow-auto
+            fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
           `}
           onClick={() => {
             SetCategoryDrop(false); 

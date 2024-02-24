@@ -46,7 +46,8 @@ export default function TopicsTab({
                 key={`topic_${topic.id}`}
                 to={`/topic/${topic.id}`}
                 className={`
-                 block w-[100%] p-[1rem] bg-[#DFDFDF] text-[1.5rem]
+                 block w-[100%] p-[1rem] bg-[#FAFAFA] text-[1.5rem] 
+                 dark:bg-[#444]
               `}
               >
                 {topic.name}
@@ -55,7 +56,8 @@ export default function TopicsTab({
                 key={`topic_${topic.id}`}
                 to={`/topic/${topic.id}`}
                 className={`
-                  block w-[100%] p-[1rem] hover:bg-[#DFDFDF] text-[1.5rem]
+                  block w-[100%] p-[1rem] hover:bg-[#FAFAFA] text-[1.5rem]
+                  dark:hover:bg-[#444]
                 `}
               >
                 {topic.name}
@@ -73,7 +75,7 @@ export default function TopicsTab({
       id='topic-tab'
       className={`
         xl:block
-        hidden bg-[#F9F9F9] w-[200px]
+        hidden bg-[#EAEAEA] w-[200px] pb-[10rem] dark:bg-[#222] px-[2px]
       `}
     >
       {

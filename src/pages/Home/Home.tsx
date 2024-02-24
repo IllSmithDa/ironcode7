@@ -15,7 +15,7 @@ export default function Home() {
       />
       <h1
         className={`
-          text-[6rem] font-[700] m-[5rem]
+          text-[6rem] font-[700] m-[5rem] dark:text-white text-black
         `}
       >
         IronCodeMan

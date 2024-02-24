@@ -1,16 +1,31 @@
 import { Language } from '../../types'
 import { Link } from 'react-router-dom'
 import UseAllLanguages from '../../hooks/LanguageHook';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 
 export default function LanguageMenu({
   selectedId,
-  closeModal
+  languageName,
   } : {
   selectedId ?: string,
-  closeModal: () => void
+  languageName ?: string,
 }) {
+  const [mobileDropdown, setMobileDropdown] = useState(false);
+  const [desktopDropdown, setDesktopDropdown] = useState(false);
 
   const languages:Language[] = UseAllLanguages();
+
+  useEffect(() => {
+    if (mobileDropdown) {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.add('modal-open')
+    } else {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.remove('modal-open')
+    }
+  }, [mobileDropdown])
 
   const renderData = languages?.map((entry) => (
     <>
@@ -20,9 +35,13 @@ export default function LanguageMenu({
         key={entry.id}
         to={`/language/${entry.id}`}
         className={`
-          relative z-[100] block text-[1.6rem] p-[1rem] bg-[#F1F1F1] hover:bg-[#F1F1F1]
+          relative z-[150] block text-[1.6rem] p-[1rem] bg-[#E9E9E9] hover:bg-[#E9E9E9]
+          dark:bg-[#3D3D3D]
         `}
-        onClick={closeModal}
+        onClick={() => {
+          setDesktopDropdown(false);
+          setMobileDropdown(false);
+        }}
       >
         {entry.name}
       </Link>:
@@ -30,9 +49,13 @@ export default function LanguageMenu({
         key={entry.id}
         to={`/language/${entry.id}`}
         className={`
-          relative z-[100] block text-[1.6rem] p-[1rem] bg-[#DDD] hover:bg-[#F1F1F1] 
+          relative z-[150] block text-[1.6rem] p-[1rem] bg-[#D1D1D1] hover:bg-[#E9E9E9] active:bg-[#F9F9F9]
+          dark:bg-[#1C1C1C] dark:hover:bg-[#3D3D3D]
         `}
-        onClick={closeModal}
+        onClick={() => {
+          setDesktopDropdown(false);
+          setMobileDropdown(false);
+        }}
       >
         {entry.name}
       </Link>
@@ -41,21 +64,111 @@ export default function LanguageMenu({
   ))
 
   return (
-    <section
-      className={`
-        min-h-[100vh] w-[100vw] absolute bg-[#DDD] top-0 left-0
-        lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
-      `}
-    >
-      <h4
+    <>
+      <button
+        onClick={() => setDesktopDropdown(!desktopDropdown)}
         className={`
-          lg:hidden
-          block
+          hidden h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#DDD] hover:bg-[#F9F9F9] active:bg-[#F9F9F9]
+          lg:block
+          dark:bg-[#1C1C1C] dark:hover:bg-[#333]
         `}
       >
-        Select Language
-      </h4>
-      {renderData}
-    </section>
+        {languageName ? languageName : `Select`} {desktopDropdown ? <>▲</> : <>▼</>}
+      </button>
+      <button
+        onClick={() => setMobileDropdown(!mobileDropdown)}
+        className={`
+          h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#DDD] hover:bg-[#F9F9F9] active:bg-[#F9F9F9]
+          lg:hidden
+          dark:bg-[#1C1C1C] dark:hover:bg-[#333]
+        `}
+      >
+        {languageName ? languageName : `Select`} {mobileDropdown ? <>▲</> : <>▼</>}
+      </button>
+      {
+        desktopDropdown ?
+        <section
+          className={`
+            hidden absolute bg-[#DDD] w-[150px] right-0
+            lg:block
+            dark:bg-[#1C1C1C]
+          `}
+        >
+          <button 
+            onClick={() => setDesktopDropdown(!desktopDropdown)}
+            className={`
+              w-[47px] h-[47px] ml-[auto] block
+              lg:hidden
+            `}  
+          >
+            <FontAwesomeIcon
+              icon={faClose}
+              tabIndex={-1}
+              className={`
+                text-[1.5rem]
+              `}
+            />
+          </button>
+          <h4
+            className={`
+              lg:hidden
+              block
+              border-b-[1px]
+            `}
+          >
+            Select Language
+          </h4>
+          {renderData}
+        </section>:
+        <></>
+      }
+      { 
+        mobileDropdown ?
+        <section
+          className={`
+            h-[100vh] w-[100vw] absolute bg-[#DDD] top-0 left-0 overflow-y-scroll
+            lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
+            dark:bg-[#1C1C1C]
+          `}
+        >
+          <button 
+            onClick={() => setMobileDropdown(!mobileDropdown)}
+            className={`
+              w-[47px] h-[47px] ml-[auto] block
+              lg:hidden
+            `}  
+          >
+            <FontAwesomeIcon
+              icon={faClose}
+              tabIndex={-1}
+              className={`
+                text-[1.5rem]
+              `}
+            />
+          </button>
+          <h4
+            className={`
+              lg:hidden
+              block
+              border-b-[1px]
+            `}
+          >
+            Select Language
+          </h4>
+          {renderData}
+        </section>:
+        <></>
+      }
+      {
+        desktopDropdown ? 
+        <div className={`
+          fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+        `} onClick={() => {
+          setDesktopDropdown(false);
+        }}></div>:
+        <></>
+      }
+
+    </>
   )
 }

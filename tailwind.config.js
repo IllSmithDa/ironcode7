@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+// 
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  // https://v2.tailwindcss.com/docs/dark-mode
+  darkMode: 'class',
   theme: {
     colors: {
       'border-blue': '#0F52BA',
