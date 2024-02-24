@@ -13,6 +13,30 @@ export default function TopicMenu({
   toggleTopicsMenu: (val:boolean) => void
 }) {
   
+  const topicList = [
+    {
+      title: 'Basics',
+      value: 'basic'
+    }, 
+    {
+      title: 'Data Structure',
+      value: 'data'
+    }, 
+    {
+      title: 'Iterables',
+      value: 'iterables'
+    }, 
+    {
+      title: 'Classes',
+      value: 'class'
+    }, 
+    {
+      title: 'Regex',
+      value: 'regex'
+    }, 
+  ]
+
+
   const renderData = (category: string) => {
     return (
       <>
@@ -29,7 +53,9 @@ export default function TopicMenu({
                   
                   }}
                   to={`/topic/${topic.id}`}
-                  className={`nav-link active`}
+                  className={`
+                    block w-[1.5rem]
+                  `}
                 >
                   {topic.name}
                 </Link>:
@@ -40,7 +66,9 @@ export default function TopicMenu({
                     toggleTopicsMenu(false);
                   }}
                   to={`/topic/${topic.id}`}
-                  className={`nav-link`}
+                  className={`
+                    block  w-[1.5rem]
+                  `}
                 >
                   {topic.name}
                 </Link>
@@ -53,8 +81,12 @@ export default function TopicMenu({
   }
 
   return (
-    <section>
-      <article className='home-grouping'>
+    <section
+      className={`
+        z-1000 absolute bg-[#DDD] bg-cover bg-opacity-100 w-[100vw] min-h-[100vh] top-0 left-0
+      `}
+    >
+      <article>
         <div>
           <Link to="/">
             <FontAwesomeIcon
@@ -79,16 +111,20 @@ export default function TopicMenu({
           />
         </button>
       </article>
-      <h4>Basics</h4>
-      {renderData('basic')}
-      <h4>Data Structure</h4>
-      {renderData('data')}
-      <h4>Iterables</h4>
-      {renderData('iterables')}
-      <h4>Classes</h4>
-      {renderData('class')}
-      <h4>Regex</h4>
-      {renderData('regex')}
+      {topicList.map((topObj) => {
+        return (
+          <>
+            <h4  
+              className={`
+                my-[1rem] p-[1rem] text-[1.5rem] border-b-2
+              `}  
+            >
+              {topObj.title}
+            </h4>
+            {renderData(topObj.value)}
+          </>
+        )
+      })}
     </section>
   )
 }

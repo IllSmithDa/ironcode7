@@ -10,7 +10,6 @@ import iron from '../../assets/images/iron.svg';
 import LanguageMenu from './LanguageMenu';
 import ProfileDropdown from './ProfileDropdown';
 
-
 export default function Navbar({
   topicId,
   languageId
@@ -47,6 +46,10 @@ export default function Navbar({
     setMobileNav(val);
   }
 
+  const closeLanguageNav = () => {
+    setLanguageDropdown(false);
+  }
+
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -64,82 +67,162 @@ export default function Navbar({
 
 
   return (
-    <section>
-      <ul>
-        <li>
-          <button onClick={() =>  setMobileNav(!mobileNav)} className={`navbar-icons`}>
-            <FontAwesomeIcon
-              icon={faBars}
-              tabIndex={-1}
-            />
-          </button>
-          {
-            mobileNav ?
-            <TopicMenu 
-              topics={topicsQuery.data as unknown as ConceptTopic[]}
-              selectedId={topicId}
-              toggleTopicsMenu={toggleTopicsMenu}
-            />:
-            <></>
-          }
-        </li>
-        <li className='app-icons desktop-items'>
-          <Link to='/'>
-            <img src={iron} alt='app-icon' />
-          </Link>
-        </li>
-        <li className='app-icons desktop-items'>
-          <Link to='/'>
-            <h2>IronCodeMan</h2>
-          </Link>
-        </li>
-      </ul>
-      <ul>
-        <li className='app-icons'>
-          {
-            isDark ?
-            <button
-              // onClick={() => toggleTheme()}
-              className={`navbar-icons`}
+    <section
+      className={`
+       w-[100%] bg-[#EEE]
+      `}
+    >
+      <section
+        className={`
+          flex justify-between mx-[auto] relative
+          2xl:w-[1600px]
+          xl: w-[100%]
+        `}
+      >
+        <ul
+          className={`
+            flex
+          `}
+        >
+          <li
+            className={`
+              xl:hidden
+              block
+            `}
+          >
+            <button onClick={() =>  setMobileNav(!mobileNav)}
+              className={`
+                w-[47px] h-[47px] 
+              `}
             >
               <FontAwesomeIcon
-                icon={faMoon}
+                icon={faBars}
                 tabIndex={-1}
-                style={{ color: '#00AAFF'}}
-              />
-            </button>:
-            <button
-              //onClick={() => toggleTheme()}
-              className={`navbar-icons`}
-            >
-              <FontAwesomeIcon
-                icon={faSun}
-                tabIndex={-1}
-                style={{ color: '#EAC117'}}
+                className={`
+                  text-[24px]
+                `}
               />
             </button>
-          }
-        </li>
-        <li className={`navbar-dropdown list-right`}>
-          <button type='button' onClick={() => setLanguageDropdown(!languageDropdown)} className='menu-tabs'>
-            {languageId ? selectLanguageQuery.data : `Select`} {languageDropdown ? <>▲</> : <>▼</>}
-          </button>
-          {
-            languageDropdown ?
-            <LanguageMenu 
-              selectedId={languageId}
-            />:
-            <></>
-          }
-        </li>
-        <li  className='app-icons'>
+          </li>
+          <li
+            className={`
+              hidden
+              xl:block
+            `}
+          >
+            <Link to='/'>
+              <img src={iron} alt='app-icon' 
+                className={`
+                  w-[42px]
+                `}
+              />
+            </Link>
+          </li>
+          <li
+            className={`
+              hidden
+              xl:block
+            `}
+          >
+            <Link to='/'>
+              <h2
+                className={`
+                  text-[30px]
+                `}
+              >
+                IronCodeMan
+              </h2>
+            </Link>
+          </li>
+        </ul>
+        <ul
+          className={`
+            flex
+          `}
+        >
+          <li className='app-icons'>
             {
-              username && pathname === "/admin"? 
-              <ProfileDropdown username={username} />:
+              isDark ?
+              <button
+                // onClick={() => toggleTheme()}
+                className={`
+                  w-[47px] h-[47px]
+                `}
+              >
+                <FontAwesomeIcon
+                  icon={faMoon}
+                  tabIndex={-1}
+                  style={{ color: '#00AAFF'}}
+                  
+                />
+              </button>:
+              <button
+                //onClick={() => toggleTheme()}
+                className={`
+                  w-[47px] h-[47px]
+                `}
+              >
+                <FontAwesomeIcon
+                  icon={faSun}
+                  tabIndex={-1}
+                  style={{ color: '#EAC117'}}
+                  className={`
+                  text-[26px]
+                `}
+                />
+              </button>
+            }
+          </li>
+          <li
+            className={`
+              w-[150px]
+            `}
+            >
+            <button
+              onClick={() => setLanguageDropdown(!languageDropdown)}
+              className={`
+                h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#DDD] hover:bg-[#FAFAFA]
+              `}
+            >
+              {languageId ? selectLanguageQuery.data : `Select`} {languageDropdown ? <>▲</> : <>▼</>}
+            </button>
+            {
+              languageDropdown ?
+              <LanguageMenu 
+                selectedId={languageId}
+                closeModal={closeLanguageNav}
+              />:
               <></>
             }
-            </li>
-      </ul>
+          </li>
+          <li  className='app-icons'>
+              {
+                username && pathname === "/admin"? 
+                <ProfileDropdown username={username} />:
+                <></>
+              }
+              </li>
+        </ul>
+        {
+          mobileNav ?
+          <TopicMenu 
+            topics={topicsQuery.data as unknown as ConceptTopic[]}
+            selectedId={topicId}
+            toggleTopicsMenu={toggleTopicsMenu}
+          />:
+          <></>
+        }
+      </section>
+      {
+        languageDropdown || mobileNav? 
+        <div className={`
+          fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+        `} onClick={() => {
+          setLanguageDropdown(false);
+          setMobileNav(false);
+        }}></div>:
+        <></>
+      }
     </section>
   )
 }

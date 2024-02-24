@@ -11,9 +11,6 @@ export default function Languages() {
   const [category, SetCategory] = useState("basic");
   const [title, setTitle] = useState("Basics");
   const [categoryDrop, SetCategoryDrop] = useState(false);
-  // const [concepts, setConcepts] = useState<ConceptItem []>([]);
-  // const [darkMode, setDarkMode] = useState<boolean>();
-  // const [languageData, setLanguageData] = useState<Language>();
   const { languageId } = useParams<"languageId">();
   const languageLink = `/api/language/by-id/${languageId}`
   const link = `/api/concept/by-language`;
@@ -58,7 +55,9 @@ export default function Languages() {
         {
           concepts?.filter(topic => topic.category === category).map((data) => (
             <li
-              className='card'
+              className={`
+                w-[[200]%] bg-[#F1F1F1] p-[2rem] my-[2rem]
+              `}
               key={data.id}
             >
               <h4>{data.concept_name}</h4>
@@ -75,7 +74,9 @@ export default function Languages() {
     setTitle(categoryTitle)
   }
   return (
-    <section className={`language-items-container ${darkMode ? 'dark': ''}`}>
+    <section className={`
+      px-[2rem] my-[5rem] mb-[20rem]
+    `}>
       {/* <SlidingBackground /> */}
       <h3>Concepts for {languageData?.name}</h3>
       <p style={{ margin: "2rem 0"}}>
@@ -88,40 +89,66 @@ export default function Languages() {
           <Loader />
         </section>:
         <ul>
-        <section className='dropdown-cont'>
-            <button type='button' onClick={() => SetCategoryDrop(!categoryDrop)} className={`lang-navbar-dropdown list-right menu-tabs ${darkMode ? 'dark': ''}`}>
+        <section className={`
+          relative flex
+        `}>
+            <button
+              type='button'
+              onClick={() => SetCategoryDrop(!categoryDrop)}
+              className={`
+                w-[200px] h-[47px] bg-[#DDD] text-[1.5rem]
+                hover:bg-[#EEE]
+              `}
+            >
               {title} {categoryDrop ? <>▲</> : <>▼</>}
           </button>
           {
             categoryDrop ?
-            <section className={`category-select-dropdown ${darkMode ? 'dark': ''}`}>
+            <section className={`
+              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EFEFEF]
+            `}>
               <button
                 onClick={() => handleTabChange('basic', 'Basics') }
-                className='active-tab menu-tabs'
+                className={`
+                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  hover:bg-[#F8F8F8]
+                `}
               >
                 Basics
               </button>
               <button
-                className={`menu-tabs ${darkMode ? 'dark': ''}`}
                 onClick={() => handleTabChange('data', 'Data Structures') }
+                className={`
+                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  hover:bg-[#F8F8F8]
+                `}
               >
                 Data Structures
               </button>
               <button
-                className={`menu-tabs ${darkMode ? 'dark': ''}`}
                 onClick={() => handleTabChange('iterables', 'Iterables') }
+                className={`
+                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  hover:bg-[#F8F8F8]
+                `}
               >
                 Iterables
               </button>
               <button
                 onClick={() => handleTabChange('class', 'Classes') }
-                className={`menu-tabs ${darkMode ? 'dark': ''}`}
+                className={`
+                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  hover:bg-[#F8F8F8]
+                `}
               >
                 Classes
               </button>
               <button
                 onClick={() => handleTabChange('regex', 'Regex') }
-                className={`menu-tabs ${darkMode ? 'dark': ''}`}
+                className={`
+                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  hover:bg-[#F8F8F8]
+                `}
               >
                 Regex
               </button>
@@ -137,7 +164,9 @@ export default function Languages() {
       {
         categoryDrop ? 
         <div
-          className='silent-modal'
+          className={`
+            fixed z-[150] left-0 top-0 w-[100%] h-[[200]%] justify-center flex-col overflow-auto
+          `}
           onClick={() => {
             SetCategoryDrop(false); 
           }}

@@ -31,7 +31,11 @@ export default function LanguageSelect({
 
 
   const renderData = languages?.map((data) => (
-    <li key={data.language}>
+    <li key={data.language}
+      className={`
+        flex gap-2
+      `}
+    >
       <input
         id={`selection-${data.language}`}
         type='checkbox' checked={data.checked}
@@ -43,9 +47,14 @@ export default function LanguageSelect({
         onChange={() => {
           handleLanguage(data.language, !data.checked)
         }}
+        className={`
+          font-size: 1.5rem
+        `}
       />
       <button
-        className='inv-btn'
+        className={`
+          text-[1.5rem]
+        `}
         onClick={() => {
           handleLanguage(data.language, !data.checked)
         }}
@@ -61,7 +70,12 @@ export default function LanguageSelect({
       className={`language-select-container`}
     >
       <h4>Select Languages</h4>
-      <ul>
+      <ul
+        className={`
+          grid gap-[1rem] bg-[#F1F1F1] p-4
+          xl:grid-cols-4 xl:w-[500px]
+        `}
+      >
         {renderData}
       </ul>
     </section>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ActiveConceptItem, ActiveLanguages, ConceptItem, Language } from '../../types';
+import { ActiveConceptItem, ActiveLanguages, ConceptItem, ConceptTopic, Language } from '../../types';
 import LanguageSelect from './LanguageSelect';
 import { axiosFetch } from '../../axios';
 import { useParams } from 'react-router-dom';
@@ -12,8 +12,20 @@ export default function Topic() {
   const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
   const languages:Language[] = UseAllLanguages();
 
+  const TopicDataQuery = useQuery({
+    queryKey:["topicData", topicId],
+    queryFn: async() => {
+      const topicRes = await axiosFetch.get(`/api/concept/topic-object/${topicId}`);
+      const result:ConceptTopic = topicRes.data.data;
+
+      return result;
+    }
+  })
+  
+  const topic: ConceptTopic = TopicDataQuery.data as ConceptTopic;
+  
   const ConceptItemsQuery = useQuery({
-    queryKey: ["activeConcepts"],
+    queryKey: ["activeConcepts", topicId],
     queryFn: async () => {
       const conceptLink = `/api/concept/topic-id/${topicId}`;
       const conceptRes = await axiosFetch.get(conceptLink);
@@ -67,21 +79,47 @@ export default function Topic() {
     <>
       {
         data.checked ? 
-        <article key={data.language} className='card'>
-        <h4>{data.language}</h4>
-        <pre id={`${data.id}_code`} className='code'>{data.text}</pre>
-      </article>:
-      <></>
+        <article key={data.language}
+          className={`
+            w-[100%]  bg-[#F6F6F6] p-[1.5rem]
+            lg:w-[auto]
+          `}
+        >
+          <h4>{data.language}</h4>
+          <pre
+            id={`${data.id}_code`}
+          >
+            {data.text}
+          </pre>
+        </article>:
+        <></>
       }
     </>
   ))
 
   return (
-    <section>
-      <section>
-        <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>:
-      </section>
-      <section>
+    <section
+      className={`
+        px-[2rem]
+      `}
+    >
+      <article className={
+        `my-[5rem]`
+      }>
+        <h3>{topic?.name}</h3>
+        <p>{topic?.description}</p>
+      </article>
+      <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>
+      <h4
+        className={`
+          mt-[5rem]
+        `}
+      >Examples</h4>
+      <section
+        className={`
+          pb-[20rem] flex flex-wrap gap-[2rem] 
+        `}
+      >
         {renderData}
       </section>
     </section>
