@@ -75,7 +75,8 @@ export default function TopicsTab({
       id='topic-tab'
       className={`
         xl:block
-        hidden bg-[#EAEAEA] w-[200px] pb-[10rem] dark:bg-[#222] px-[2px]
+        hidden bg-[#EAEAEA] w-[200px] pb-[10rem] px-[2px]
+        dark:bg-[#181818] 
       `}
     >
       {

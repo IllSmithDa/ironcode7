@@ -83,7 +83,7 @@ export default function Topic() {
           className={`
             w-[100%]  bg-[#F0F0F0] p-[1.5rem]
             lg:w-[auto]
-            dark:bg-[#292929]
+            dark:bg-[#272727]
           `}
         >
           <h4>{data.language}</h4>

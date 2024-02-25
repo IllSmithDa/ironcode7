@@ -57,7 +57,7 @@ export default function Languages() {
             <li
               className={`
                 w-[[200]%] bg-[#F1F1F1] p-[2rem] my-[2rem] 
-                dark:bg-[#222]
+                dark:bg-[#272727]
               `}
               key={data.id}
             >
@@ -98,8 +98,8 @@ export default function Languages() {
               onClick={() => SetCategoryDrop(!categoryDrop)}
               className={`
                 w-[200px] h-[47px] bg-[#DDD] text-[1.5rem]
-                hover:bg-[#EEE]
-                dark:bg-[#292929] dark:hover:bg-[#444]
+                hover:bg-[#E9E9E9]
+                dark:bg-[#272727] dark:hover:bg-[#414141]
               `}
             >
               {title} {categoryDrop ? <>▲</> : <>▼</>}
@@ -113,8 +113,8 @@ export default function Languages() {
                 onClick={() => handleTabChange('basic', 'Basics') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
-                  hover:bg-[#F8F8F8]
-                  dark:bg-[#292929] dark:hover:bg-[#444]
+                  hover:bg-[#F2F2F2]
+                  dark:bg-[#272727] dark:hover:bg-[#414141]
                 `}
               >
                 Basics
@@ -123,8 +123,8 @@ export default function Languages() {
                 onClick={() => handleTabChange('data', 'Data Structures') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
-                  hover:bg-[#F8F8F8]
-                  dark:bg-[#292929] dark:hover:bg-[#444]
+                  hover:bg-[#F2F2F2]
+                  dark:bg-[#272727] dark:hover:bg-[#414141]
                 `}
               >
                 Data Structures
@@ -133,8 +133,8 @@ export default function Languages() {
                 onClick={() => handleTabChange('iterables', 'Iterables') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
-                  hover:bg-[#F8F8F8]
-                  dark:bg-[#292929] dark:hover:bg-[#444]
+                  hover:bg-[#F2F2F2]
+                  dark:bg-[#272727] dark:hover:bg-[#414141]
                 `}
               >
                 Iterables
@@ -143,8 +143,8 @@ export default function Languages() {
                 onClick={() => handleTabChange('class', 'Classes') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
-                  hover:bg-[#F8F8F8]
-                  dark:bg-[#292929] dark:hover:bg-[#444]
+                  hover:bg-[#F2F2F2]
+                  dark:bg-[#272727] dark:hover:bg-[#414141]
                 `}
               >
                 Classes
@@ -153,8 +153,8 @@ export default function Languages() {
                 onClick={() => handleTabChange('regex', 'Regex') }
                 className={`
                   w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
-                  hover:bg-[#F8F8F8]
-                  dark:bg-[#292929] dark:hover:bg-[#444]
+                  hover:bg-[#F2F2F2]
+                  dark:bg-[#272727] dark:hover:bg-[#414141]
                 `}
               >
                 Regex

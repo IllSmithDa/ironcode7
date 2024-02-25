@@ -8,7 +8,7 @@ export default function HomeLayout() {
       className={`
         2xl:w-[1600px]
         w-[100%] mx-auto flex bg-[#F1F1F1]
-        dark:bg-[#1E1E1E]
+        dark:bg-[#1B1B1B]
       `}
     >
       <TopicsTab />

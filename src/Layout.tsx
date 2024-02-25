@@ -23,7 +23,7 @@ export default function Layout() {
   return (
     <main
       className={`
-      dark:bg-[#1A1A1A]
+      dark:bg-[#111]
       `}
     >
       <Navbar darkMode={isDark ?? true} topicId={topicId} languageId={languageId} />
