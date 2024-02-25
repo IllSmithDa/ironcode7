@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import UseAllLanguages from '../../hooks/LanguageHook';
 import { useQuery } from '@tanstack/react-query';
 import { parseConcepts } from '../../helper/parseData';
+import Loader from '../../components/Loader/Loader';
 
 export default function Topic() {
   const { topicId } = useParams<"topicId">();
@@ -116,13 +117,17 @@ export default function Topic() {
           mt-[5rem]
         `}
       >Examples</h4>
-      <section
-        className={`
-          pb-[20rem] flex flex-wrap gap-[2rem] 
-        `}
-      >
-        {renderData}
-      </section>
+      {
+        conceptsAndLanguages?.length ?
+        <section
+           className={`
+             pb-[20rem] flex flex-wrap gap-[2rem] 
+           `}
+         >
+           {renderData}
+         </section>:
+         <Loader />
+      }
     </section>
   )
 }

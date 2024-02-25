@@ -14,7 +14,6 @@ export default function Languages() {
   const { languageId } = useParams<"languageId">();
   const languageLink = `/api/language/by-id/${languageId}`
   const link = `/api/concept/by-language`;
-  const darkMode = false;
   // const {isDark} = useTheme();
   
 
@@ -76,7 +75,7 @@ export default function Languages() {
   }
   return (
     <section className={`
-      px-[2rem] my-[5rem] mb-[20rem]
+      px-[2rem] my-[5rem] mb-[20rem] w-[100%]
     `}>
       {/* <SlidingBackground /> */}
       <h3>Concepts for {languageData?.name}</h3>
@@ -86,7 +85,9 @@ export default function Languages() {
       {
         !languageData || !concepts?.length?
 
-        <section className={`loader-container  ${darkMode ? 'dark': ''}`}>
+        <section className={`
+          h-[100vh] w-[100%]
+        `}>
           <Loader />
         </section>:
         <ul>

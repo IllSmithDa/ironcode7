@@ -6,6 +6,7 @@ import NewForm from './NewForm';
 import EditTopics from './EditTopics';
 import ConceptList from './ConceptList';
 import DeleteLanguages from './EditLanguages';
+import './Admin.css';
 
 export default function Admin() {
   const [selectTab, setSelectTab] = useState<'new'|'edit-concepts'|'edit-topics'|'concept'|'language'|'loading'>('new')

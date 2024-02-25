@@ -1,0 +1,337 @@
+.admin-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #222;
+  margin-top: 8rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+
+.admin-page section {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.admin-page h3 {
+  margin: 2rem auto;
+  width: max-content;
+}
+
+.admin-page h4 {
+  padding: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.admin-page.dark .active-tab {
+  background-color: #222;
+  border: 1px solid #222;
+}
+
+.admin-page.dark .drop-down-container li button:hover {
+  border: 1px solid #222;
+}
+
+.admin-page.dark .del-topics-cont,
+.admin-page.dark .topic-delete-modal {
+  background-color: #1A1A1A;
+  color: #FFF;
+}
+
+.admin-page.dark .form-container {
+  background-color: #222;
+}
+
+.admin-page.dark .card-item {
+  background-color: #2A2A2A;
+  border: 1px solid #444;
+  max-height: fit-content;
+}
+
+.admin-page.dark ul {
+  background-color: #111;
+}
+
+.admin-page.dark ul section {
+  background-color: #222;
+}
+
+.admin-page.dark {
+  background-color: #1A1A1A;
+  color: #FFF;
+}
+
+.admin-page.dark form {
+  background-color: #222;
+}
+
+.admin-page.dark textarea,
+.admin-page.dark input {
+  margin: 1rem 0;
+  background-color: #2A2A2A;
+  border: 1px solid #444;
+  color: #FFF;
+}
+
+.admin-page.dark button {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #FFF;
+}
+
+.admin-page.dark button:hover {
+  background-color: #444;
+}
+
+.menu-container {
+  width: 800px;
+  background-color: #EEE;
+}
+
+.menu-container.dark {
+  background-color: #222;
+}
+
+.form-container {
+  padding: 2rem;
+  width: 800px;
+  background-color: #333;
+  box-sizing: border-box;
+  margin: auto;
+  position: relative;
+  z-index: 200;
+}
+
+.form-container section {
+  box-sizing: border-box;
+  margin: 1rem 0;
+}
+
+.form-container section input,
+.form-container section textarea {
+  width: 100%;
+}
+
+.form-container section textarea {
+  height: 300px;
+}
+
+.form-container section input {
+  height: 36px;
+}
+
+@media (max-width: 1200px) {
+  .admin-page {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-page {
+    width: 90%;
+  }
+}
+
+.menu-tabs {
+  background-color: #111;
+  border: 2px solid #111;
+  font-size: 1.8rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.menu-tabs:hover {
+  background-color: #444;
+  border: 2px solid #444;
+}
+
+.active-tab {
+  background-color: #444;
+  border: 2px solid #444;
+  cursor: default;
+}
+
+.active-tab:hover {
+  background-color: #444;
+  border: 2px solid #444;
+}
+
+.active-tab.dark {
+  background-color: #222;
+  border: 2px solid #222;
+}
+
+.active-tab.dark:hover {
+  background-color: #444;
+  border: 2px solid #444;
+}
+
+.card-item {
+  margin: 1rem 0;
+  background-color: #333;
+  padding: 2rem;
+  box-sizing: border-box;
+  border: 1px solid #EDEDED;
+  max-height: 200px;
+}
+
+.card-item pre {
+  font-size: 1.4rem;
+}
+
+.card-item p {
+  margin-top: 2rem;
+}
+
+.card-item svg {
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.card-item svg:hover,
+.card-item svg:active {
+  color: #555;
+}
+
+.card-item svg:first-child {
+  margin-left: 1rem;
+}
+
+.del-topics-cont {
+  background-color: #444;
+}
+
+.del-topics-cont ul li {
+  margin: 2rem 0;
+  background-color: #444;
+  width: 270px;
+  box-sizing: border-box;
+  padding: 1rem;
+  list-style: none;
+}
+
+.del-topics-cont ul li svg {
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.topic-delete-modal {
+  padding: 2rem;
+  background-color: #333;
+  width: 600px;
+  position: relative;
+}
+
+.topic-delete-modal svg {
+  float: right;
+  font-size: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.topic-delete-modal svg:hover,
+.topic-delete-modal svg:active {
+  background-color: #444;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.edit-concepts-cont {
+  background-color: #444;
+}
+
+.concept-items li {
+  margin: 2rem 0;
+  background-color: #444;
+  box-sizing: border-box;
+  padding: 1rem;
+  list-style: none;
+}
+
+.edit-topics-cont {
+  background-color: #444;
+  width: 600px;
+}
+
+.edit-topics-cont ul li {
+  margin: 2rem 0;
+  background-color: #444;
+  box-sizing: border-box;
+  padding: 1rem;
+  list-style: none;
+}
+
+.form-group {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+}
+
+.form-group textarea {
+  height: 300px;
+}
+
+.form-group input {
+  height: 36px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+}
+
+.drop-down-container {
+  position: absolute;
+  z-index: 3;
+  background-color: #333 ;/* Assuming $color-cloud is defined elsewhere */
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.drop-down-container li {
+  list-style: none;
+}
+
+.drop-down-container li:hover {
+  background-color: #222 /* Assuming $dark-cloud is defined elsewhere */
+}
+
+.drop-down-container li button {
+  background-color: #333; /* Assuming $light-grey is defined elsewhere */
+  border: 2px solid  #333;/* Assuming $light-grey is defined elsewhere */
+  font-size: 1.8rem;
+  padding: 1rem 1.2rem;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.drop-down-container li button:hover {
+  background-color: #444; /* Assuming $dark-cloud is defined elsewhere */
+  border: 2px solid #444; /* Assuming $dark-cloud is defined elsewhere */
+  text-decoration: underline;
+}
+
+.silent-modal {
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(0,0,0); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
