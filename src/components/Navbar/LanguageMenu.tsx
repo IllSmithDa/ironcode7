@@ -35,8 +35,9 @@ export default function LanguageMenu({
         key={entry.id}
         to={`/language/${entry.id}`}
         className={`
-          relative z-[150] block text-[1.6rem] p-[1rem] bg-[#E9E9E9] hover:bg-[#E9E9E9]
-          dark:bg-[#393939]
+          relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#E9E9E9]
+          dark:bg-[#393939] dark:border-b-[1px] dark:border-[#555]
+          dark:md:border-b-[0]
         `}
         onClick={() => {
           setDesktopDropdown(false);
@@ -49,8 +50,10 @@ export default function LanguageMenu({
         key={entry.id}
         to={`/language/${entry.id}`}
         className={`
-          relative z-[150] block text-[1.6rem] p-[1rem] bg-[#D1D1D1] hover:bg-[#E9E9E9] active:bg-[#F9F9F9]
-          dark:bg-[#181818] dark:hover:bg-[#393939]
+          relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#D1D1D1] active:bg-[#F9F9F9] border-b-[1px] border-[#AAA] 
+          dark:bg-[#181818] dark:hover:bg-[#393939] dark:border-b-[1px] dark:border-[#555]
+          dark:md:border-b-[0]
+          hover:bg-[#E9E9E9] 
         `}
         onClick={() => {
           setDesktopDropdown(false);
@@ -94,30 +97,6 @@ export default function LanguageMenu({
             dark:bg-[#1C1C1C]
           `}
         >
-          <button 
-            onClick={() => setDesktopDropdown(!desktopDropdown)}
-            className={`
-              w-[47px] h-[47px] ml-[auto] block
-              lg:hidden
-            `}  
-          >
-            <FontAwesomeIcon
-              icon={faClose}
-              tabIndex={-1}
-              className={`
-                text-[1.5rem]
-              `}
-            />
-          </button>
-          <h4
-            className={`
-              lg:hidden
-              block
-              border-b-[1px]
-            `}
-          >
-            Select Language
-          </h4>
           {renderData}
         </section>:
         <></>
@@ -128,7 +107,7 @@ export default function LanguageMenu({
           className={`
             h-[100vh] w-[100vw] absolute bg-[#DDD] top-0 left-0 overflow-y-scroll
             lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
-            dark:bg-[#1C1C1C]
+            dark:bg-[#181818] p-[1rem]
           `}
         >
           <button 
@@ -142,15 +121,16 @@ export default function LanguageMenu({
               icon={faClose}
               tabIndex={-1}
               className={`
-                text-[1.5rem]
+                text-[2rem] font-[700]
               `}
             />
           </button>
           <h4
             className={`
               lg:hidden
-              block
+              block m-0 py-[1rem]
               border-b-[1px]
+              text-[1.7rem]
             `}
           >
             Select Language

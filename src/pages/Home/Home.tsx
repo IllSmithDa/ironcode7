@@ -3,19 +3,28 @@ export default function Home() {
   return (
     <section
       className={`
-        flex flex-col justify-center items-center min-h-[90vh] z-[-100] relative w-[100%]
+        flex flex-col justify-center items-center max-h[700px] h-[99vh] z-[-100] relative w-[100%] mt-[47px]
+        xl:min-h-[90vh]
       `}
     >
       <img
         src={mainImg}
         alt='main title image'
         className={`
-          w-[400px] h-[400px]
+          w-max-[400px] max-h-[400px]
+          xl:w-[30%]
+          lg:w-[35%]
+          w-[40%] 
         `}
       />
       <h1
         className={`
-          text-[6rem] font-[700] m-[5rem] dark:text-white text-black
+          lg:text-[6.5rem] lg:m-[5rem]
+          md:text-[4rem]
+          sm:text-[3rem]
+          text-[2.2rem]
+          font-[700] m-[5rem] m-[2.5rem] dark:text-white text-black
+          
         `}
       >
         IronCodeMan

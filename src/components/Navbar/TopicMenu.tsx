@@ -54,7 +54,8 @@ export default function TopicMenu({
                   }}
                   to={`/topic/${topic.id}`}
                   className={`
-                    block w-[1.5rem]
+                    inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem] bg-[#3A3A3A]
+                    dark:border-b-[1px] dark:border-[#555]
                   `}
                 >
                   {topic.name}
@@ -67,7 +68,8 @@ export default function TopicMenu({
                   }}
                   to={`/topic/${topic.id}`}
                   className={`
-                    block  w-[1.5rem]
+                    inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem]
+                    dark:hover:bg-[#3A3A3A] dark:border-b-[1px] dark:border-[#555]
                   `}
                 >
                   {topic.name}
@@ -83,15 +85,34 @@ export default function TopicMenu({
   return (
     <section
       className={`
-        z-1000 absolute bg-[#DDD] bg-cover bg-opacity-100 w-[100vw] min-h-[100vh] top-0 left-0
+        z-1000 absolute bg-[#DDD] w-[100vw] h-[100vh] top-0 left-0 overflow-y-scroll px-[1rem] pt-[1rem] pb-[4rem]
+        dark:bg-[#1C1C1C]
+
       `}
     >
-      <article>
-        <div>
-          <Link to="/">
+      <article
+        className= {`
+          flex justify-between my-[1rem]
+        `}
+      >
+        <div
+          className={`
+            flex
+          `}
+        >
+          <Link
+            to='/'
+            className={`
+              w-[47px] h-[47px] flex flex-col justify-center align-center mr-[1rem]
+            `}
+            onClick={() => toggleTopicsMenu(false)} 
+          >
             <FontAwesomeIcon
               icon={faHome}
               tabIndex={-1}
+              className={`
+                text-[26px] block
+              `}  
             />
           </Link>
           <Link
@@ -99,15 +120,23 @@ export default function TopicMenu({
             onClick={() => toggleTopicsMenu(false)}
             to='/'
           >
-            <h3>Home</h3>
+            <h3 className={`text-[2rem]`}>Home</h3>
           </Link>
         </div>
-        <button className='align-right close-btn' onClick={() => {
-          toggleTopicsMenu(false);
-        }}>
+        <button
+          onClick={() => {
+            toggleTopicsMenu(false);
+          }}
+          className={`
+            w-[47px] h-[47px]
+          `}
+        >
           <FontAwesomeIcon
             icon={faClose}
             tabIndex={-1}
+            className={`
+              text-[2rem] font-[700]
+            `}
           />
         </button>
       </article>
@@ -116,7 +145,7 @@ export default function TopicMenu({
           <>
             <h4  
               className={`
-                my-[1rem] p-[1rem] text-[1.5rem] border-b-2
+                my-[1rem] p-[1rem] text-[1.7rem] border-b-2
               `}  
             >
               {topObj.title}

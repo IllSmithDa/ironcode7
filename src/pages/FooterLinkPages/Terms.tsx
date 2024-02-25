@@ -7,7 +7,8 @@ export default function Terms() {
       `}
     >
       <section className={`
-        w-[800px] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        xl:w-[800px]
         dark:bg-[#272727]
       `}>
         <h3 
@@ -87,7 +88,11 @@ export default function Terms() {
           `}
         >Governing Law:</h3>
         <p>These Terms are governed by and construed in accordance with the laws of the United States, and any disputes shall be subject to the exclusive jurisdiction of the courts in the United States.
-        By using the Iron Code Man website, you agree to abide by these Terms and Conditions. If you have any questions or concerns, please contact us at <a href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
+        By using the Iron Code Man website, you agree to abide by these Terms and Conditions. If you have any questions or concerns, please contact us at <a 
+        className={`
+          text-[7px] sm:text-[1.2rem] md:text-[1.5rem]
+        `}
+        href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
       </section>
     </section>
   )

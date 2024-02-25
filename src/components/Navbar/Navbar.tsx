@@ -213,15 +213,6 @@ export default function Navbar({
           <></>
         }
       </section>
-      {
-        mobileNav? 
-        <div className={`
-          fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
-        `} onClick={() => {
-          setMobileNav(false);
-        }}></div>:
-        <></>
-      }
     </section>
   )
 }

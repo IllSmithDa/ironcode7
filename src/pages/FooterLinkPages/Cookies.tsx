@@ -8,7 +8,8 @@ export default function Cookies() {
       `}
     >
       <section className={`
-        w-[800px] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        xl:w-[800px]
         dark:bg-[#272727]
       `}>
         <h3

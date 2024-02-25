@@ -97,9 +97,10 @@ export default function Languages() {
               type='button'
               onClick={() => SetCategoryDrop(!categoryDrop)}
               className={`
-                w-[200px] h-[47px] bg-[#DDD] text-[1.5rem]
+                w-[100%] h-[47px] bg-[#DDD] text-[1.5rem]
                 hover:bg-[#E9E9E9]
-                dark:bg-[#272727] dark:hover:bg-[#414141]
+                md:w-[200px]
+                dark:bg-[#333] dark:hover:bg-[#414141]
               `}
             >
               {title} {categoryDrop ? <>▲</> : <>▼</>}
@@ -107,14 +108,16 @@ export default function Languages() {
           {
             categoryDrop ?
             <section className={`
-              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EFEFEF] 
+              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EFEFEF] w-[100%]
+              md:w-[200px]
             `}>
               <button
                 onClick={() => handleTabChange('basic', 'Basics') }
                 className={`
-                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#272727] dark:hover:bg-[#414141]
+                  dark:bg-[#333] dark:hover:bg-[#414141]
                 `}
               >
                 Basics
@@ -122,9 +125,10 @@ export default function Languages() {
               <button
                 onClick={() => handleTabChange('data', 'Data Structures') }
                 className={`
-                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#272727] dark:hover:bg-[#414141]
+                  dark:bg-[#333] dark:hover:bg-[#414141]
                 `}
               >
                 Data Structures
@@ -132,9 +136,10 @@ export default function Languages() {
               <button
                 onClick={() => handleTabChange('iterables', 'Iterables') }
                 className={`
-                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#272727] dark:hover:bg-[#414141]
+                  dark:bg-[#333] dark:hover:bg-[#414141]
                 `}
               >
                 Iterables
@@ -142,9 +147,10 @@ export default function Languages() {
               <button
                 onClick={() => handleTabChange('class', 'Classes') }
                 className={`
-                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#272727] dark:hover:bg-[#414141]
+                  dark:bg-[#333] dark:hover:bg-[#414141]
                 `}
               >
                 Classes
@@ -152,9 +158,10 @@ export default function Languages() {
               <button
                 onClick={() => handleTabChange('regex', 'Regex') }
                 className={`
-                  w-[200px] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
+                  md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#272727] dark:hover:bg-[#414141]
+                  dark:bg-[#333] dark:hover:bg-[#414141]
                 `}
               >
                 Regex

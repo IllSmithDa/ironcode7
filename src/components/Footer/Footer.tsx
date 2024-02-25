@@ -8,22 +8,46 @@ export default function Footer() {
         className="flex gap-[2rem] justify-center my-[2rem]"
       >
         <li>
-          <Link to='/about' >
+          <Link 
+            className={`
+              sm:text-[1.5rem]
+              text-[9px]
+            `}
+            to='/about'>
+            
             About
           </Link>
         </li>
         <li>
-          <Link to='/terms'>
+          <Link 
+            className={`
+              sm:text-[1.5rem]
+              text-[9px]
+            `}
+            to='/terms'>
+            
             Terms
           </Link>
         </li>
         <li>
-          <Link to='/privacy'>
+          <Link 
+            className={`
+              sm:text-[1.5rem]
+              text-[9px]
+            `}
+            to='/privacy'>
+            
             Privacy
           </Link>
         </li>
         <li>
-         <Link to='/cookies'>
+         <Link 
+           className={`
+             sm:text-[1.5rem]
+             text-[9px]
+           `}
+           to='/cookies'>
+           
             Cookies
           </Link>
         </li>

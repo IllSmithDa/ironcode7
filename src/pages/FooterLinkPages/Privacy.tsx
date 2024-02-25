@@ -6,7 +6,8 @@ export default function Privacy() {
       `}
     >
       <section className={`
-        w-[800px] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
+        xl:w-[800px]
         dark:bg-[#272727]
       `} >
         <h3
@@ -48,7 +49,11 @@ export default function Privacy() {
   
         <p>By using the Iron Code Man website, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Website.</p>
   
-        <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at <a href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
+        <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at <a 
+        className={`
+          text-[7px] sm:text-[1.2rem] md:text-[1.5rem]
+        `}
+        href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
       </section>
     </section>
   )

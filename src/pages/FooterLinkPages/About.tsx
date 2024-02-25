@@ -8,7 +8,8 @@ export default function About() {
       `}
     >
       <section className={`
-         w-[800px] mx-[auto] border-box p-[2.5rem] mt-[2.5rem] bg-[#E1E1E1]
+        w-[90%] mx-[auto] border-box p-[2.5rem] mt-[2.5rem] bg-[#E1E1E1]
+         xl:w-[800px] 
          dark:bg-[#272727]
       `}>
         <h2>Purpose</h2>
@@ -21,7 +22,8 @@ export default function About() {
         </p>
       </section>
       <section className={`
-        w-[800px] mx-[auto] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        w-[90%] mx-[auto] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        xl:w-[800px] 
         dark:bg-[#272727]
       `}>
         <h3>Using Concept Topics Tab</h3>
@@ -35,7 +37,8 @@ export default function About() {
         </p>
       </section>
       <section className={`
-        w-[800px] mx-[auto] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        w-[90%] mx-[auto] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        xl:w-[800px] 
         dark:bg-[#272727]
       `}>
         <h3>Using Language Dropdown</h3>
@@ -49,7 +52,8 @@ export default function About() {
         </p>
       </section>
       <section className={`
-        w-[800px] mx-[auto] pt-[2.5rem] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        w-[90%] mx-[auto] pt-[2.5rem] p-[2.5rem] border-box mt-[2.5rem] bg-[#E1E1E1]
+        xl:w-[800px]
         dark:bg-[#272727]
       `}>
         <h3>Questions?</h3>
@@ -57,7 +61,11 @@ export default function About() {
           className={`
             mt-[1rem]
           `}
-        >If you have any questions about hwo the app works, suggestions or comments about how to make this app even better, please contact us at <a href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
+        >If you have any questions about hwo the app works, suggestions or comments about how to make this app even better, please contact us at <a 
+        className={`
+          text-[7px] sm:text-[1.2rem] md:text-[1.5rem]
+        `}
+        href="mailto:contact@ironcodeman.com">contact@ironcodeman.com</a>.</p>
       </section>
     </section>
   )
