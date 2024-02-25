@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import TopicsTab from '../../components/TopicsTab/TopicsTab';
+import { Helmet } from 'react-helmet'
 import Footer from '../../components/Footer/Footer';
+import TopicsTab from '../../components/TopicsTab/TopicsTab';
 
 export default function HomeLayout() {
   return (
@@ -11,6 +12,9 @@ export default function HomeLayout() {
         dark:bg-[#1B1B1B]
       `}
     >
+      <Helmet>
+        <title>IronCodeMan | Home</title>
+      </Helmet>
       <TopicsTab />
       <section className={`
         relative w-[100%] z-0

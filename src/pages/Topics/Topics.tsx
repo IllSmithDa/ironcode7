@@ -7,6 +7,7 @@ import UseAllLanguages from '../../hooks/LanguageHook';
 import { useQuery } from '@tanstack/react-query';
 import { parseConcepts } from '../../helper/parseData';
 import Loader from '../../components/Loader/Loader';
+import { Helmet } from 'react-helmet';
 
 export default function Topic() {
   const { topicId } = useParams<"topicId">();
@@ -105,6 +106,9 @@ export default function Topic() {
         px-[2rem]
       `}
     >
+      <Helmet>
+        <title>{`IronCodeMan | ${topic?.name}`}</title>
+      </Helmet>
       <article className={
         `my-[5rem]`
       }>

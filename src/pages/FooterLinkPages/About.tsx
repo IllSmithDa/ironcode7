@@ -1,5 +1,6 @@
 import languageSelectImg from '../../assets/images/language_selection.webp';
 import conceptSelectImg from '../../assets/images/concept_selection.webp';
+import { Helmet } from 'react-helmet';
 export default function About() {
   return (
     <section
@@ -7,6 +8,9 @@ export default function About() {
         pt-[50px] pb-[200px]
       `}
     >
+      <Helmet>
+        <title>{`IronCodeMan | About`}</title>
+      </Helmet>
       <section className={`
         w-[90%] mx-[auto] border-box p-[2.5rem] mt-[2.5rem] bg-[#E1E1E1]
          xl:w-[800px] 

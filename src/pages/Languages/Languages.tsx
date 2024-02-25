@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { parseConcepts } from '../../helper/parseData';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function Languages() {
   // const [isLoading, setIsLoading] = useState(true);
@@ -77,6 +78,9 @@ export default function Languages() {
     <section className={`
       px-[2rem] my-[5rem] mb-[20rem] w-[100%]
     `}>
+      <Helmet>
+        <title>{`IronCodeMan | ${languageData?.name}`}</title>
+      </Helmet>
       {/* <SlidingBackground /> */}
       <h3>Concepts for {languageData?.name}</h3>
       <p style={{ margin: "2rem 0"}}>

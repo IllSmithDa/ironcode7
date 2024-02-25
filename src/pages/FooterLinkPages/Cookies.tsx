@@ -1,12 +1,16 @@
+import { Helmet } from "react-helmet";
 
 export default function Cookies() {
-
+  
   return (
     <section
       className={`
         pt-[50px] pb-[200px] min-h-[100vh]
       `}
     >
+      <Helmet>
+        <title>{`IronCodeMan | Cookiess`}</title>
+      </Helmet>
       <section className={`
         w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
         xl:w-[800px]
