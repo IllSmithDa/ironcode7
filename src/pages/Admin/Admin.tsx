@@ -7,6 +7,7 @@ import EditTopics from './EditTopics';
 import ConceptList from './ConceptList';
 import DeleteLanguages from './EditLanguages';
 import './Admin.css';
+import { Helmet } from 'react-helmet';
 
 export default function Admin() {
   const [selectTab, setSelectTab] = useState<'new'|'edit-concepts'|'edit-topics'|'concept'|'language'|'loading'>('new')
@@ -46,6 +47,9 @@ export default function Admin() {
   }
   return (
     <section className={`admin-page`}>
+      <Helmet>
+        <title>{`IronCodeMan | Admin`}</title>
+      </Helmet>
       <h3>Console Center</h3>
       <section className={`menu-container`}>
         <button
