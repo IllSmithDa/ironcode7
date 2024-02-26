@@ -1,6 +1,7 @@
 import {  Outlet, useParams } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Layout() {
   const { topicId } = useParams<"topicId">();
@@ -26,6 +27,9 @@ export default function Layout() {
       dark:bg-[#111]
       `}
     >
+      <Helmet>
+        <meta name="google-adsense-account" content="ca-pub-2907367619848104" />
+      </Helmet>
       <Navbar darkMode={isDark ?? true} topicId={topicId} languageId={languageId} />
       <div
         className={`

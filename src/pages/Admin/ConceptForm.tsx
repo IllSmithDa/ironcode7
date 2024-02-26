@@ -57,66 +57,107 @@ export default function ConceptForm() {
     setConceptDropdown(false);
   }
   return (
-    <form className='form-container' onSubmit={(event:React.SyntheticEvent) => handleNewConcept(event)}>
-    <h4>Language:</h4>
-    <button type='button' onClick={() => setLanguageDropdown(!languageDropdown)} className='menu-tabs'>
-      {languageOption} {languageDropdown ? <>&#11205;</> : <>&#11206;</>}
-    </button>
-    {
-      languageDropdown ?
-      <ul className='drop-down-container'>
-        {(languages as Language[]).map((entry) => (
-          <li key={entry.id}>
-            <button onClick={() => selectLanguageDropdown(entry.name)} className='list-btn'>
-              {entry.name}
-            </button>
-          </li>
-        ))}
-      </ul>:
-      <></>
-    }
-    <h4 style={{ marginTop: '2rem' }}>Concept:</h4>
-    <button type='button' onClick={() => setConceptDropdown(!conceptDropdown)} className='menu-tabs'>
-      {conceptOption} {conceptDropdown ? <>&#11205;</> : <>&#11206;</>}
-    </button>
-    {
-      conceptDropdown ?
-      <ul className='drop-down-container'>
-        {(concepts as ConceptTopic[]).map((entry) => (
-          <li key={entry.id}>
-            <button onClick={() => selectConceptDropdown(entry)} className='list-btn'>
-              {entry.name}
-            </button>
-          </li>
-        ))}
-      </ul>:
-      <></>
-    }
-    <section style={{ marginTop: '2rem' }}>
-      <label><h4>Code Example:</h4></label>
-      <textarea ref={textRef} placeholder='Include code example here...'/>   
-    </section>
-    <section className='flex-right'>
-      <button className='std-button std-button-short' type='submit'>Submit</button>
-    </section>
-    {
-      err ? 
-      <p className='error-txt'>{err}</p>:
-      <></>
-    }
-    {
-      successMsg ?
-      <p className='success-txt'>{successMsg}</p>:
-      <></>
-    }
-    {
-      languageDropdown || conceptDropdown? 
-      <div className='silent-modal' onClick={() => {
-        setLanguageDropdown(false);
-        setConceptDropdown(false); 
-      }}></div>:
-      <></>
-    }
-  </form>
+    <form onSubmit={(event:React.SyntheticEvent) => handleNewConcept(event)} 
+      className={`
+        pt-[2rem] pb-[8rem] px-[2rem]  w-[800px] bg-[#3A3A3A] m-[auto] dark:text-[#FFF] text-[#FFF]
+      `}
+    >
+      <h4>Language:</h4>
+      <button type='button' onClick={() => setLanguageDropdown(!languageDropdown)} className={`
+        bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box  w-[200px]
+        hover:bg-[#333] 
+      `}>
+        {languageOption} {languageDropdown ? <>&#11205;</> : <>&#11206;</>}
+      </button>
+      {
+        languageDropdown ?
+        <ul className={`
+          absolute z-[3] bg-[#333] max-h-[600px] overflow-y-scroll
+        `}>
+          {(languages as Language[]).map((entry) => (
+            <li key={entry.id}>
+              <button onClick={() => selectLanguageDropdown(entry.name)} className={`
+                bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box w-[100%]  w-[200px]
+                hover:bg-[#333] 
+              `}>
+                {entry.name}
+              </button>
+            </li>
+          ))}
+        </ul>:
+        <></>
+      }
+      <h4 style={{ marginTop: '2rem' }}>Concept:</h4>
+      <button type='button' onClick={() => setConceptDropdown(!conceptDropdown)} className={`
+        bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box  w-[200px]
+        hover:bg-[#333] 
+      `}>
+        {conceptOption} {conceptDropdown ? <>&#11205;</> : <>&#11206;</>}
+      </button>
+      {
+        conceptDropdown ?
+        <ul className={`
+          absolute z-[3] bg-[#333] max-h-[600px] overflow-y-scroll
+        `}>
+          {(concepts as ConceptTopic[]).map((entry) => (
+            <li key={entry.id}>
+              <button onClick={() => selectConceptDropdown(entry)}
+                className={`
+                  bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box w-[200px]
+                  hover:bg-[#333] 
+                `}
+              >
+                {entry.name}
+              </button>
+            </li>
+          ))}
+        </ul>:
+        <></>
+      }
+      <section style={{ marginTop: '2rem' }}>
+        <label><h4>Code Example:</h4></label>
+        <textarea ref={textRef} placeholder='Include code example here...' 
+          className={`
+            w-[100%] h-[300px] my-[1rem] p-[1rem] text-[#FFF] text-[1.5rem] p-[1rem] bg-[#222]
+          `}
+        />   
+      </section>
+      <section className='flex-right'>
+        <button className={`
+          w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] float-right relative
+          hover:bg-[#2E2E2E]
+          dark:text-[#FFF] text-[#FFF]
+        `} type='submit'>Submit</button>
+      </section>
+      {
+        err ? 
+        <p className={`
+          text-[#11EE11] my-[1rem]
+          dark:text-[#EE1111]
+        `}>{err}</p>:
+        <></>
+      }
+      {
+        successMsg ?
+        <p className={`
+          text-[#11EE11] my-[1rem]
+          dark:text-[#11EE11]   
+        `}>{successMsg}</p>:
+        <></>
+      }
+      {
+        languageDropdown || conceptDropdown? 
+        <div
+           onClick={() => {
+            setLanguageDropdown(false);
+            setConceptDropdown(false); 
+          }}
+          className={`
+            fixed z-[2] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+          `}
+        ></div>:
+        <></>
+      }
+    </form>
   )
 }

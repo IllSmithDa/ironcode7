@@ -46,40 +46,64 @@ export default function Admin() {
     }
   }
   return (
-    <section className={`admin-page`}>
+    <section className={`
+      width-[100%] min-h-[100vh] bg-[#1E1E1E] pt-[8rem] relative dark:text-[#FFF] text-[#FFF]
+    `}>
       <Helmet>
         <title>{`IronCodeMan | Admin`}</title>
       </Helmet>
-      <h3>Console Center</h3>
-      <section className={`menu-container`}>
+      <h3 className='text-center my-[4rem] text-[2.5rem]'>Console Center</h3>
+      <section className={`
+        w-[800px] bg-[#2B2B2B] mx-[auto] flex justify-center
+      `}>
         <button
           id='new-tab'
           onClick={() => handleTabChange('new') }
-          className='active-tab menu-tabs'
+          className={`
+            text-[1.8rem] p-[1.2rem]
+            hover:bg-[#3A3A3A]
+            ${selectTab === 'new' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+          `}
         >
           New
         </button>
         <button
           id='concept-tab'
-          className={`menu-tabs`}
+          className={`
+            text-[1.8rem] p-[1.2rem]
+            hover:bg-[#3A3A3A]
+            ${selectTab === 'concept' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+          `}
           onClick={() => handleTabChange('concept') }>Concept
         </button>
         <button
           id='edit-topics-tab'
-          className={`menu-tabs`}
+          className={`
+            text-[1.8rem] p-[1.2rem]
+            hover:bg-[#3A3A3A]
+            ${selectTab === 'edit-topics' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+          `}
           onClick={() => handleTabChange('edit-topics') }>Edit Topics
         </button>
         <button
           id='edit-concepts-tab'
           onClick={() => handleTabChange('edit-concepts') }
-          className={`menu-tabs`}
+          className={`
+            text-[1.8rem] p-[1.2rem]
+            hover:bg-[#3A3A3A]
+            ${selectTab === 'edit-concepts' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+          `}
         >
           Edit Concepts
         </button>
         <button
           id='language-tab'
           onClick={() => handleTabChange('language') }
-          className={`menu-tabs`}
+          className={`
+            text-[1.8rem] p-[1.2rem]
+            hover:bg-[#3A3A3A]
+            ${selectTab === 'language' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+          `}
         >
           Languages
         </button>

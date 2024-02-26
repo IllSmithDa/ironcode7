@@ -47,6 +47,16 @@ export default function ConceptList() {
     fetch();
   }, [languages, url])
 
+  useEffect(() => {
+    if (editModalOpen || delModalOpen) {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.add('modal-open')
+    } else {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.remove('modal-open')
+    }
+  }, [editModalOpen, delModalOpen])
+
   const fetchByLanguage = async (language: Language) => {
     try {
       setIsLoading(true);
@@ -88,20 +98,34 @@ export default function ConceptList() {
     fetchByLanguage(language);
   }
   return (
-    <section className='form-container edit-concepts-cont'>
-      <h4>Select Language</h4>
+    <section className={`
+      p-[2rem] w-[800px] bg-[#393939] m-[auto] dark:text-[#FFF] text-[#FFF] relative
+    `}>
+      <h4 className="text-[2rem]">Select Language</h4>
       <button
         onClick={() => setLanguageDropdown(!languageDropdown)} 
-        className='menu-tabs'
+        className={`
+          w-[175px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.6rem] align-right relative
+          hover:bg-[#2E2E2E]
+          dark:text-[#FFF] text-[#FFF] 
+        `}
       >
         {selectedLanguage?.name} {languageDropdown ? <>&#11205;</> : <>&#11206;</>}
       </button>
       {
         languageDropdown ?
-        <ul className='drop-down-container'>
+        <ul className={`
+          absolute z-50 bg-[#333]
+        `}>
           {(languages as Language[]).map((entry) => (
             <li key={entry.id}>
-              <button onClick={() => handleSelect(entry)} className='list-btn'>
+              <button
+                onClick={() => handleSelect(entry)}
+                className={`
+                  bg-[#222] text-[1.8rem] p-[1rem] w-[175px] border-box text-white
+                  hover:bg-[#333]
+                `}
+              >
                 {entry.name}
               </button>
             </li>
@@ -114,17 +138,34 @@ export default function ConceptList() {
         <>
           {
             conceptData?.map((data) => (
-              <section className='card-item' key={data.id}>
-                <FontAwesomeIcon icon={faTrashCan} onClick={() =>  {
-                  setModalId(data.id);
-                  setDelModalOpen(true);
-                  setCurrentConcept(data)
-                }}/>
-                <FontAwesomeIcon icon={faWrench} onClick={() =>  {
-                  setModalId(data.id);
-                  setEditModalOpen(true);
-                  setCurrentConcept(data);
-                }}/>
+              <section 
+                key={data.id}
+                className={`
+                  bg-[#272727] p-[2rem] my-[2rem]
+                `}  
+              >
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  onClick={() =>  {
+                    setModalId(data.id);
+                    setDelModalOpen(true);
+                    setCurrentConcept(data)
+                  }}
+                  className={`
+                    float-right text-[2.5rem] hover:text-[#DDD] cursor-pointer 
+                  `}
+                />
+                <FontAwesomeIcon
+                  icon={faWrench}
+                  onClick={() =>  {
+                    setModalId(data.id);
+                    setEditModalOpen(true);
+                    setCurrentConcept(data);
+                  }}
+                  className={`
+                    float-right text-[2.5rem] hover:text-[#DDD] mr-[2rem] cursor-pointer
+                  `}
+                />
                 <h4>
                   {data.concept_name}
                 </h4>
@@ -158,9 +199,28 @@ export default function ConceptList() {
       }
       {
         languageDropdown ? 
-        <div className='silent-modal' onClick={() => {
-          setLanguageDropdown(false);
-        }}></div>:
+        <div 
+          onClick={() => {
+            setLanguageDropdown(false);
+          }}
+          className={`
+            fixed z-[25] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+          `}
+          ></div>:
+        <></>
+      }
+      {
+        delModalOpen || editModalOpen ? 
+        <div
+          onClick={() => {
+            setDelModalOpen(false);
+            setEditModalOpen(false);
+          }}
+          className={`
+            fixed z-[100] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto bg-[#000] opacity-70
+          `}
+        >
+        </div>:
         <></>
       }
     </section>

@@ -35,26 +35,44 @@ export default function DeleteTopics({
   
 
   return (
-    <section className='del-topics-cont'>
-      <Modal isOpen={modalOpen}>
-        <section className='topic-delete-modal'>
-          <FontAwesomeIcon icon={faClose} onClick={() => setModalState(false)} />
-          <h4>Do you want to delete this topic: {selectedTopic?.name}? </h4>
-          {
-            err ? 
-            <p className='error-txt'>{err}</p>:
-            <></>
-          }
-          <section className='btn-group'>
-            <button onClick={() => setModalState(false)} className='std-button std-button-short'>
-              No
-            </button>
-            <button onClick={() => deleteTopic()} className='std-button std-button-short'>
-              Yes
-            </button>
-          </section>
+    <Modal isOpen={modalOpen}>
+      <section className={`
+        p-[2rem] bg-[#393939] w-[600px] fixed z-[150] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]
+      `}>
+        <FontAwesomeIcon
+          icon={faClose}
+          onClick={() => setModalState(false)}
+          className={` 
+            float-right text-[2.5rem] cursor-pointer hover:text-[#DDD] 
+          `} 
+        />
+        <h4 className='my-[3rem]'>Do you want to delete this topic: {selectedTopic?.name}? </h4>
+        {
+          err ? 
+          <p className='error-txt'>{err}</p>:
+          <></>
+        }
+        <section className={`flex gap-[1rem] justify-end`}>
+          <button onClick={() => setModalState(false)}
+            className={`
+              w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem]
+              hover:bg-[#2E2E2E]
+              dark:text-[#FFF] text-[#FFF]
+            `}
+          >
+            No
+          </button>
+          <button onClick={() => deleteTopic()}
+            className={`
+              w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem]
+              hover:bg-[#2E2E2E]
+              dark:text-[#FFF] text-[#FFF]
+            `}
+          >
+            Yes
+          </button>
         </section>
-      </Modal>
-    </section>
+      </section>
+    </Modal>
   )
 }

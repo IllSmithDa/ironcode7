@@ -23,11 +23,21 @@ export default function EditTopics() {
 
 
   useEffect(() => {
-    if (topics.length) {
+    if (topics?.length) {
       setEditList(topics as ConceptTopic []);
     }
   }, [topics])
 
+  useEffect(() => {
+    if (editModalOpen || delModalOpen) {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.add('modal-open')
+    } else {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.remove('modal-open')
+    }
+  }, [editModalOpen, delModalOpen])
+  
   const updateModalState = (state: boolean) => {
     setDelModalOpen(state);
   }
@@ -78,21 +88,33 @@ export default function EditTopics() {
   }
   
   const renderTopics = (editList as ConceptTopic []).map((topic) => (
-    <section className='card-item' key={topic.id}>
+    <section className={`
+      bg-[#272727] p-[2rem] my-[2rem]
+    `} key={topic.id}>
       <FontAwesomeIcon icon={faTrashCan} onClick={() =>  {
         setDelModalOpen(true);
         setCurrentTopic(topic)
-      }}/>
-      <FontAwesomeIcon icon={faWrench} onClick={() =>  {
-        setEditModalOpen(true);
-        setCurrentTopic(topic)
-        setEditName(topic.name);
-        setCurrentRank(topic.rank);
-        setCurrentCategory(topic.category)
-        setEditDescription(topic.description);
-      }}/>
+      }}
+      className={`
+        float-right text-[2.5rem] hover:text-[#DDD] cursor-pointer 
+      `}
+      />
+      <FontAwesomeIcon
+        icon={faWrench}
+        onClick={() =>  {
+          setEditModalOpen(true);
+          setCurrentTopic(topic)
+          setEditName(topic.name);
+          setCurrentRank(topic.rank);
+          setCurrentCategory(topic.category)
+          setEditDescription(topic.description);
+        }}
+        className={`
+          float-right text-[2.5rem] hover:text-[#DDD] mr-[2rem] cursor-pointer
+        `}
+      />
       <h4>{topic.name}</h4>
-      <p>{topic.description}</p>
+      <p className='my-[2rem]'>{topic.description}</p>
       <>
         <p>Category: {topic.category}</p>
         <p>Rank: {topic.rank}</p>
@@ -101,68 +123,108 @@ export default function EditTopics() {
   ))
 
   return (
-    <section className='edit-topics-cont form-container'>
+    <section className={`
+      p-[2rem] w-[800px] bg-[#393939] m-[auto] dark:text-[#FFF] text-[#FFF] relative
+    `}>
       <ul>
         {renderTopics}
       </ul>
       <Modal isOpen={editModalOpen}>
-        <section className='topic-delete-modal'>
+        <section
+          className={` 
+            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+          `}
+        >
           <FontAwesomeIcon icon={faClose} onClick={() => {
             setEditModalOpen(false);
-            setErr('');
-          }} />
+            setErr(''); 
+            }}
+            className={` 
+              float-right text-[2.5rem] cursor-pointer hover:text-[#DDD] 
+            `} 
+          />
           <h4>Edit topic: {currentTopic?.name} </h4>
-          <section className='form-group'>
-            <label>Edit Name</label>
+          <section className={`
+            relative my-[1rem]
+          `}>
+            <label className='text-[1.5rem] my-[1rem]'>Edit Name</label>
             <input
               value={editName}
               type='text'
               onChange={(e) => setEditName(e.target.value)}
               placeholder={`Edit Name of ${currentTopic?.name}`}
+              className={`
+                w-[100%] text-[#FFF] text-[1.5rem] bg-[#222] p-[1rem]
+              `}
             />
           </section>
-          <section className='form-group'>
-            <label>Edit Category</label>
+          <section className={`
+            relative my-[1rem]
+          `}>
+            <label className='text-[1.5rem] my-[1rem]'>Edit Category</label>
             <input
               value={currentCategory}
               type='text'
               onChange={(e) => setCurrentCategory(e.target.value)}
               placeholder={`Edit Category of ${currentTopic?.name}`}
+              className={`
+                w-[100%] text-[#FFF] text-[1.5rem] bg-[#222] p-[1rem]
+              `}
             />
           </section>
           <section>
-          <label>Edit Rank</label>
+          <label className='text-[1.5rem] my-[1rem]'>Edit Rank</label>
             <input
               value={currentRank}
               type='number'
               onChange={(e) => setCurrentRank(e.target.value as unknown as number)}
               placeholder={`Edit Rank of ${currentTopic?.name}`}
+              className={`
+                w-[100%] text-[#FFF] text-[1.5rem] bg-[#222] p-[1rem]
+              `}
             />
           </section>
-          <section className='form-group'>
-            <label>Description</label>
+          <section className={`
+            relative my-[1rem]
+          `}>
+            <label className='text-[1.5rem] my-[1rem]'>Description</label>
             <textarea
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
               placeholder={`Edit Description of ${currentTopic?.name}`}
-              />   
+              className={`
+                w-[100%] text-[#FFF] text-[1.5rem] bg-[#222] p-[1rem] min-h-[300px]
+              `}
+            />   
           </section>
           {
             err ? 
             <p className='error-txt'>{err}</p>:
             <></>
           }
-          <section className='btn-group'>
+          <section
+            className={`flex gap-[1rem] justify-end`}
+          >
             <button
               onClick={() => {
                 setEditModalOpen(false)
                 setErr('');
               }} 
-              className='std-button std-button-short'
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] 
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}
             >
               Cancel
             </button>
-            <button onClick={() => editTopic()} className='std-button std-button-short'>
+            <button onClick={() => editTopic()}
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] 
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}
+            >
               Submit
             </button>
           </section>
@@ -174,6 +236,20 @@ export default function EditTopics() {
         setModalState={updateModalState}
         updateEditList={updateEditList}
       />
+      {
+        delModalOpen || editModalOpen ? 
+        <div
+          onClick={() => {
+            setDelModalOpen(false);
+            setEditModalOpen(false);
+          }}
+          className={`
+            fixed z-[100] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto bg-[#000] opacity-70
+          `}
+        >
+        </div>:
+        <></>
+      }
     </section>
   )
 }

@@ -23,14 +23,27 @@ export default function Login() {
   }) => (
     <Form
       id="login-form"
-      className={`form-login`}
+      className={`
+        w-[95%] mx-[auto] px-[2rem] py-[10rem] min-h-[400px] bg-[#333]
+        md:w-[400px] 
+      `}
     >
-      <h1>Login</h1>
-      <label>Email:</label>
+      <h1 className={`
+        text-[2rem] text-center mb-[2rem]
+      `}>Login</h1>
+      <label
+        className={`
+          text-[1.5rem] text-[#FFF]
+        `}
+      >
+        Email:
+      </label>
       <Field
         name="email"
         placeholder="Your email silly"
-        className="form-field"
+        className={`
+          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#222]
+        `}
         type="email"
       />
       {
@@ -42,11 +55,19 @@ export default function Login() {
        </p>:
        <></>
       }
-      <label>Password:</label>
+      <label
+        className={`
+          text-[1.5rem] text-[#FFF]
+        `}
+      >
+        Password:
+      </label>
       <Field
         name="password"
         placeholder="your password"
-        className="form-field"
+        className={`
+          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#222]
+        `}
         type="password"
       />
       {
@@ -67,7 +88,14 @@ export default function Login() {
         </p>:
         <></>
       }
-      <button className='std-button std-button-long std-button-brand' type="submit">Login</button>
+      <button 
+        className={`
+          w-[100%] mt-[1rem] gap-[2rem] bg-[#222] text-[2rem] h-[45px] rounded-full
+        `} 
+        type="submit"
+      >
+        Login
+      </button>
 {
   /*
       <p>Or</p>
@@ -85,7 +113,9 @@ export default function Login() {
   )
 
   return (
-    <section className={`login-page`}>
+    <section className={`
+      bg-[#272727] h-[100vh] min-h-[900px] color-[#FFF] py-[13rem] relative
+    `}>
       <Formik
         validateOnBlur={false}
         validateOnChange={false}

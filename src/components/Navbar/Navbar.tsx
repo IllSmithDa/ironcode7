@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react'
-import { faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
 import { useQuery } from '@tanstack/react-query';
 import TopicMenu from './TopicMenu';
@@ -19,7 +19,6 @@ export default function Navbar({
   topicId ?: string,
   languageId ?: string
 }) {
-  const [mobileNav, setMobileNav] = useState(false);
   const [username, setUsername] = useState();
   const [isDark, setIsDark] = useState<boolean>();
   const [pathname, setPathname] = useState<string>();
@@ -45,10 +44,6 @@ export default function Navbar({
   })
 
   const languageName = selectLanguageQuery.data;
-
-  const toggleTopicsMenu = (val: boolean) => {
-    setMobileNav(val);
-  }
 
   useEffect(() => {
     setIsDark(darkMode);
@@ -104,19 +99,10 @@ export default function Navbar({
               block
             `}
           >
-            <button onClick={() =>  setMobileNav(!mobileNav)}
-              className={`
-                w-[47px] h-[47px] 
-              `}
-            >
-              <FontAwesomeIcon
-                icon={faBars}
-                tabIndex={-1}
-                className={`
-                  text-[24px]
-                `}
-              />
-            </button>
+            <TopicMenu 
+              topics={topicsQuery.data as unknown as ConceptTopic[]}
+              selectedId={topicId}
+            />
           </li>
           <li
             className={`
@@ -203,15 +189,6 @@ export default function Navbar({
               }
               </li>
         </ul>
-        {
-          mobileNav ?
-          <TopicMenu 
-            topics={topicsQuery.data as unknown as ConceptTopic[]}
-            selectedId={topicId}
-            toggleTopicsMenu={toggleTopicsMenu}
-          />:
-          <></>
-        }
       </section>
     </section>
   )

@@ -67,7 +67,7 @@ export default function LanguageMenu({
   ))
 
   return (
-    <>
+    <section className='relative'>
       <button
         onClick={() => setDesktopDropdown(!desktopDropdown)}
         className={`
@@ -92,7 +92,7 @@ export default function LanguageMenu({
         desktopDropdown ?
         <section
           className={`
-            hidden absolute bg-[#DDD] w-[150px] right-0
+            hidden absolute bg-[#DDD] w-[150px] left-0
             lg:block
             dark:bg-[#1C1C1C]
           `}
@@ -149,6 +149,6 @@ export default function LanguageMenu({
         <></>
       }
 
-    </>
+    </section>
   )
 }

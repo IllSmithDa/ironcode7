@@ -11,7 +11,7 @@ import { axiosFetch } from '../../axios';
 export default function DeleteLanguages() {
   const [err, setErr] = useState<string>('');
   const [selected, setSelected] = useState<Language>();
-  const [modalOpen, setModalOpen] = useState(false);
+  const [delModalOpen, setDelModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [languages, setLanguages] = useState<Language []>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,10 +21,10 @@ export default function DeleteLanguages() {
   const updateUrl = 'api/language/update';
 
   useEffect(() => {
-    if (modalOpen === false && editModalOpen === false) {
+    if (delModalOpen === false && editModalOpen === false) {
       setSelected(undefined);
     }
-  }, [modalOpen, editModalOpen])
+  }, [delModalOpen, editModalOpen])
 
   useEffect(() => {
     // https://blog.logrocket.com/3-ways-implement-infinite-scroll-react/
@@ -44,6 +44,17 @@ export default function DeleteLanguages() {
     }
     fetchData();
   }, [url]);
+
+  useEffect(() => {
+    if (editModalOpen || delModalOpen) {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.add('modal-open')
+    } else {
+      const body = document.getElementById('iron-code-body');
+      if (body) body.classList.remove('modal-open')
+    }
+  }, [editModalOpen, delModalOpen])
+
   const delLanguage = (language: Language) =>{
     const updatedLanguages = languages.filter((entry) => entry.id !== language.id);
     setLanguages([...updatedLanguages]);
@@ -54,7 +65,7 @@ export default function DeleteLanguages() {
       delLanguage(selected as Language);
       const url = `/api/language/delete-id/${selected?.id}`;
       await axiosFetch.delete(url);
-      setModalOpen(false);
+      setDelModalOpen(false);
     }catch(err) {
       setErr('Error: Could not delete topic')
     }
@@ -86,55 +97,109 @@ export default function DeleteLanguages() {
     }
   }
   const renderLanguages = (languages as Language []).map((entry) => (
-    <section className='card-item' key={entry.id}>
-      <FontAwesomeIcon icon={faTrashCan} onClick={() =>  {
-        setModalOpen(true);
-        setSelected(entry)
-      }}/>
-      <FontAwesomeIcon icon={faWrench} onClick={() =>  {
-        setEditModalOpen(true);
-        setDescription(entry.description);
-        setSelected(entry); 
-      }}/>
-      <h4>{entry.name}</h4>
+    <section 
+      key={entry.id}
+      className={`
+        bg-[#272727] p-[2rem] my-[2rem]
+      `}
+    >
+      <FontAwesomeIcon icon={faTrashCan}
+        onClick={() =>  {
+          setDelModalOpen(true);
+          setSelected(entry)
+        }}
+        className={`
+          float-right text-[2.5rem] hover:text-[#DDD] cursor-pointer 
+        `}  
+      />
+      <FontAwesomeIcon icon={faWrench}
+        onClick={() =>  {
+          setEditModalOpen(true);
+          setDescription(entry.description);
+          setSelected(entry); 
+        }}
+        className={`
+          float-right text-[2.5rem] hover:text-[#DDD] mr-[2rem] cursor-pointer
+        `}
+      />
+      <h4 className='text-[2rem] my-[2rem]'>{entry.name}</h4>
       <p>{entry.description}</p>
     </section>
   ))
 
   return (
-    <section className='del-topics-cont'>
-      <section className='form-container'>
-        {renderLanguages}
-      </section>
-      <Modal isOpen={modalOpen}>
-        <section className='topic-delete-modal'>
-          <FontAwesomeIcon icon={faClose} onClick={() => setModalOpen(false)} />
-          <h4>Do you want to delete this language: {selected?.name}</h4>
+    <section
+      className={`
+        p-[2rem] w-[800px] bg-[#393939] m-[auto] dark:text-[#FFF] text-[#FFF] relative
+      `}
+    >
+      {renderLanguages}
+      <Modal isOpen={delModalOpen}>
+        <section
+          className={` 
+            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+          `}
+        
+        >
+          <FontAwesomeIcon
+            icon={faClose}
+            onClick={() => setDelModalOpen(false)}
+            className={` 
+              float-right text-[2.5rem] cursor-pointer hover:text-[#DDD] 
+            `}  
+          />
+          <h4 className='my-[5rem]'>Are yuou sure you want to delete this language: {selected?.name}</h4>
           {
             err ? 
             <p className='error-txt'>{err}</p>:
             <></>
           }
-          <section className='btn-group'>
-            <button onClick={() => setModalOpen(false)} className='std-button std-button-short'>
+          <section className={`flex gap-[1rem] justify-end`}>
+            <button
+              onClick={() => setDelModalOpen(false)}
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] align-right relative
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}  
+            >
               No
             </button>
-            <button onClick={() => deleteTopic()} className='std-button std-button-short'>
+            <button onClick={() => deleteTopic()}
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] align-right relative
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}
+            >
               Yes
             </button>
           </section>
         </section>
       </Modal>
       <Modal isOpen={editModalOpen}>
-        <section className='topic-delete-modal'>
-          <FontAwesomeIcon icon={faClose} onClick={() => setEditModalOpen(false)} />
-          <h4>Edit: {selected?.name}</h4>
+        <section
+          className={` 
+            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+          `}
+        >
+          <FontAwesomeIcon
+            icon={faClose}
+            onClick={() => setEditModalOpen(false)}
+            className={` 
+              float-right text-[2.5rem] cursor-pointer hover:text-[#DDD] 
+            `}
+          />
+          <h4 className='text-[2rem] my-[2rem]'>Edit: {selected?.name}</h4>
           <section className='form-group'>
-            <label>Concept Text</label>
+            <label className='text-[1.7rem] my-[1rem]'>Concept Text</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder={`Edit Description of ${selected?.name}`}
+              className={`
+                w-[100%] h-[300px] my-[1rem] p-[1rem] text-[#FFF] text-[1.5rem] bg-[#222]
+              `}
             />   
           </section>
           {
@@ -142,16 +207,44 @@ export default function DeleteLanguages() {
             <p className='error-txt'>{err}</p>:
             <></>
           }
-          <section className='btn-group'>
-            <button onClick={() => setEditModalOpen(false)} className='std-button std-button-short'>
-              No
+          <section className={`flex gap-[1rem] justify-end`}>
+            <button
+              onClick={() => setEditModalOpen(false)}
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] align-right relative
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}
+            >
+              Cancel
             </button>
-            <button onClick={() => submitEdits()} className='std-button std-button-short'>
-              Yes
+            <button
+              onClick={() => submitEdits()}
+              className={`
+                w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] align-right relative
+                hover:bg-[#2E2E2E]
+                dark:text-[#FFF] text-[#FFF]
+              `}
+            >
+              Submit
             </button>
           </section>
         </section>
       </Modal>
+      {
+        delModalOpen || editModalOpen ? 
+        <div
+          onClick={() => {
+            setDelModalOpen(false);
+            setEditModalOpen(false);
+          }}
+          className={`
+            fixed z-[100] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto bg-[#000] opacity-70
+          `}
+        >
+        </div>:
+        <></>
+      }
     </section>
   )
 }
