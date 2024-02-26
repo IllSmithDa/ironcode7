@@ -105,7 +105,7 @@ export default function Languages() {
                 w-[100%] h-[47px] bg-[#DDD] text-[1.5rem]
                 hover:bg-[#E9E9E9]
                 md:w-[200px]
-                dark:bg-[#333] dark:hover:bg-[#414141]
+                dark:bg-[#272727] dark:hover:bg-[#3C3C3C]
               `}
             >
               {title} {categoryDrop ? <>▲</> : <>▼</>}
@@ -122,7 +122,7 @@ export default function Languages() {
                   w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#333] dark:hover:bg-[#414141]
+                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
                 `}
               >
                 Basics
@@ -133,7 +133,7 @@ export default function Languages() {
                   w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#333] dark:hover:bg-[#414141]
+                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
                 `}
               >
                 Data Structures
@@ -144,7 +144,7 @@ export default function Languages() {
                   w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#333] dark:hover:bg-[#414141]
+                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
                 `}
               >
                 Iterables
@@ -155,7 +155,7 @@ export default function Languages() {
                   w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#333] dark:hover:bg-[#414141]
+                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
                 `}
               >
                 Classes
@@ -166,7 +166,7 @@ export default function Languages() {
                   w-[100%] text-[1.5rem] p-[1rem] bg-[#E8E8E8] relative z-[200]
                   md:w-[200px]
                   hover:bg-[#F2F2F2]
-                  dark:bg-[#333] dark:hover:bg-[#414141]
+                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
                 `}
               >
                 Regex

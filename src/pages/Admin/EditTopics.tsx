@@ -89,7 +89,7 @@ export default function EditTopics() {
   
   const renderTopics = (editList as ConceptTopic []).map((topic) => (
     <section className={`
-      bg-[#272727] p-[2rem] my-[2rem]
+      bg-[#222] p-[2rem] my-[2rem]
     `} key={topic.id}>
       <FontAwesomeIcon icon={faTrashCan} onClick={() =>  {
         setDelModalOpen(true);
@@ -124,7 +124,7 @@ export default function EditTopics() {
 
   return (
     <section className={`
-      p-[2rem] w-[800px] bg-[#393939] m-[auto] dark:text-[#FFF] text-[#FFF] relative
+      p-[2rem] w-[800px] bg-[#2B2B2B] m-[auto] dark:text-[#FFF] text-[#FFF] relative
     `}>
       <ul>
         {renderTopics}
@@ -132,7 +132,7 @@ export default function EditTopics() {
       <Modal isOpen={editModalOpen}>
         <section
           className={` 
-            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+            p-[2rem] bg-[#333] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
           `}
         >
           <FontAwesomeIcon icon={faClose} onClick={() => {

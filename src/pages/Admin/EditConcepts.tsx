@@ -50,7 +50,7 @@ export default function EditConcept({
       <Modal isOpen={isModalOpen}>
         <section
           className={`
-            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+            p-[2rem] bg-[#333] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
           `}
         >
           <FontAwesomeIcon icon={faClose} onClick={() => {

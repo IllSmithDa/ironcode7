@@ -99,14 +99,14 @@ export default function ConceptList() {
   }
   return (
     <section className={`
-      p-[2rem] w-[800px] bg-[#393939] m-[auto] dark:text-[#FFF] text-[#FFF] relative
+      p-[2rem] w-[800px] bg-[#2B2B2B] m-[auto] dark:text-[#FFF] text-[#FFF] relative
     `}>
       <h4 className="text-[2rem]">Select Language</h4>
       <button
         onClick={() => setLanguageDropdown(!languageDropdown)} 
         className={`
-          w-[175px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.6rem] align-right relative
-          hover:bg-[#2E2E2E]
+          w-[175px] h-[47px] p-[1rem] bg-[#3C3C3C] text-[1.6rem] align-right relative
+          hover:bg-[#474747]
           dark:text-[#FFF] text-[#FFF] 
         `}
       >
@@ -141,7 +141,7 @@ export default function ConceptList() {
               <section 
                 key={data.id}
                 className={`
-                  bg-[#272727] p-[2rem] my-[2rem]
+                  bg-[#222] p-[2rem] my-[2rem]
                 `}  
               >
                 <FontAwesomeIcon

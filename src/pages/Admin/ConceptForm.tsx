@@ -59,13 +59,13 @@ export default function ConceptForm() {
   return (
     <form onSubmit={(event:React.SyntheticEvent) => handleNewConcept(event)} 
       className={`
-        pt-[2rem] pb-[8rem] px-[2rem]  w-[800px] bg-[#3A3A3A] m-[auto] dark:text-[#FFF] text-[#FFF]
+        pt-[2rem] pb-[8rem] px-[2rem]  w-[800px] bg-[#2B2B2B] m-[auto] dark:text-[#FFF] text-[#FFF]
       `}
     >
       <h4>Language:</h4>
       <button type='button' onClick={() => setLanguageDropdown(!languageDropdown)} className={`
-        bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box  w-[200px]
-        hover:bg-[#333] 
+        bg-[#3C3C3C] text-[1.5rem] p-[1rem] border-box  w-[200px]
+        hover:bg-[#474747] 
       `}>
         {languageOption} {languageDropdown ? <>&#11205;</> : <>&#11206;</>}
       </button>
@@ -78,7 +78,7 @@ export default function ConceptForm() {
             <li key={entry.id}>
               <button onClick={() => selectLanguageDropdown(entry.name)} className={`
                 bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box w-[100%]  w-[200px]
-                hover:bg-[#333] 
+                hover:bg-[#474747] 
               `}>
                 {entry.name}
               </button>
@@ -89,8 +89,8 @@ export default function ConceptForm() {
       }
       <h4 style={{ marginTop: '2rem' }}>Concept:</h4>
       <button type='button' onClick={() => setConceptDropdown(!conceptDropdown)} className={`
-        bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box  w-[200px]
-        hover:bg-[#333] 
+        bg-[#3C3C3C] text-[1.5rem] p-[1rem] border-box  w-[200px]
+        hover:bg-[#474747] 
       `}>
         {conceptOption} {conceptDropdown ? <>&#11205;</> : <>&#11206;</>}
       </button>
@@ -104,7 +104,7 @@ export default function ConceptForm() {
               <button onClick={() => selectConceptDropdown(entry)}
                 className={`
                   bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box w-[200px]
-                  hover:bg-[#333] 
+                  hover:bg-[#474747] 
                 `}
               >
                 {entry.name}

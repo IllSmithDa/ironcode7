@@ -6,7 +6,6 @@ import NewForm from './NewForm';
 import EditTopics from './EditTopics';
 import ConceptList from './ConceptList';
 import DeleteLanguages from './EditLanguages';
-import './Admin.css';
 import { Helmet } from 'react-helmet';
 
 export default function Admin() {
@@ -47,22 +46,22 @@ export default function Admin() {
   }
   return (
     <section className={`
-      width-[100%] min-h-[100vh] bg-[#1E1E1E] pt-[8rem] relative dark:text-[#FFF] text-[#FFF]
+      width-[100%] min-h-[100vh] bg-[#111] pt-[8rem] relative dark:text-[#FFF] text-[#FFF]
     `}>
       <Helmet>
         <title>{`IronCodeMan | Admin`}</title>
       </Helmet>
       <h3 className='text-center my-[4rem] text-[2.5rem]'>Console Center</h3>
       <section className={`
-        w-[800px] bg-[#2B2B2B] mx-[auto] flex justify-center
+        w-[800px] bg-[#222] mx-[auto] flex justify-center
       `}>
         <button
           id='new-tab'
           onClick={() => handleTabChange('new') }
           className={`
             text-[1.8rem] p-[1.2rem]
-            hover:bg-[#3A3A3A]
-            ${selectTab === 'new' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+            hover:bg-[#2B2B2B]
+            ${selectTab === 'new' ? 'bg-[#2B2B2B]':'bg-[#222]'}
           `}
         >
           New
@@ -71,8 +70,8 @@ export default function Admin() {
           id='concept-tab'
           className={`
             text-[1.8rem] p-[1.2rem]
-            hover:bg-[#3A3A3A]
-            ${selectTab === 'concept' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+            hover:bg-[#2B2B2B]
+            ${selectTab === 'concept' ? 'bg-[#2B2B2B]':'bg-[#222]'}
           `}
           onClick={() => handleTabChange('concept') }>Concept
         </button>
@@ -80,8 +79,8 @@ export default function Admin() {
           id='edit-topics-tab'
           className={`
             text-[1.8rem] p-[1.2rem]
-            hover:bg-[#3A3A3A]
-            ${selectTab === 'edit-topics' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+            hover:bg-[#2B2B2B]
+            ${selectTab === 'edit-topics' ? 'bg-[#2B2B2B]':'bg-[#222]'}
           `}
           onClick={() => handleTabChange('edit-topics') }>Edit Topics
         </button>
@@ -90,8 +89,8 @@ export default function Admin() {
           onClick={() => handleTabChange('edit-concepts') }
           className={`
             text-[1.8rem] p-[1.2rem]
-            hover:bg-[#3A3A3A]
-            ${selectTab === 'edit-concepts' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+            hover:bg-[#2B2B2B]
+            ${selectTab === 'edit-concepts' ? 'bg-[#2B2B2B]':'bg-[#222]'}
           `}
         >
           Edit Concepts
@@ -101,8 +100,8 @@ export default function Admin() {
           onClick={() => handleTabChange('language') }
           className={`
             text-[1.8rem] p-[1.2rem]
-            hover:bg-[#3A3A3A]
-            ${selectTab === 'language' ? 'bg-[#3A3A3A]':'bg-[#2B2B2B]'}
+            hover:bg-[#2B2B2B]
+            ${selectTab === 'language' ? 'bg-[#2B2B2B]':'bg-[#222]'}
           `}
         >
           Languages

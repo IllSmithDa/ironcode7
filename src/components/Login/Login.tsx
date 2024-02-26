@@ -24,12 +24,12 @@ export default function Login() {
     <Form
       id="login-form"
       className={`
-        w-[95%] mx-[auto] px-[2rem] py-[10rem] min-h-[400px] bg-[#333]
+        w-[95%] mx-[auto] px-[2rem] py-[10rem] min-h-[400px] bg-[#222]
         md:w-[400px] 
       `}
     >
       <h1 className={`
-        text-[2rem] text-center mb-[2rem]
+        text-[2rem] text-center mb-[2rem] font-[600]
       `}>Login</h1>
       <label
         className={`
@@ -42,7 +42,7 @@ export default function Login() {
         name="email"
         placeholder="Your email silly"
         className={`
-          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#222]
+          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#333]
         `}
         type="email"
       />
@@ -66,7 +66,7 @@ export default function Login() {
         name="password"
         placeholder="your password"
         className={`
-          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#222]
+          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#333]
         `}
         type="password"
       />
@@ -90,7 +90,8 @@ export default function Login() {
       }
       <button 
         className={`
-          w-[100%] mt-[1rem] gap-[2rem] bg-[#222] text-[2rem] h-[45px] rounded-full
+          w-[100%] mt-[1rem] gap-[2rem] bg-[#333] text-[2rem] h-[45px] rounded-full
+          hover:bg-[#444]
         `} 
         type="submit"
       >
@@ -114,7 +115,7 @@ export default function Login() {
 
   return (
     <section className={`
-      bg-[#272727] h-[100vh] min-h-[900px] color-[#FFF] py-[13rem] relative
+      bg-[#1C1C1C] h-[100vh] min-h-[900px] color-[#FFF] py-[13rem] relative
     `}>
       <Formik
         validateOnBlur={false}

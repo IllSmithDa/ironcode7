@@ -49,13 +49,13 @@ export default function NewForm() {
     <form 
       onSubmit={(event: React.SyntheticEvent) => handleNewConcept(event)}
       className={`
-        pt-[2rem] pb-[8rem] px-[2rem] w-[800px] bg-[#3A3A3A] m-[auto] dark:text-[#FFF] text-[#FFF] 
+        pt-[2rem] pb-[8rem] px-[2rem] w-[800px] bg-[#2B2B2B] m-[auto] dark:text-[#FFF] text-[#FFF] 
       `}  
     >
     <button type='button' onClick={() => setDisplayDropdown(!displayDropdown)}
       className={`
-        bg-[#2A2A2A] text-[1.5rem] p-[1rem] border-box  w-[200px] 
-        hover:bg-[#333] 
+        bg-[#3C3C3C] text-[1.5rem] p-[1rem] border-box  w-[200px] 
+        hover:bg-[#444] 
       `}
     >
       {selectOption} {displayDropdown ? <>&#11205;</> : <>&#11206;</>}
@@ -68,8 +68,8 @@ export default function NewForm() {
         <li>
           <button 
             className={`
-              bg-[#222] text-[1.8rem] p-[1rem] w-[200px] border-box text-white
-              hover:bg-[#333]
+              bg-[#3C3C3C] text-[1.8rem] p-[1rem] w-[200px] border-box text-white
+              hover:bg-[#444]
             `}
             onClick={() => selectDropdown('Concept Topic')}>
             Concept Topic
@@ -78,8 +78,8 @@ export default function NewForm() {
         <li>
           <button 
             className={`
-              bg-[#222] text-[1.8rem] p-[1rem] w-[200px] border-box text-white
-              hover:bg-[#333]
+              bg-[#3C3C3C] text-[1.8rem] p-[1rem] w-[200px] border-box text-white
+              hover:bg-[#444]
             `}
             onClick={() => selectDropdown('Language')} >
             Language
