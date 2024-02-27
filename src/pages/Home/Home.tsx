@@ -3,7 +3,7 @@ export default function Home() {
   return (
     <section
       className={`
-        flex flex-col items-center min-h-[100px] h-[95vh] z-[-100] relative w-[100%] mt-[47px] pt-[12rem]
+        flex flex-col items-center min-h-[100px] h-[95vh] z-[-100] relative w-[100%] mt-[47px] pt-[13rem]
         md:min-h-[1000px]
       `}
     >
