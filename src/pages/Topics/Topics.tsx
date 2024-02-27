@@ -79,10 +79,12 @@ export default function Topic() {
   }
 
   const renderData = (conceptsAndLanguages as ActiveConceptItem[])?.map((data) => (
-    <>
+    <section
+      key={data.language}
+    >
       {
         data.checked ? 
-        <article key={data.language}
+        <article
           className={`
             w-[100%]  bg-[#EAEAEA] p-[1.5rem]
             lg:w-[auto]
@@ -99,7 +101,7 @@ export default function Topic() {
         </article>:
         <></>
       }
-    </>
+    </section>
   ))
 
   if (TopicDataQuery.isError || ConceptItemsQuery.isError) {

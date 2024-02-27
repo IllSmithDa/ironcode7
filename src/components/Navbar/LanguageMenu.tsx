@@ -28,11 +28,10 @@ export default function LanguageMenu({
   }, [mobileDropdown])
 
   const renderData = languages?.map((entry) => (
-    <>
+    <section key={entry.id}>
     {
       selectedId === entry.id ? 
       <Link 
-        key={entry.id}
         to={`/language/${entry.id}`}
         className={`
           relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#F9F9F9]
@@ -47,7 +46,6 @@ export default function LanguageMenu({
         {entry.name}
       </Link>:
       <Link 
-        key={entry.id}
         to={`/language/${entry.id}`}
         className={`
           relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#D1D1D1] active:bg-[#F9F9F9] border-b-[1px] border-[#AAA] 
@@ -63,7 +61,7 @@ export default function LanguageMenu({
         {entry.name}
       </Link>
       }
-    </>
+    </section>
   ))
 
   return (

@@ -39,11 +39,10 @@ export default function TopicsTab({
       <>
       {
         topics?.filter(topic => topic.category === category).map((topic) => (
-          <>
+          <section key={topic.id}>
             {
               topic.id === selectedId ?
               <Link
-                key={`topic_${topic.id}`}
                 to={`/topic/${topic.id}`}
                 className={`
                  block w-[100%] p-[1rem] bg-[#FDFDFD] text-[1.5rem] 
@@ -53,7 +52,6 @@ export default function TopicsTab({
                 {topic.name}
               </Link>:
               <Link
-                key={`topic_${topic.id}`}
                 to={`/topic/${topic.id}`}
                 className={`
                   block w-[100%] p-[1rem] hover:bg-[#FDFDFD] text-[1.5rem]
@@ -63,7 +61,7 @@ export default function TopicsTab({
                 {topic.name}
               </Link>
             }
-          </>
+          </section>
         ))
       }
       </>
