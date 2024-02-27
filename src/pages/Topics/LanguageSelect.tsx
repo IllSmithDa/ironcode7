@@ -53,7 +53,7 @@ export default function LanguageSelect({
       />
       <button
         className={`
-          text-[1.5rem]
+          text-[1.5rem] hover:underline
         `}
         onClick={() => {
           handleLanguage(data.language, !data.checked)
