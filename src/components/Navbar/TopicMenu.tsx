@@ -166,7 +166,7 @@ export default function TopicMenu({
           </article>
           {topicList.map((topObj) => {
             return (
-              <>
+              <section key={topObj.title}>
                 <h4  
                   className={`
                     my-[1rem] p-[1rem] text-[1.7rem] border-b-2
@@ -175,7 +175,7 @@ export default function TopicMenu({
                   {topObj.title}
                 </h4>
                 {renderData(topObj.value)}
-              </>
+              </section>
             )
           })}
         </section>:
