@@ -109,6 +109,7 @@ export default function LanguageMenu({
             h-[100vh] w-[100vw] fixed bg-[#D1D1D1] top-0 left-0 overflow-y-scroll
             lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
             dark:bg-[#181818] p-[1rem]
+            moveInLeft
           `}
         >
           <button 

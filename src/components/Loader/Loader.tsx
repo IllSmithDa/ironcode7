@@ -8,7 +8,9 @@ export default function Loader({
 }) {
   return (
     <section
-      className='loading-container bg-[#E5E5E5] dark:bg-[#333]'
+      className='bg-[#E5E5E5] dark:bg-[#333] h-[400px] flex justify-center flex-col items-center
+        lg:h-[600px]
+      '
       style={{ width }}
     >
       <h2>{loadingMsg}</h2>
