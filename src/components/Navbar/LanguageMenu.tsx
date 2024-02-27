@@ -35,9 +35,9 @@ export default function LanguageMenu({
         key={entry.id}
         to={`/language/${entry.id}`}
         className={`
-          relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#E9E9E9]
-          dark:bg-[#393939] dark:border-b-[1px] dark:border-[#555]
-          dark:md:border-b-[0]
+          relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#F9F9F9]
+          dark:bg-[#393939] dark:border-[#555]
+          lg:md:border-b-[0]
         `}
         onClick={() => {
           setDesktopDropdown(false);
@@ -51,10 +51,9 @@ export default function LanguageMenu({
         to={`/language/${entry.id}`}
         className={`
           relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#D1D1D1] active:bg-[#F9F9F9] border-b-[1px] border-[#AAA] 
-          dark:bg-[#181818] dark:hover:bg-[#393939] dark:border-b-[1px] dark:border-[#555]
-          dark:md:border-b-[0]
-          xl:border-b-0
-          hover:bg-[#E9E9E9] 
+          dark:bg-[#181818] dark:hover:bg-[#393939] dark:border-[#555]
+          lg:md:border-b-[0]
+          hover:bg-[#F9F9F9] 
         `}
         onClick={() => {
           setDesktopDropdown(false);
@@ -107,7 +106,7 @@ export default function LanguageMenu({
         <section
           key="mobile-language-nav"
           className={`
-            h-[100vh] w-[100vw] fixed bg-[#DDD] top-0 left-0 overflow-y-scroll
+            h-[100vh] w-[100vw] fixed bg-[#D1D1D1] top-0 left-0 overflow-y-scroll
             lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
             dark:bg-[#181818] p-[1rem]
           `}

@@ -62,8 +62,8 @@ export default function TopicMenu({
                   }}
                   to={`/topic/${topic.id}`}
                   className={`
-                    inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem] bg-[#3A3A3A]
-                    dark:border-b-[1px] dark:border-[#555]
+                  inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem] bg-[#F7F7F7] border-b-[1px] border-[#AAA]
+                    dark:border-[#555] dark:bg-[#3A3A3A]
                   `}
                 >
                   {topic.name}
@@ -76,8 +76,9 @@ export default function TopicMenu({
                   }}
                   to={`/topic/${topic.id}`}
                   className={`
-                    inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem]
-                    dark:hover:bg-[#3A3A3A] dark:border-b-[1px] dark:border-[#555]
+                    inline-block w-[100%] relative z-[100] text-[1.5rem] p-[1.5rem] border-b-[1px] border-[#AAA]
+                    hover:bg-[#F7F7F7] 
+                    dark:hover:bg-[#3A3A3A] dark:border-[#555]
                   `}
                 >
                   {topic.name}
