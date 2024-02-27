@@ -61,10 +61,10 @@ export default function Navbar({
       }
     }
     if (link) checkUser();
-  }, [link, location.pathname,])
+  }, [link, location.pathname])
 
   const toggleDarkMode = (val :boolean) => {
-    localStorage.setItem('iron_code_dark', JSON.stringify(val))
+    localStorage.setItem('iron_man_code_dark', JSON.stringify(val))
     if (val) {
       document.documentElement.classList.add('dark')
     } else {

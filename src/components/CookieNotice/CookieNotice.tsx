@@ -1,13 +1,33 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
+
 export default function CookieNotice() {
+  const navigate = useNavigate();
+  const [cookiesAccepted, setCookiesAccepted] = useState(true);
+
+  const toggleCookieAccept = (val :boolean) => {
+    localStorage.setItem('iron_man_code_cookie_accept', JSON.stringify(val))
+    setCookiesAccepted(val);
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('iron_man_code_cookie_accept') === null) {
+      localStorage.setItem('iron_man_code_cookie_accept', JSON.stringify(false))
+    } else {
+      const val = JSON.parse(localStorage.getItem('iron_man_code_cookie_accept') as string) as boolean ;
+      setCookiesAccepted(val);
+    }
+  }, [cookiesAccepted])
+
   return (
     <div
       className={`
-        bg-[#3333DD] w-[100%] fixed bottom-0 left-0 z-[100] p-[2rem]
-        2xl:w-[1600px] 2xl:left-[50%] 2xl:translate-x-[-50%] hidden
+        bg-[#3333DD] w-[100%] fixed bottom-0 left-0 z-[100] px-[2rem] py-[1rem]
+        2xl:w-[1600px] 2xl:left-[50%] 2xl:translate-x-[-50%] ${cookiesAccepted ? 'hidden': 'block'}
       `}
     >
       <section>
-        <h2 className="text-[1.4rem] text-[#FFF] my-[1rem] md:text-[2rem]">We value your privacy</h2>
+
         <p className="my-[2rem] text-[#FFF]">
           We use cookies to enhance your browsing experience, serve personalized ads or content and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies. 
         </p>
@@ -16,33 +36,35 @@ export default function CookieNotice() {
         >
           <button
             onClick={() => {
-
+              navigate('/cookies')
             }}
             className={`
               w-[75px] h-[37px] p-[1rem] bg-[#2A2A2A] text-[0.8rem]
-              md:w-[150px] md:text-[1.5rem] md:h-[47px] 
+              md:w-[150px] md:text-[1.5rem] md:h-[40px] 
               hover:bg-[#373737]
               dark:text-[#FFF] text-[#FFF]
             `}
-          >Customize</button>
+          >Learn More</button>
+          {/*
           <button
             onClick={() => {
 
             }}
             className={`
               w-[75px] h-[37px] p-[1rem] bg-[#2A2A2A] text-[0.8rem]
-              md:w-[150px]  md:text-[1.5rem] md:h-[47px] 
+              md:w-[150px]  md:text-[1.5rem] md:h-[40px] 
               hover:bg-[#373737]
               dark:text-[#FFF] text-[#FFF]
             `}
           >Reject All</button>
+          */}
           <button
             onClick={() => {
-
+              toggleCookieAccept(true)
             }}
             className={`
               w-[75px] h-[37px] p-[1rem] bg-[#2A2A2A] text-[0.8rem]
-              md:w-[150px] md:text-[1.5rem] md:h-[47px] 
+              md:w-[150px] md:text-[1.5rem] md:h-[40px] 
               hover:bg-[#373737]
               dark:text-[#FFF] text-[#FFF]
             `}

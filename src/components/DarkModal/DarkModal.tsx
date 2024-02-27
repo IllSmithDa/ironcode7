@@ -10,12 +10,7 @@ export default function DarkModal({
     <>
       {
         isOpen ? 
-        <section className='modal-container'>{children}</section>:
-        <></>
-      }
-      {
-        isOpen ? 
-        <div className='silent-modal silent-modal-dark'></div>:
+        <section>{children}</section>:
         <></>
       }
     </>
