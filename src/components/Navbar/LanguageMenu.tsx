@@ -72,7 +72,7 @@ export default function LanguageMenu({
       <button
         onClick={() => setDesktopDropdown(!desktopDropdown)}
         className={`
-          hidden h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1] z-[1]
+          hidden h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#CFCFCF] hover:bg-[#DADADA] focus:bg-[#DADADA] z-[1]
           lg:block 
           dark:bg-[#181818] dark:hover:bg-[#333]
         `}
@@ -82,7 +82,7 @@ export default function LanguageMenu({
       <button
         onClick={() => setMobileDropdown(!mobileDropdown)}
         className={`
-          h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1] z-[1]
+          h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#CFCFCF] hover:bg-[#DADADA] focus:bg-[#DADADA] z-[1]
           lg:hidden
           dark:bg-[#181818] dark:hover:bg-[#333]
         `}

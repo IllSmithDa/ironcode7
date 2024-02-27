@@ -77,7 +77,7 @@ export default function Navbar({
   return (
     <section
       className={`
-       w-[100%] bg-[#F0F0F0] h-[47px] fixed z-[100] top-0
+       w-[100%] bg-[#F1F1F1] h-[47px] fixed z-[100] top-0
        dark:bg-[#222]
       `}
     >

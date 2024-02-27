@@ -8,7 +8,7 @@ export default function HomeLayout() {
     <div
       className={`
         2xl:w-[1600px]
-        w-[100%] mx-auto flex bg-[#F1F1F1]
+        w-[100%] mx-auto flex bg-[#FDFDFD]
         dark:bg-[#1B1B1B]
       `}
     >

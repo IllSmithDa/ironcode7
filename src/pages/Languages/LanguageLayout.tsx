@@ -11,7 +11,7 @@ export default function LanguageLayout() {
       <TopicsTab />
       <section
         className={`
-        relative w-[100%] bg-[#F8F8F8]
+        relative w-[100%] bg-[#FDFDFD]
         dark:bg-[#1B1B1B]
         `}
       >

@@ -24,6 +24,7 @@ export default function Layout() {
   return (
     <main
       className={`
+      bg-[#AAA]
       dark:bg-[#111]
       `}
     >

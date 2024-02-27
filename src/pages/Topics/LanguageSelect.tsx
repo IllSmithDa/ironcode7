@@ -72,7 +72,7 @@ export default function LanguageSelect({
       <h4>Select Languages</h4>
       <ul
         className={`
-          grid gap-[1rem] bg-[#F1F1F1] p-4
+          grid gap-[1rem] bg-[#EAEAEA] p-4
           xl:grid-cols-4 xl:w-[500px]
           dark:bg-[#272727]
         `}
