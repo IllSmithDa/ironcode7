@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section
       className={`
-        pt-[50px] pb-[200px]
+        pt-[50px] pb-[200px] fadeInLeft
       `}
     >
       <Helmet>

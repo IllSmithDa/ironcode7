@@ -4,7 +4,7 @@ export default function Terms() {
   return (
     <section
       className={`
-        pt-[50px] pb-[200px] min-h-[100vh]
+        pt-[50px] pb-[200px] min-h-[100vh] fadeInLeft
       `}
     >
       <Helmet>

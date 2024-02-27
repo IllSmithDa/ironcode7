@@ -15,7 +15,7 @@ export default function Home() {
           xl:w-[30%]
           lg:w-[35%]
           w-[40%]
-          animate-spin
+          fadeInLeft
         `}
       />
       <h1
@@ -25,15 +25,14 @@ export default function Home() {
           sm:text-[3rem]
           text-[2.2rem]
           font-[700] m-[5rem] m-[2.5rem] dark:text-white text-black
-          
         `}
       >
         IronCodeMan
       </h1>
-      <h2 className=''>
+      <h2 className='fadeInLeft'>
         A Reference for Programmers
       </h2>
-      <h4>
+      <h4 className='fadeInLeft'>
         Select topic or language
       </h4>
 
