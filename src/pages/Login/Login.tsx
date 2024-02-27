@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { axiosFetch } from '../../axios';
-import Footer from '../Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 
 export default function Login() {
@@ -13,9 +13,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const renderForm = ({ 
-    values,
     errors,        
-    handleSubmit,
   }: {
     values: any,
     errors: any,

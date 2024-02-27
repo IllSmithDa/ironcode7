@@ -15,7 +15,7 @@ import About from "./pages/FooterLinkPages/About";
 import Cookies from "./pages/FooterLinkPages/Cookies";
 import Privacy from "./pages/FooterLinkPages/Privacy";
 import Terms from "./pages/FooterLinkPages/Terms";
-import Login from "./components/Login/Login";
+import Login from "./pages/Login/Login";
 import Auth from "./components/Auth/Auth";
 import Admin from "./pages/Admin/Admin";
 import NoMatch from "./pages/NoMatch/NoMatch";

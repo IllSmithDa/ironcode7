@@ -7,6 +7,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { faWrench } from '@fortawesome/free-solid-svg-icons/faWrench';
 import Modal from '../../components/DarkModal/DarkModal';
 import { axiosFetch } from '../../axios';
+import Loader from '../../components/Loader/Loader';
 
 export default function DeleteLanguages() {
   const [err, setErr] = useState<string>('');
@@ -40,10 +41,11 @@ export default function DeleteLanguages() {
         setErr('Error: Could not connect to database. Contact an administrator for additional support.');
       } finally {
         setIsLoading(false);
+        console.log(isLoading);
       }
     }
     fetchData();
-  }, [url]);
+  }, [url, isLoading]);
 
   useEffect(() => {
     if (editModalOpen || delModalOpen) {
@@ -132,12 +134,18 @@ export default function DeleteLanguages() {
       className={`
         p-[2rem] w-[800px] bg-[#2B2B2B] m-[auto] dark:text-[#FFF] text-[#FFF] relative
       `}
-    >
-      {renderLanguages}
+    > 
+      {
+        isLoading ?
+        <Loader />:
+        <>
+          {renderLanguages}
+        </>
+      }
       <Modal isOpen={delModalOpen}>
         <section
           className={` 
-            p-[2rem] bg-[#333] w-[600px] fixed z-[150] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]
+            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]
           `}
         
         >
@@ -180,7 +188,7 @@ export default function DeleteLanguages() {
       <Modal isOpen={editModalOpen}>
         <section
           className={` 
-            p-[2rem] bg-[#333] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
+            p-[2rem] bg-[#444] w-[600px] fixed z-[150] top-[50%] left-[50%]  translate-y-[-50%] translate-x-[-50%]
           `}
         >
           <FontAwesomeIcon

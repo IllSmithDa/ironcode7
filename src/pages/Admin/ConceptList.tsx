@@ -17,7 +17,6 @@ export default function ConceptList() {
   const [languageDropdown, setLanguageDropdown] = useState(false)
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState<string>();
-  const [currentConcept, setCurrentConcept] = useState<ConceptItem>();
   const [modalId, setModalId] = useState('');
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [delModalOpen, setDelModalOpen] = useState(false);
@@ -134,6 +133,9 @@ export default function ConceptList() {
         <></>
       }
       {
+        isError ? <p className='text-[#EE2222]'>{isError}</p>:<></>
+      }
+      {
         isLoading === false?
         <>
           {
@@ -149,7 +151,6 @@ export default function ConceptList() {
                   onClick={() =>  {
                     setModalId(data.id);
                     setDelModalOpen(true);
-                    setCurrentConcept(data)
                   }}
                   className={`
                     float-right text-[2.5rem] hover:text-[#DDD] cursor-pointer 
@@ -160,7 +161,6 @@ export default function ConceptList() {
                   onClick={() =>  {
                     setModalId(data.id);
                     setEditModalOpen(true);
-                    setCurrentConcept(data);
                   }}
                   className={`
                     float-right text-[2.5rem] hover:text-[#DDD] mr-[2rem] cursor-pointer
