@@ -164,12 +164,13 @@ export default function TopicMenu({
               />
             </button>
           </article>
-          {topicList.map((topObj) => {
+          {topicList?.map((topObj) => {
             return (
               <section key={topObj.title}>
                 <h4  
                   className={`
-                    my-[1rem] p-[1rem] text-[1.7rem] border-b-2
+                    my-[1rem] p-[1rem] text-[1.7rem] border-b-2 border-[#000]
+                    dark:border-[#EEE]
                   `}  
                 >
                   {topObj.title}
