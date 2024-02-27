@@ -50,10 +50,18 @@ export default function Navbar({
   useEffect(() => {
     setIsDark(darkMode);
   }, [darkMode])
+  
   useEffect(() => {
+    const controller = new AbortController();
     const checkUser = async () => {
       try {
-        const response = await axiosFetch.get(link, { withCredentials: true });
+        const response = await axiosFetch.get(
+          link, 
+          { 
+            withCredentials: true,
+            signal: controller.signal
+          }
+        );
         const { username:user } = response.data;
         setPathname(location.pathname);
         setUsername(user);
@@ -61,7 +69,12 @@ export default function Navbar({
         setUsername(undefined);
       }
     }
-    if (link) checkUser();
+    if (link && location.pathname === '/admin') {
+      checkUser();
+    } else {
+      setPathname(location.pathname);
+    }
+    return () => controller?.abort();
   }, [link, location.pathname])
 
   const toggleDarkMode = (val :boolean) => {

@@ -24,6 +24,7 @@ export default function ConceptList() {
 
   const url = '/api/concept/concept-only'
   useEffect(() => {
+    const controller = new AbortController();
     const fetch = async () => {
       try {
         setIsLoading(true)
@@ -32,7 +33,7 @@ export default function ConceptList() {
         const data = {
           language: firstLanguage.name
         }
-        const res = await axiosFetch.post(`${url}`, data)
+        const res = await axiosFetch.post(`${url}`, data, { signal: controller.signal} )
         if (res.status === 200) {
           console.log(res.data);
           setConceptData([...res.data.data])
@@ -44,6 +45,7 @@ export default function ConceptList() {
       }
     }
     fetch();
+    return () => controller?.abort();
   }, [languages, url])
 
   useEffect(() => {

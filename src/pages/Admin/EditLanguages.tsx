@@ -29,10 +29,11 @@ export default function DeleteLanguages() {
 
   useEffect(() => {
     // https://blog.logrocket.com/3-ways-implement-infinite-scroll-react/
+    const controller = new AbortController();
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await axiosFetch.get(url)
+        const res = await axiosFetch.get(url, { signal: controller.signal})
         if (res.status === 200) {
           // console.log(res.data);
           setLanguages([...res.data.data])
@@ -43,6 +44,8 @@ export default function DeleteLanguages() {
         setIsLoading(false);
         console.log(isLoading);
       }
+
+      return () => controller.abort();
     }
     fetchData();
   }, [url, isLoading]);

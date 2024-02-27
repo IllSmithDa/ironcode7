@@ -48,7 +48,7 @@ export default function Languages() {
       }
     }
 
-  }, [concepts, categoryDrop])
+  }, [concepts])
 
   const renderData = () => {
     return (
