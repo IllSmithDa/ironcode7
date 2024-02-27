@@ -114,6 +114,7 @@ export default function Topic() {
     >
       <Helmet>
         <title>{`IronCodeMan | ${topic?.name}`}</title>
+        <meta name="description" content={topic?.description} />
       </Helmet>
       <article className={
         `my-[5rem]`

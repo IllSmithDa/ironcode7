@@ -87,6 +87,7 @@ export default function Languages() {
     `}>
       <Helmet>
         <title>{`IronCodeMan | ${languageData?.name}`}</title>
+        <meta name="description" content={languageData?.description} />
       </Helmet>
       {/* <SlidingBackground /> */}
       <h3>Concepts for {languageData?.name}</h3>

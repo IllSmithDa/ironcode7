@@ -10,6 +10,9 @@ export default function Cookies() {
     >
       <Helmet>
         <title>{`IronCodeMan | Cookiess`}</title>
+        <meta name="description">
+        ron Code Man - Cookie Usage. his website (&ldquo;Iron Code Man&ldquo;) uses cookies. By using this website, you consent to the use of cookies in accordance with this Cookie Notice.
+        </meta>
       </Helmet>
       <section className={`
         w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
@@ -64,6 +67,13 @@ export default function Cookies() {
               mt-[2rem]
             `}
           ><p>5. Recognize the visitor&apos;s device</p></li>
+         <li
+            className={`
+              mt-[2rem]
+            `}
+          >
+            <p>6. To rund and show personalized Ads on various pages of the website</p>
+          </li>
         </ul>
         <h3
           className={`
