@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { parseConcepts } from '../../helper/parseData';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
 
 export default function Languages() {

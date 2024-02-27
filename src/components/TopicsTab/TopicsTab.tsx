@@ -82,7 +82,7 @@ export default function TopicsTab({
       {
         topicList.map((topicOjb) => {
           return (
-            <>
+            <section key={topicOjb.title}>
               <h4
                 className={`
                   p-[1rem]  border-b-[1px] text-[1.6rem] w-[100%] font-[600]
@@ -91,7 +91,7 @@ export default function TopicsTab({
                 {topicOjb.title}  
               </h4>
               {renderData(topicOjb.value)}
-            </>
+            </section>
           )
         })
       }

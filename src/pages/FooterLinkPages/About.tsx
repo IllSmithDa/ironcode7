@@ -1,6 +1,6 @@
 import languageSelectImg from '../../assets/images/language_selection.webp';
 import conceptSelectImg from '../../assets/images/concept_selection.webp';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 export default function About() {
   return (
     <section

@@ -33,6 +33,7 @@ export default function Navbar({
       return res.data.data;
     },
   }); 
+  const topics:ConceptTopic[] = topicsQuery.data;
 
   const selectLanguageQuery = useQuery({
     queryKey:['select-language', languageId],
@@ -40,7 +41,8 @@ export default function Navbar({
       const link = `/api/language/by-id/${languageId}`;
       const res = await axiosFetch.get(link);
       return res.data.data.name
-    }
+    },
+    enabled: !!languageId,
   })
 
   const languageName = selectLanguageQuery.data;
@@ -53,7 +55,6 @@ export default function Navbar({
       try {
         const response = await axiosFetch.get(link, { withCredentials: true });
         const { username:user } = response.data;
-        console.log(user)
         setPathname(location.pathname);
         setUsername(user);
       } catch(err) {
@@ -100,7 +101,7 @@ export default function Navbar({
             `}
           >
             <TopicMenu 
-              topics={topicsQuery.data as unknown as ConceptTopic[]}
+              topics={topics}
               selectedId={topicId}
             />
           </li>

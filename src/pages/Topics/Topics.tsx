@@ -7,10 +7,11 @@ import UseAllLanguages from '../../hooks/LanguageHook';
 import { useQuery } from '@tanstack/react-query';
 import { parseConcepts } from '../../helper/parseData';
 import Loader from '../../components/Loader/Loader';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
 
 export default function Topic() {
+  const [loaded, setLoaded] = useState(false);
   const { topicId } = useParams<"topicId">();
   const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
   const languages:Language[] = UseAllLanguages();
@@ -34,8 +35,7 @@ export default function Topic() {
       const result: ConceptItem[] = conceptRes.data.data;
 
       return result;
-    },
-    enabled: !!languages
+    }
   })
 
   const conceptItems: ConceptItem[] = ConceptItemsQuery.data as ConceptItem[];
@@ -59,6 +59,7 @@ export default function Topic() {
         }
       });
       setConceptsAndLangauges(result);
+      setTimeout(() => setLoaded(true), 1000);
     }
   }, [conceptItems, languages])
 
@@ -124,7 +125,7 @@ export default function Topic() {
         <p className='fadeInLeft'>{topic?.description}</p>
       </article>
       {
-        conceptsAndLanguages?.length ?
+        loaded ?
         <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>:
          <Loader />
       }
@@ -134,7 +135,7 @@ export default function Topic() {
         `}
       >Examples</h4>
       {
-        conceptsAndLanguages?.length ?
+        loaded?
         <section
           key="language-listing"
           className={`
