@@ -2,6 +2,7 @@ import {  Outlet, useParams } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import CookieNotice from "./components/CookieNotice/CookieNotice";
 
 export default function Layout() {
   const { topicId } = useParams<"topicId">();
@@ -26,11 +27,13 @@ export default function Layout() {
       className={`
       bg-[#AAA]
       dark:bg-[#111]
+      relative
       `}
     >
       <Helmet>
         <meta name="google-adsense-account" content="ca-pub-2907367619848104" />
       </Helmet>
+      <CookieNotice />
       <Navbar darkMode={isDark ?? true} topicId={topicId} languageId={languageId} />
       <div
         className={`
