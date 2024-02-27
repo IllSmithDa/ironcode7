@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function CookieNotice() {
   const navigate = useNavigate();
-  const [cookiesAccepted, setCookiesAccepted] = useState(true);
+  const [cookiesAccepted, setCookiesAccepted] = useState<boolean>();
 
   const toggleCookieAccept = (val :boolean) => {
     localStorage.setItem('iron_man_code_cookie_accept', JSON.stringify(val))
