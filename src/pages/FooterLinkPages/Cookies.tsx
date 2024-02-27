@@ -59,18 +59,18 @@ export default function Cookies() {
             className={`
               mt-[2rem]
             `}
-          ><p>4. Help website visitors complete tasks, such as filling out forms (autocomplete, etc.)</p></li>
+          ><p>4. Help website visitors complete tasks, such as filling out forms. (autocomplete, etc.)</p></li>
           <li
             className={`
               mt-[2rem]
             `}
-          ><p>5. Recognize the visitor&apos;s device</p></li>
+          ><p>5. Recognize the visitor&apos;s device.</p></li>
          <li
             className={`
               mt-[2rem]
             `}
           >
-            <p>6. To run and show personalized ads on various pages of the website</p>
+            <p>6. To run and show personalized ads on various pages of the website.</p>
           </li>
         </ul>
         <h3
