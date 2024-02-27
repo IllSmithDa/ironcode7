@@ -70,7 +70,7 @@ export default function Cookies() {
               mt-[2rem]
             `}
           >
-            <p>6. To rund and show personalized Ads on various pages of the website</p>
+            <p>6. To run and show personalized ads on various pages of the website</p>
           </li>
         </ul>
         <h3
