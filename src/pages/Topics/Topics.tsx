@@ -59,18 +59,18 @@ export default function Topic() {
         }
       });
       setConceptsAndLangauges(result);
-      setTimeout(() => setLoaded(true), 1000);
+      setTimeout(() => setLoaded(true), 200);
     }
   }, [conceptItems, languages])
 
   useEffect(() => {
-    if (conceptsAndLanguages?.length) {
+    if (conceptsAndLanguages?.length && loaded) {
       for(let i = 0; i < conceptsAndLanguages.length; i += 1) {
         parseConcepts(conceptsAndLanguages[i].text, `${conceptsAndLanguages[i].id}_code`);
       }
     }
 
-  }, [conceptsAndLanguages])
+  }, [conceptsAndLanguages, loaded])
 
 
   const updateLanguages = (updatedData: ActiveConceptItem[]) => {
@@ -86,8 +86,8 @@ export default function Topic() {
         data.checked ? 
         <article
           className={`
-            w-[100%]  bg-[#EAEAEA] p-[1.5rem]
-            lg:w-[auto]
+            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem]
+            lg:w-[auto] xl:mt-0
             dark:bg-[#272727]
             fadeInLeft
           `}
@@ -141,7 +141,8 @@ export default function Topic() {
         <section
           key="language-listing"
           className={`
-            pb-[20rem] flex flex-wrap gap-[2rem] 
+            pb-[20rem] block flex-wrap gap-[2rem]
+            xl:flex
           `}
         >
           {renderData}
