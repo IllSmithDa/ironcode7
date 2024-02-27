@@ -3,8 +3,8 @@ export default function Home() {
   return (
     <section
       className={`
-        flex flex-col justify-center items-center max-h[700px] h-[99vh] z-[-100] relative w-[100%] mt-[47px]
-        xl:min-h-[90vh]
+        flex flex-col justify-center items-center min-h-[800px] h-[95vh] z-[-100] relative w-[100%] mt-[47px]
+        md:min-h-[1000px]
       `}
     >
       <img

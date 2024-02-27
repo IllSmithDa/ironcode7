@@ -6,6 +6,7 @@ import { parseConcepts } from '../../helper/parseData';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import NoMatch from '../NoMatch/NoMatch';
 
 export default function Languages() {
   // const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +75,12 @@ export default function Languages() {
     SetCategoryDrop(!categoryDrop);
     setTitle(categoryTitle)
   }
+  if (languageQuery.isError || conceptItemQuery.isError) {
+    return (
+      <NoMatch />
+    )
+  }
+
   return (
     <section className={`
       px-[2rem] my-[5rem] mb-[20rem] w-[100%]

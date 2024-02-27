@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { parseConcepts } from '../../helper/parseData';
 import Loader from '../../components/Loader/Loader';
 import { Helmet } from 'react-helmet';
+import NoMatch from '../NoMatch/NoMatch';
 
 export default function Topic() {
   const { topicId } = useParams<"topicId">();
@@ -19,11 +20,10 @@ export default function Topic() {
     queryFn: async() => {
       const topicRes = await axiosFetch.get(`/api/concept/topic-object/${topicId}`);
       const result:ConceptTopic = topicRes.data.data;
-
       return result;
-    }
+    },
   })
-  
+
   const topic: ConceptTopic = TopicDataQuery.data as ConceptTopic;
   
   const ConceptItemsQuery = useQuery({
@@ -100,6 +100,12 @@ export default function Topic() {
     </>
   ))
 
+  if (TopicDataQuery.isError || ConceptItemsQuery.isError) {
+    return (
+      <NoMatch />
+    )
+  }
+
   return (
     <section
       className={`
@@ -115,7 +121,11 @@ export default function Topic() {
         <h3>{topic?.name}</h3>
         <p>{topic?.description}</p>
       </article>
-      <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>
+      {
+        conceptsAndLanguages?.length ?
+        <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>:
+         <Loader />
+      }
       <h4
         className={`
           mt-[5rem]
