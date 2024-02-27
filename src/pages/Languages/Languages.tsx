@@ -57,8 +57,8 @@ export default function Languages() {
           concepts?.filter(topic => topic.category === category || category === 'all').map((data) => (
             <li
               className={`
-                w-[[200]%] bg-[#EAEAEA] p-[2rem] my-[2rem] 
-                dark:bg-[#272727]
+                w-[[200]%] bg-[#EAEAEA] p-[2rem] my-[2rem] fadeInLeft
+                dark:bg-[#272727] 
               `}
               key={data.id}
             >
@@ -91,7 +91,7 @@ export default function Languages() {
       </Helmet>
       {/* <SlidingBackground /> */}
       <h3>Concepts for {languageData?.name}</h3>
-      <p style={{ margin: "2rem 0"}}>
+      <p style={{ margin: "2rem 0"}} className='fadeInLeft'>
         {languageData?.description}
       </p>
       {

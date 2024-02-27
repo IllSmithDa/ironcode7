@@ -14,7 +14,8 @@ export default function Home() {
           w-max-[400px] max-h-[400px]
           xl:w-[30%]
           lg:w-[35%]
-          w-[40%] 
+          w-[40%]
+          animate-spin
         `}
       />
       <h1
@@ -29,7 +30,7 @@ export default function Home() {
       >
         IronCodeMan
       </h1>
-      <h2>
+      <h2 className=''>
         A Reference for Programmers
       </h2>
       <h4>

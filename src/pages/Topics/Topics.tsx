@@ -86,6 +86,7 @@ export default function Topic() {
             w-[100%]  bg-[#EAEAEA] p-[1.5rem]
             lg:w-[auto]
             dark:bg-[#272727]
+            fadeInLeft
           `}
         >
           <h4>{data.language}</h4>
@@ -120,7 +121,7 @@ export default function Topic() {
         `my-[5rem]`
       }>
         <h3>{topic?.name}</h3>
-        <p>{topic?.description}</p>
+        <p className='fadeInLeft'>{topic?.description}</p>
       </article>
       {
         conceptsAndLanguages?.length ?

@@ -34,6 +34,21 @@ export default {
       fontFamily :{ 
         glory: ["roboto","sans-serif"], 
         pop: ["roboto-mono","sans"], 
+      },
+      animation: {
+        'fadeInLeft': 'fadeInLeft 2s linear'
+      },
+      keyframes: {
+        fadeInLeft: {
+          '0%': {
+            'margin-left': '1rem',
+            'opacity': 0
+          },
+          '100%': {
+            'margin-left': 0,
+            'opacity': 1
+          }
+        }
       }
     },
   },
