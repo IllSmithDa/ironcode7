@@ -53,6 +53,7 @@ export default function LanguageMenu({
           relative z-[150] block text-[1.6rem] p-[1.5rem] bg-[#D1D1D1] active:bg-[#F9F9F9] border-b-[1px] border-[#AAA] 
           dark:bg-[#181818] dark:hover:bg-[#393939] dark:border-b-[1px] dark:border-[#555]
           dark:md:border-b-[0]
+          xl:border-b-0
           hover:bg-[#E9E9E9] 
         `}
         onClick={() => {
@@ -71,8 +72,8 @@ export default function LanguageMenu({
       <button
         onClick={() => setDesktopDropdown(!desktopDropdown)}
         className={`
-          hidden h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1]
-          lg:block
+          hidden h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1] z-[1]
+          lg:block 
           dark:bg-[#181818] dark:hover:bg-[#333]
         `}
       >
@@ -81,7 +82,7 @@ export default function LanguageMenu({
       <button
         onClick={() => setMobileDropdown(!mobileDropdown)}
         className={`
-          h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1]
+          h-[47px] px-4 w-[150px] text-[1.5rem] bg-[#D6D6D6] hover:bg-[#E1E1E1] focus:bg-[#E1E1E1] z-[1]
           lg:hidden
           dark:bg-[#181818] dark:hover:bg-[#333]
         `}
@@ -105,7 +106,7 @@ export default function LanguageMenu({
         mobileDropdown ?
         <section
           className={`
-            h-[100vh] w-[100vw] absolute bg-[#DDD] top-0 left-0 overflow-y-scroll
+            h-[100vh] w-[100vw] fixed bg-[#DDD] top-0 left-0 overflow-y-scroll
             lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
             dark:bg-[#181818] p-[1rem]
           `}
@@ -142,7 +143,7 @@ export default function LanguageMenu({
       {
         desktopDropdown ? 
         <div className={`
-          fixed z-50 left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+          fixed z-[50] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
         `} onClick={() => {
           setDesktopDropdown(false);
         }}></div>:

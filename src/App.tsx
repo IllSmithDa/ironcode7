@@ -6,7 +6,6 @@ import {
 import Layout from './Layout';
 import Home from './pages/Home/Home';
 import Topics from './pages/Topics/Topics';
-import NoMatch from './NoMatch';
 import Languages from './pages/Languages/Languages';
 import TopicLayout from "./pages/Topics/TopicLayout";
 import HomeLayout from "./pages/Home/HomeLayout";
@@ -19,8 +18,10 @@ import Terms from "./pages/FooterLinkPages/Terms";
 import Login from "./components/Login/Login";
 import Auth from "./components/Auth/Auth";
 import Admin from "./pages/Admin/Admin";
-import './index.css';
+import NoMatch from "./pages/NoMatch/NoMatch";
 import ScrollToTop from "./ScrollTop";
+import './index.css';
+
 
 function App() {
 

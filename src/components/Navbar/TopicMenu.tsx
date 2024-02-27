@@ -108,7 +108,7 @@ export default function TopicMenu({
       {navOpen ?
         <section
           className={`
-            z-1000 absolute bg-[#DDD] w-[100vw] h-[100vh] top-0 left-0 overflow-y-scroll px-[1rem] pt-[1rem] pb-[4rem]
+            z-[150] absolute bg-[#DDD] w-[100vw] h-[100vh] top-0 left-0 overflow-y-scroll px-[1rem] pt-[1rem] pb-[4rem]
             dark:bg-[#1C1C1C]
     
           `}

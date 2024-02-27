@@ -24,7 +24,8 @@ export default function Login() {
     <Form
       id="login-form"
       className={`
-        w-[95%] mx-[auto] px-[2rem] py-[10rem] min-h-[400px] bg-[#222]
+        w-[95%] mx-[auto] px-[2rem] py-[10rem] min-h-[400px] bg-[#CCC]
+        dark:bg-[#222]
         md:w-[400px] 
       `}
     >
@@ -33,7 +34,7 @@ export default function Login() {
       `}>Login</h1>
       <label
         className={`
-          text-[1.5rem] text-[#FFF]
+          text-[1.5rem] dark:text-[#FFF]
         `}
       >
         Email:
@@ -42,7 +43,8 @@ export default function Login() {
         name="email"
         placeholder="Your email silly"
         className={`
-          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#333]
+          w-[100%] h-[36px] mt-[1rem] mb-[2rem] px-[1rem] py-[2rem] text-[#000] text-[1.5rem]
+          dark:text-[#FFF]
         `}
         type="email"
       />
@@ -57,7 +59,7 @@ export default function Login() {
       }
       <label
         className={`
-          text-[1.5rem] text-[#FFF]
+          text-[1.5rem] dark:text-[#FFF]
         `}
       >
         Password:
@@ -66,7 +68,8 @@ export default function Login() {
         name="password"
         placeholder="your password"
         className={`
-          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#FFF] text-[1.5rem] bg-[#333]
+          w-[100%] h-[36px] my-[1rem] px-[1rem] py-[2rem] text-[#000] text-[1.5rem]
+          dark:text-[#FFF]
         `}
         type="password"
       />
@@ -90,8 +93,9 @@ export default function Login() {
       }
       <button 
         className={`
-          w-[100%] mt-[1rem] gap-[2rem] bg-[#333] text-[2rem] h-[45px] rounded-full
-          hover:bg-[#444]
+          w-[100%] mt-[2rem] gap-[2rem] bg-[#DDD] text-[2rem] h-[45px] rounded-full
+          hover:bg-[#EEE]
+          dark:hover:bg-[#555] dark:bg-[#444]
         `} 
         type="submit"
       >
@@ -115,7 +119,8 @@ export default function Login() {
 
   return (
     <section className={`
-      bg-[#1C1C1C] h-[100vh] min-h-[900px] color-[#FFF] py-[13rem] relative
+      dark:bg-[#1C1C1C]
+      bg-[#DDD] h-[100vh] min-h-[900px] color-[#FFF] py-[13rem] relative
     `}>
       <Formik
         validateOnBlur={false}
