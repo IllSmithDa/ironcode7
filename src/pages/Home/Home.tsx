@@ -24,7 +24,7 @@ export default function Home() {
           md:text-[4rem]
           sm:text-[3rem]
           text-[2.2rem]
-          font-[700] m-[5rem] m-[2.5rem] dark:text-white text-black
+          font-[700] mt-[5rem] mb-[2.5rem] dark:text-white text-black
         `}
       >
         IronCodeMan
