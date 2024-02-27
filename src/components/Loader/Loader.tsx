@@ -1,4 +1,3 @@
-import './Loader.css'
 export default function Loader({
   loadingMsg,
   width,
