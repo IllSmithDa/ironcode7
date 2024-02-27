@@ -48,12 +48,14 @@ export default function LanguageSelect({
           handleLanguage(data.language, !data.checked)
         }}
         className={`
-          font-size: 1.5rem
+          text-[1rem]
+          md:text-[1.5rem]
         `}
       />
       <button
         className={`
-          text-[1.5rem] hover:underline
+          text-[1rem] hover:underline
+          md:text-[1.5rem]
         `}
         onClick={() => {
           handleLanguage(data.language, !data.checked)
@@ -72,8 +74,9 @@ export default function LanguageSelect({
       <h4>Select Languages</h4>
       <ul
         className={`
-          grid gap-[1rem] bg-[#EAEAEA] p-4
-          xl:grid-cols-4 xl:w-[500px]
+          grid gap-[1rem] grid-cols-2 bg-[#EAEAEA] p-6
+          lg:grid-cols-4 lg:w-[600px]
+          sm:grid-cols-3
           dark:bg-[#272727]
         `}
       >

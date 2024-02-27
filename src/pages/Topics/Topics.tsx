@@ -135,13 +135,14 @@ export default function Topic() {
       {
         conceptsAndLanguages?.length ?
         <section
-           className={`
-             pb-[20rem] flex flex-wrap gap-[2rem] 
-           `}
-         >
-           {renderData}
-         </section>:
-         <Loader />
+          key="language-listing"
+          className={`
+            pb-[20rem] flex flex-wrap gap-[2rem] 
+          `}
+        >
+          {renderData}
+        </section>:
+        <Loader />
       }
     </section>
   )

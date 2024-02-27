@@ -105,6 +105,7 @@ export default function LanguageMenu({
       { 
         mobileDropdown ?
         <section
+          key="mobile-language-nav"
           className={`
             h-[100vh] w-[100vw] fixed bg-[#DDD] top-0 left-0 overflow-y-scroll
             lg:hidden lg:w-[150px] lg:min-h-[auto] lg:top-[auto] lg:left-[auto] lg:right-0
