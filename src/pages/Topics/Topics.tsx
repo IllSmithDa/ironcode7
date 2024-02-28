@@ -23,6 +23,7 @@ export default function Topic() {
       const result:ConceptTopic = topicRes.data.data;
       return result;
     },
+    enabled: !!topicId
   })
 
   const topic: ConceptTopic = TopicDataQuery.data as ConceptTopic;
@@ -35,7 +36,8 @@ export default function Topic() {
       const result: ConceptItem[] = conceptRes.data.data;
 
       return result;
-    }
+    },
+    enabled: !!topicId
   })
 
   const conceptItems: ConceptItem[] = ConceptItemsQuery.data as ConceptItem[];
