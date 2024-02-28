@@ -86,7 +86,7 @@ export default function Topic() {
         data.checked ? 
         <article
           className={`
-            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem]
+            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem] h-[100%]
             lg:w-[auto] xl:mt-0
             dark:bg-[#272727]
             fadeInLeft
