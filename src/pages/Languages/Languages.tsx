@@ -48,7 +48,7 @@ export default function Languages() {
       }
     }
 
-  }, [concepts])
+  }, [concepts, category])
 
   const renderData = () => {
     return (
@@ -72,9 +72,10 @@ export default function Languages() {
   }
   const handleTabChange = (topic: string, categoryTitle: string) => {
     SetCategory(topic);
+    setTitle(categoryTitle);
     SetCategoryDrop(!categoryDrop);
-    setTitle(categoryTitle)
   }
+
   if (languageQuery.isError || conceptItemQuery.isError) {
     return (
       <NoMatch />

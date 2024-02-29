@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 
 export default function NoMatch() {
   return (
-    <div className={`
-      darl:bg-[#1C1C1C] min-h-[100vh] w-[100%] flex flex-col justify-center text-center items-center
-    `}>
+    <div
+      className={`
+        darl:bg-[#1C1C1C] min-h-[100vh] w-[100%] flex flex-col justify-center text-center items-center
+      `}
+      
+    >
       <h1
         className={`
           xl:text-[3rem]

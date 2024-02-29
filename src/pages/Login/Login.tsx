@@ -34,12 +34,14 @@ export default function Login() {
         className={`
           text-[1.5rem] dark:text-[#FFF]
         `}
+        htmlFor='user-email'
       >
         Email:
       </label>
       <Field
-        name="email"
-        placeholder="Your email silly"
+        id='user-email'
+        name='email'
+        placeholder='Your email silly'
         className={`
           w-[100%] h-[36px] mt-[1rem] mb-[2rem] px-[1rem] py-[2rem] text-[#000] text-[1.5rem]
           dark:text-[#FFF]
@@ -59,10 +61,12 @@ export default function Login() {
         className={`
           text-[1.5rem] dark:text-[#FFF]
         `}
+        htmlFor='user-password'
       >
         Password:
       </label>
       <Field
+        id='user-password'
         name="password"
         placeholder="your password"
         className={`

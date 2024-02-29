@@ -9,6 +9,8 @@
   4. @testing-library/user-event
 
   5. jsdom
+
+  6. @types/jest
   
 # Optional Test coverage 
 
