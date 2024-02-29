@@ -17,9 +17,12 @@ export default function HomeLayout() {
         <meta name="description" content="Ironcodeman: A reference for Programmers. Select topic or language"/>
       </Helmet>
       <TopicsTab />
-      <section className={`
+      <section
+        data-testid="main-content"
+        className={`
         relative w-[100%] z-0
-      `}>
+        `}
+      >
         <Outlet />
         <Footer />
       </section>

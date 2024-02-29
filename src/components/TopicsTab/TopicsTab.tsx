@@ -71,6 +71,7 @@ export default function TopicsTab({
   return (
     <section
       id='topic-tab'
+      data-testid='topics-tab'
       className={`
         xl:block
         hidden bg-[#DEDEDE] w-[200px] pb-[15rem] px-[2px]
