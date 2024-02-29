@@ -10,7 +10,7 @@ export default function DarkModal({
     <>
       {
         isOpen ? 
-        <section>{children}</section>:
+        <div>{children}</div>:
         <></>
       }
     </>

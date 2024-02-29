@@ -5,7 +5,7 @@ export default function LanguageSelect({
   updateLanguages
 }:{
   languages ?: ActiveConceptItem[],
-    updateLanguages: (updateedData: ActiveConceptItem[]) => void
+  updateLanguages: (updateedData: ActiveConceptItem[]) => void
 }) {
 
 

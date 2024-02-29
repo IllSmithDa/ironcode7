@@ -35,3 +35,6 @@ export default {
 // For the refresh page 404 error:
 
 https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router
+
+Use Vitest 
+https://vitest.dev/

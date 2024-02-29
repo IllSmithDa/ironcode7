@@ -23,7 +23,7 @@ export default function CookieNotice() {
     <div
       className={`
         bg-[#3333DD] w-[100%] fixed bottom-0 left-0 z-[100] px-[2rem] py-[1rem]
-        2xl:w-[1600px] 2xl:left-[50%] 2xl:translate-x-[-50%] ${cookiesAccepted ? 'hidden': 'block'}
+        2xl:w-[1600px] 2xl:left-[50%] 2xl:translate-x-[-50%] ${cookiesAccepted ? 'hidden': 'hidden'}
       `}
     >
       <section>

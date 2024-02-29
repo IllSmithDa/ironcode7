@@ -154,7 +154,7 @@ export default function Navbar({
             flex
           `}
         >
-          <li className='app-icons'>
+          <li>
             {
               isDark ?
               <button
