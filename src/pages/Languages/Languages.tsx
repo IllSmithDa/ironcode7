@@ -195,9 +195,9 @@ export default function Languages() {
                 <></>
               }
             </section>
-          <section>
+          <ul>
             {renderData()}
-          </section>
+          </ul>
         </ul>
       }
       {
