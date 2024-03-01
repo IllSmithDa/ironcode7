@@ -112,6 +112,7 @@ export default function LanguageMenu({
         >
           <button 
             onClick={() => setMobileDropdown(!mobileDropdown)}
+            aria-label="close mobile navigation topics menu"
             className={`
               w-[47px] h-[47px] ml-[auto] block
               lg:hidden

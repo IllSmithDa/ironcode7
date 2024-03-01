@@ -97,6 +97,7 @@ export default function TopicMenu({
         className={`
           w-[47px] h-[47px] 
         `}
+        aria-label="open mobile navigation topics menu"
       >
         <FontAwesomeIcon
           icon={faBars}

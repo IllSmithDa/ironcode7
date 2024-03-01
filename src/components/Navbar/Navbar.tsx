@@ -159,6 +159,7 @@ export default function Navbar({
               isDark ?
               <button
                 onClick={() => toggleDarkMode(false)}
+                aria-label="Set website to light mode"
                 className={`
                   w-[47px] h-[47px]
                 `}
@@ -174,6 +175,7 @@ export default function Navbar({
               </button>:
               <button
                 onClick={() => toggleDarkMode(true)}
+                aria-label="Set website to dark mode"
                 className={`
                   w-[47px] h-[47px]
                 `}
