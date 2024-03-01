@@ -15,7 +15,7 @@ export default function DeleteLanguages() {
   const [delModalOpen, setDelModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [languages, setLanguages] = useState<Language []>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [description, setDescription] = useState<string>('');
 
   const url = `/api/language/all-languages`;
@@ -31,21 +31,21 @@ export default function DeleteLanguages() {
     // https://blog.logrocket.com/3-ways-implement-infinite-scroll-react/
     const controller = new AbortController();
     const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const res = await axiosFetch.get(url, { signal: controller.signal})
-        if (res.status === 200) {
-          // console.log(res.data);
-          setLanguages([...res.data.data])
+      if (isLoading) {
+        try {
+          const res = await axiosFetch.get(url, { signal: controller.signal})
+          if (res.status === 200) {
+            // console.log(res.data);
+            setLanguages([...res.data.data])
+          }
+        } catch (err) {
+          setErr('Error: Could not connect to database. Contact an administrator for additional support.');
+        } finally {
+          setIsLoading(false)
         }
-      } catch (err) {
-        setErr('Error: Could not connect to database. Contact an administrator for additional support.');
-      } finally {
-        setIsLoading(false);
-        console.log(isLoading);
+  
+        return () => controller.abort();
       }
-
-      return () => controller.abort();
     }
     fetchData();
   }, [url, isLoading]);

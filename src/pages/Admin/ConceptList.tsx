@@ -15,7 +15,7 @@ export default function ConceptList() {
   const [conceptData, setConceptData] = useState<ConceptItem []>([]);
   const [selectedLanguage, setSelectedLanguage] = useState<Language>();
   const [languageDropdown, setLanguageDropdown] = useState(false)
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState<string>();
   const [modalId, setModalId] = useState('');
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -26,27 +26,29 @@ export default function ConceptList() {
   useEffect(() => {
     const controller = new AbortController();
     const fetch = async () => {
-      try {
-        setIsLoading(true)
-        const firstLanguage = (languages as Language[])[0];
-        setSelectedLanguage(firstLanguage)
-        const data = {
-          language: firstLanguage.name
+      if (isLoading && languages.length) {
+        try {
+          const firstLanguage = languages[0];
+          console.log(firstLanguage.name)
+          const data = {
+            language: firstLanguage.name
+          }
+          const res = await axiosFetch.post(url, data )
+          if (res.status === 200) {
+            setSelectedLanguage(firstLanguage)
+            setConceptData([...res.data.data])
+            console.log(res.data)
+          }
+        } catch (err) {
+          setIsError('Error: Data could not be retrieved. Contact Administrator for addtional support.');
+        } finally {
+          setIsLoading(false);
         }
-        const res = await axiosFetch.post(`${url}`, data, { signal: controller.signal} )
-        if (res.status === 200) {
-          console.log(res.data);
-          setConceptData([...res.data.data])
-        }
-      } catch (err) {
-        setIsError('Error: Data could not be retrieved. Contact Administrator for addtional support.');
-      } finally {
-        setIsLoading(false);
       }
     }
     fetch();
-    return () => controller?.abort();
-  }, [languages, url])
+    return () => controller.abort();
+  }, [languages, url, isLoading])
 
   useEffect(() => {
     if (editModalOpen || delModalOpen) {
@@ -68,6 +70,7 @@ export default function ConceptList() {
       if (res.status === 200) {
         console.log(res.data);
         setConceptData([...res.data.data]);
+        setIsError(undefined);
       }
       setIsLoading(false);
     } catch (err) {
@@ -118,7 +121,7 @@ export default function ConceptList() {
         <ul className={`
           absolute z-50 bg-[#333]
         `}>
-          {(languages as Language[]).map((entry) => (
+          {(languages as Language[])?.map((entry) => (
             <li key={entry.id}>
               <button
                 onClick={() => handleSelect(entry)}
