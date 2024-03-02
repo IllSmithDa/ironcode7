@@ -67,7 +67,7 @@ const [selectedAd, setSelectedAd] = useState(1)
   ))
 
   return (
-    <section id="ads1_container" className='pt-[2rem] flex lg:w-[728px] h=[90px] w-[100%] overflow-x-hidden scroll-smooth'>
+    <section id="ads1_container" className='pt-[2rem] flex lg:w-[728px] w-[auto] h-[auto] overflow-x-hidden scroll-smooth'>
       {renderAds}
     </section>
 

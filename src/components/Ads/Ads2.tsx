@@ -67,7 +67,7 @@ export default function Ads2() {
   ))
 
   return (
-    <section id="ads2_container"  className='pt-[2rem] flex lg:w-[728px] h=[90px] w-[100%] overflow-x-hidden scroll-smooth'>
+    <section id="ads2_container"  className='pt-[2rem] flex lg:w-[728px] w-[auto] h-[auto] overflow-x-hidden scroll-smooth'>
       {renderAds}
     </section>
 
