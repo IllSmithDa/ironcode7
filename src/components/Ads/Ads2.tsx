@@ -32,7 +32,7 @@ export default function Ads2() {
     const nextVal = selectedAd ===  1 ? 2 : 1;
     // console.log(nextVal);
     const moveLeft = () => {
-      const adContainer = document.getElementById(`ads2_container`)
+      const adContainer = document.getElementById(`ads3_container`)
       if (adContainer) {
         if (selectedAd === 1) {
          adContainer.scrollLeft += 728;
@@ -67,7 +67,7 @@ export default function Ads2() {
   ))
 
   return (
-    <section id="ads2_container"  className='pt-[2rem] flex lg:w-[728px] w-[auto] h-[auto] overflow-x-hidden scroll-smooth'>
+    <section id="ads3_container"  className='pt-[2rem] flex lg:w-[728px] w-[auto] h-[auto] overflow-x-hidden scroll-smooth'>
       {renderAds}
     </section>
 
