@@ -69,7 +69,7 @@ export default function LanguageSelect({
   
   return (
     <section
-      className={`language-select-container`}
+      className='py-[2rem]'
     >
       <h4>Select Languages</h4>
       <ul

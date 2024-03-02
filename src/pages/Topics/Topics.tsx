@@ -9,6 +9,11 @@ import { parseConcepts } from '../../helper/parseData';
 import Loader from '../../components/Loader/Loader';
 import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
+import Ads from '../../components/Ads/Ads';
+import Ads2 from '../../components/Ads/Ads2'
+// import MobileAds from '../../components/Ads/MobileAds';
+import MobileAds2 from '../../components/Ads/MobileAds2';
+import MobileAds1 from '../../components/Ads/MobileAds1';
 
 export default function Topic() {
   const [loaded, setLoaded] = useState(false);
@@ -81,14 +86,13 @@ export default function Topic() {
   }
 
   const renderData = (conceptsAndLanguages as ActiveConceptItem[])?.map((data) => (
-    <section
-      key={data.language}
-    >
+    <>
       {
         data.checked ? 
         <article
+          key={data.language}
           className={`
-            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem] h-[100%]
+            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem] h-[max]
             lg:w-[auto] xl:mt-0
             dark:bg-[#272727]
             fadeInLeft
@@ -103,7 +107,7 @@ export default function Topic() {
         </article>:
         <></>
       }
-    </section>
+      </>
   ))
 
   if (TopicDataQuery.isError || ConceptItemsQuery.isError) {
@@ -122,20 +126,37 @@ export default function Topic() {
         <title>{`IronCodeMan | ${topic?.name}`}</title>
         <meta name="description" content={topic?.description} />
       </Helmet>
+      <section
+        className='xl:flex justify-center py-[2rem] w-[100%] hidden'
+      >
+        <Ads />
+      </section>
+      <section
+        className='flex justify-center w-[100%] mt-[2rem] xl:hidden'
+      >
+        <MobileAds1 />
+      </section>
       <article className={
-        `my-[5rem]`
+        `my-[2rem]`
       }>
         <h3>{topic?.name}</h3>
         <p className='fadeInLeft'>{topic?.description}</p>
       </article>
       {
         loaded ?
-        <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>:
+        <section className='my-[2rem]'>
+          <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>
+        </section>:
          <Loader />
       }
+      <section
+        className='lg:flex justify-center py-[2rem] w-[100%] hidden'
+      >
+        <Ads2 />
+      </section>
       <h4
         className={`
-          mt-[5rem]
+          mt-[2rem]
         `}
       >Examples</h4>
       {
@@ -148,6 +169,11 @@ export default function Topic() {
           `}
         >
           {renderData}
+          <section
+             className='flex justify-center w-[100%] mt-[2rem] lg:hidden'
+           >
+             <MobileAds2 />
+           </section>
         </section>:
         <Loader />
       }

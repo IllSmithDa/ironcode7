@@ -7,6 +7,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
+import Ads from '../../components/Ads/Ads';
+import Ads2 from '../../components/Ads/Ads2';
+import MobileAds2 from '../../components/Ads/MobileAds2';
+import MobileAds1 from '../../components/Ads/MobileAds1';
 
 export default function Languages() {
   // const [isLoading, setIsLoading] = useState(true);
@@ -84,14 +88,24 @@ export default function Languages() {
 
   return (
     <section className={`
-      px-[2rem] my-[5rem] mb-[20rem] w-[100%]
+      px-[2rem] mb-[20rem] mb-[20rem] w-[100%]
     `}>
       <Helmet>
         <title>{`IronCodeMan | ${languageData?.name}`}</title>
         <meta name="description" content={languageData?.description} />
       </Helmet>
-      {/* <SlidingBackground /> */}
-      <h3>Concepts for {languageData?.name}</h3>
+      <section
+        className='lg:flex hidden justify-center w-[100%] my-[4rem]'
+      >
+        <Ads2 />
+      </section>
+      <section
+        className='lg:hidden flex justify-center w-[100%] my-[2rem]'
+      >
+        <MobileAds2 />
+      </section>
+      <h3 className='mt-[
+        2rem]'>Concepts for {languageData?.name}</h3>
       <p style={{ margin: "2rem 0"}} className='fadeInLeft'>
         {languageData?.description}
       </p>
@@ -103,103 +117,111 @@ export default function Languages() {
         `}>
           <Loader />
         </section>:
-        <ul>
         <section className={`
           relative flex
         `}>
-            <button
-              type='button'
-              onClick={() => SetCategoryDrop(!categoryDrop)}
-              className={`
-                w-[100%] h-[47px] bg-[#EAEAEA] text-[1.5rem]
-                hover:bg-[#EFEFEF]
-                md:w-[200px]
-                dark:bg-[#272727] dark:hover:bg-[#3C3C3C]
-              `}
-            >
-              {title} {categoryDrop ? <>▲</> : <>▼</>}
-          </button>
-          {
-            categoryDrop ?
-            <section className={`
-              flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EEE] w-[100%]
+        <button
+          type='button'
+          onClick={() => SetCategoryDrop(!categoryDrop)}
+          className={`
+            w-[100%] h-[47px] bg-[#EAEAEA] text-[1.5rem]
+            hover:bg-[#EFEFEF]
+            md:w-[200px]
+            dark:bg-[#272727] dark:hover:bg-[#3C3C3C]
+          `}
+        >
+          {title} {categoryDrop ? <>▲</> : <>▼</>}
+        </button>
+      {
+        categoryDrop ?
+        <section className={`
+          flex flex-col absolute top-[47px] left-0 gap-0 bg-[#EEE] w-[100%]
+          md:w-[200px]
+        `}>
+          <button
+            onClick={() => handleTabChange('all', 'All') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
               md:w-[200px]
-            `}>
-              <button
-                onClick={() => handleTabChange('all', 'All') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#EFEFEF]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                All
-              </button>
-              <button
-                onClick={() => handleTabChange('basic', 'Basics') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#EFEFEF]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                Basics
-              </button>
-              <button
-                onClick={() => handleTabChange('data', 'Data Structures') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#EFEFEF]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                Data Structures
-              </button>
-              <button
-                onClick={() => handleTabChange('iterables', 'Iterables') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#EFEFEF]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                Iterables
-              </button>
-              <button
-                onClick={() => handleTabChange('class', 'Classes') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#EFEFEF]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                Classes
-              </button>
-              <button
-                onClick={() => handleTabChange('regex', 'Regex') }
-                className={`
-                  w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
-                  md:w-[200px]
-                  hover:bg-[#F2F2F2]
-                  dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
-                `}
-              >
-                Regex
-              </button>
-                </section>:
-                <></>
-              }
-            </section>
-          <ul>
-            {renderData()}
-          </ul>
-        </ul>
+              hover:bg-[#EFEFEF]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            All
+          </button>
+          <button
+            onClick={() => handleTabChange('basic', 'Basics') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
+              md:w-[200px]
+              hover:bg-[#EFEFEF]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            Basics
+          </button>
+          <button
+            onClick={() => handleTabChange('data', 'Data Structures') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
+              md:w-[200px]
+              hover:bg-[#EFEFEF]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            Data Structures
+          </button>
+          <button
+            onClick={() => handleTabChange('iterables', 'Iterables') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
+              md:w-[200px]
+              hover:bg-[#EFEFEF]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            Iterables
+          </button>
+          <button
+            onClick={() => handleTabChange('class', 'Classes') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
+              md:w-[200px]
+              hover:bg-[#EFEFEF]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            Classes
+          </button>
+          <button
+            onClick={() => handleTabChange('regex', 'Regex') }
+            className={`
+              w-[100%] text-[1.5rem] p-[1rem] bg-[#D9D9D9] relative z-[75]
+              md:w-[200px]
+              hover:bg-[#F2F2F2]
+              dark:bg-[#1C1C1C] dark:hover:bg-[#3C3C3C]
+            `}
+          >
+            Regex
+          </button>
+            </section>:
+            <></>
+          }
+        </section>
       }
+      <section
+        className='lg:flex justify-center w-[100%] mb-[4rem] hidden' 
+      >
+        <Ads />
+      </section>
+      <ul>
+        {renderData()}
+      </ul>
+      <section
+        className='xl:hidden flex justify-center w-[100%] my-[2rem]'
+      >
+        <MobileAds1 />
+      </section>
       {
         categoryDrop ? 
         <div

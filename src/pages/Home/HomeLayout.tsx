@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Footer from '../../components/Footer/Footer';
 import TopicsTab from '../../components/TopicsTab/TopicsTab';
+import HomeAds from '../../components/Ads/HomeAds';
 
 export default function HomeLayout() {
   return (
@@ -22,7 +23,12 @@ export default function HomeLayout() {
         className={`
         relative w-[100%] z-0
         `}
-      >
+      >      
+        <section
+          className='flex justify-center w-[100%] px-[5px]'
+        >
+          <HomeAds />
+        </section>
         <Outlet />
         <Footer />
       </section>
