@@ -29,7 +29,7 @@ export default function MobileAds2() {
   
   useEffect(() => {
     const nextVal = selectedAd ===  1 ? 2 : 1;
-    setTimeout(() => { setSelectedAd(nextVal) }, 5000)
+    setTimeout(() => { setSelectedAd(nextVal) }, 6000)
   }, [selectedAd])
 
   const renderAds = Object.values(adlist).map((ad) => (

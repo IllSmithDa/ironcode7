@@ -209,11 +209,6 @@ export default function Languages() {
           }
         </section>
       }
-      <section
-        className='lg:flex justify-center w-[100%] mb-[4rem] hidden' 
-      >
-        <Ads />
-      </section>
       <ul>
         {renderData()}
       </ul>
@@ -221,6 +216,11 @@ export default function Languages() {
         className='xl:hidden flex justify-center w-[100%] my-[2rem]'
       >
         <MobileAds1 />
+      </section>
+      <section
+        className='lg:flex justify-center w-[100%] mb-[4rem] hidden' 
+      >
+        <Ads />
       </section>
       {
         categoryDrop ? 

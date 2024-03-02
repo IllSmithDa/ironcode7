@@ -45,7 +45,7 @@ export default function Ads2() {
       moveLeft();
       setSelectedAd(nextVal);
     }, 6000)
-    
+
     return (() => clearTimeout(timer))
   }, [selectedAd])
 

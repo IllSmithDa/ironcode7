@@ -149,11 +149,6 @@ export default function Topic() {
         </section>:
          <Loader />
       }
-      <section
-        className='lg:flex justify-center py-[2rem] w-[100%] hidden'
-      >
-        <Ads2 />
-      </section>
       <h4
         className={`
           mt-[2rem]
@@ -173,6 +168,11 @@ export default function Topic() {
              className='flex justify-center w-[100%] mt-[2rem] lg:hidden'
            >
              <MobileAds2 />
+           </section>
+           <section
+             className='lg:flex justify-center py-[2rem] w-[100%] hidden'
+           >
+             <Ads2 />
            </section>
         </section>:
         <Loader />
