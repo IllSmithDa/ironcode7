@@ -1,18 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import  { useEffect, useState } from 'react'
-import homeMobile from '../../assets/images/ads/mobile/home_mobile.png';
+// import homeMobile from '../../assets/images/ads/mobile/home_mobile.png';
+import sneakersMobile from '../../assets/images/ads/mobile/sneaker_mobile.png';
 import fashionMobile from'../../assets/images/ads/mobile/fashion_mobile.png';
-// import adImg3 from'../../assets/images/ads/tradingcard_banner.jpg';
 
-const homeLink = "https://ebay.us/oLhteO";
+// const homeLink = "https://ebay.us/oLhteO";
 const fashionLink = "https://ebay.us/FL0Lj2";
+const sneakersLink = "https://ebay.us/9F4wIK";
 
 export default function MobileAds2() {
   const adlist  = [
     { 
       id: 1,
-      imgLink: homeMobile,
-      link: homeLink
+      imgLink: sneakersMobile,
+      link: sneakersLink
     },
     { 
       id: 2,

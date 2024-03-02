@@ -1,22 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import  { useEffect, useState } from 'react'
-import adImg from '../../assets/images/ads/home_banner.png';
-import adImg2 from'../../assets/images/ads/tradingcard_banner.jpg';
-// import adImg3 from'../../assets/images/ads/tradingcard_banner.jpg';
+// import homeAd from '../../assets/images/ads/home_banner.png';
+import cardAd from'../../assets/images/ads/tradingcard_banner.jpg';
+// import cardAd from'../../assets/images/ads/tradingcard_banner.jpg';
+import sneakerAd from '../../assets/images/ads/Sneakers_banner.png';
 
-const homeLink = "https://ebay.us/oLhteO";
-const tradingCardLink = "https://ebay.us/hkw3l5"
-
+// import watchAd from '../../assets/images/ads/watches_banner.png';
+// const homeLink = "https://ebay.us/oLhteO";
+const tradingCardLink = "https://ebay.us/hkw3l5";
+// const watchLink = "https://ebay.us/zPdf5J";
+const sneakersLink = "https://ebay.us/9F4wIK";
 export default function Ads2() {
   const adList  = [
     { 
       id: 1,
-      imgLink: adImg,
-      link: homeLink
+      imgLink: sneakerAd,
+      link: sneakersLink
     },
     { 
       id: 2,
-      imgLink: adImg2,
+      imgLink: cardAd,
       link: tradingCardLink
     },
     // { 
