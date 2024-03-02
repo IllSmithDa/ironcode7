@@ -2,8 +2,8 @@
 import  { useEffect, useState } from 'react'
 import watchMobile from '../../assets/images/ads/mobile/watches_mobile.png';
 import homeMobile from '../../assets/images/ads/mobile/home_mobile.png';
-// import sneakersMobile from '../../assets/images/ads/mobile/sneaker_mobile.png';
-// import fashionMobile from'../../assets/images/ads/mobile/fashion_mobile.png';
+//import sneakersMobile from '../../assets/images/ads/mobile/sneaker_mobile.png';
+//import fashionMobile from'../../assets/images/ads/mobile/fashion_mobile.png';
 // import adImg3 from'../../assets/images/ads/tradingcard_banner.jpg';
 
 const watchLink = "https://ebay.us/zPdf5J";
