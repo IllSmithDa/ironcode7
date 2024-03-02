@@ -125,6 +125,9 @@ export default function Topic() {
       <Helmet>
         <title>{`IronCodeMan | ${topic?.name}`}</title>
         <meta name="description" content={topic?.description} />
+        <meta property="og:description" content={topic?.description} />
+        <meta property="og:title" content={`IronCodeMan | ${topic?.name}`} />
+        <meta property="og:url" content={`https://ironcodeman.com/topic/${topic?.id}`} />
       </Helmet>
       <section
         className='xl:flex justify-center py-[2rem] w-[100%] hidden'

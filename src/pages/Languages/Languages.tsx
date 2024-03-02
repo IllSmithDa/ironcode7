@@ -93,6 +93,9 @@ export default function Languages() {
       <Helmet>
         <title>{`IronCodeMan | ${languageData?.name}`}</title>
         <meta name="description" content={languageData?.description} />
+        <meta property="og:description" content={languageData?.description} />
+        <meta property="og:title" content={`IronCodeMan | ${languageData?.name}`} />
+        <meta property="og:url" content={`https://ironcodeman.com/language/${languageData?.id}`} />
       </Helmet>
       <section
         className='lg:flex hidden justify-center w-[100%] my-[4rem]'
