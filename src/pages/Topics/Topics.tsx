@@ -110,9 +110,17 @@ export default function Topic() {
       </>
   ))
 
+  /*
+  if (TopicDataQuery.isLoading || ConceptItemsQuery.isLoading) {
+    return (
+      <Loader />
+    )
+  }
+  */
+ 
   if (TopicDataQuery.isError || ConceptItemsQuery.isError) {
     return (
-      <NoMatch />
+      <NoMatch msg="Error: Data fetching failed. Data does not exists or server has gone offline. Please try again later." />
     )
   }
 

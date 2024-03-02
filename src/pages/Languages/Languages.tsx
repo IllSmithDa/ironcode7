@@ -80,9 +80,17 @@ export default function Languages() {
     SetCategoryDrop(!categoryDrop);
   }
 
+  /*
+  if (languageQuery.isLoading || conceptItemQuery.isLoading) {
+    return (
+      <Loader />
+    )
+  }
+  */
+ 
   if (languageQuery.isError || conceptItemQuery.isError) {
     return (
-      <NoMatch />
+      <NoMatch msg="Error: Data fetching failed. Data does not exists or server has gone offline. Please try again later." />
     )
   }
 

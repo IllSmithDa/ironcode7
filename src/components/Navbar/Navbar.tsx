@@ -3,7 +3,7 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
 import { useQuery } from '@tanstack/react-query';
 import TopicMenu from './TopicMenu';
-import { ConceptTopic } from '../../types';
+import { ConceptTopic, User } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation } from 'react-router-dom';
 import iron from '../../assets/images/iron.svg';
@@ -19,12 +19,8 @@ export default function Navbar({
   topicId ?: string,
   languageId ?: string
 }) {
-  const [username, setUsername] = useState();
   const [isDark, setIsDark] = useState<boolean>();
-  const [pathname, setPathname] = useState<string>();
   const location = useLocation();
-
-  const link = '/api/users/get-user-session';
 
   const topicsQuery = useQuery({
     queryKey:["conceptTopic"],
@@ -51,31 +47,19 @@ export default function Navbar({
     setIsDark(darkMode);
   }, [darkMode])
   
-  useEffect(() => {
-    const controller = new AbortController();
-    const checkUser = async () => {
-      try {
-        const response = await axiosFetch.get(
-          link, 
-          { 
-            withCredentials: true,
-            signal: controller.signal
-          }
-        );
-        const { username:user } = response.data;
-        setPathname(location.pathname);
-        setUsername(user);
-      } catch(err) {
-        setUsername(undefined);
-      }
-    }
-    if (link && location.pathname === '/admin') {
-      checkUser();
-    } else {
-      setPathname(location.pathname);
-    }
-    return () => controller?.abort();
-  }, [link, location.pathname])
+  const userQuery = useQuery({
+    queryKey: ['user-exists'],
+    queryFn: async() => {
+      const link = '/api/users/get-user-session';
+      const response = await axiosFetch.get(link, { 
+        withCredentials: true,
+      });
+      return response.data;
+    },
+    enabled: location.pathname === '/admin',
+  })
+
+  const user:User = userQuery.data;
 
   const toggleDarkMode = (val :boolean) => {
     localStorage.setItem('iron_man_code_dark', JSON.stringify(val))
@@ -199,8 +183,8 @@ export default function Navbar({
           </li>
           <li  className='app-icons'>
               {
-                username && pathname === "/admin"? 
-                <ProfileDropdown username={username} />:
+                user?.username && location.pathname === "/admin"? 
+                <ProfileDropdown username={user.username} />:
                 <></>
               }
               </li>

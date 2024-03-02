@@ -1,21 +1,23 @@
 import Footer from '../../components/Footer/Footer'
 import { Link } from 'react-router-dom'
 
-export default function NoMatch() {
+export default function NoMatch({msg}: {
+  msg ?: string
+}) {
   return (
     <div
       className={`
-        darl:bg-[#1C1C1C] min-h-[100vh] w-[100%] flex flex-col justify-center text-center items-center
+        darl:bg-[#1C1C1C] min-h-[100vh] w-[100%] flex flex-col justify-center text-center items-center px-[2rem]
       `}
       
     >
       <h1
         className={`
-          xl:text-[3rem]
-          sm:text-[2.3rem] font-[500]
+          xl:text-[2rem]
+          font-[500]
           text-[1.5rem]
         `}
-      >404: Page does not exist!</h1>
+      >{msg ? msg : '404: Page does not exist!'}</h1>
       <Link 
         to="/"
         className={`
