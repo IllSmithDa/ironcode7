@@ -21,22 +21,11 @@ export default function EditTopics() {
   const [err, setErr] = useState<string>();
   const topics = UseConceptTopics();
 
-
   useEffect(() => {
     if (topics?.length) {
       setEditList(topics as ConceptTopic []);
     }
   }, [topics])
-
-  useEffect(() => {
-    if (editModalOpen || delModalOpen) {
-      const body = document.getElementById('iron-code-body');
-      if (body) body.classList.add('modal-open')
-    } else {
-      const body = document.getElementById('iron-code-body');
-      if (body) body.classList.remove('modal-open')
-    }
-  }, [editModalOpen, delModalOpen])
   
   const updateModalState = (state: boolean) => {
     setDelModalOpen(state);

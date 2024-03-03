@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../components/DarkModal/DarkModal';
 import { axiosFetch } from '../../axios';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export default function DeleteConcept({
   selectedConcept,
@@ -16,6 +17,7 @@ export default function DeleteConcept({
   delConceptItem: (concept: ConceptItem) => void,
   isModalOpen: boolean
 }) {
+  const queryClient = useQueryClient();
   const [err, setErr] = useState<string>('');
 
   const deleteTopic = async () => {
@@ -28,7 +30,12 @@ export default function DeleteConcept({
       setErr('Error: Could not delete topic')
     }
   }
-  
+  const deleteTopicMutation = useMutation({
+    mutationFn:deleteTopic,
+    onSuccess:() => {
+      queryClient.invalidateQueries({ queryKey: ['concepts-only']})
+    }
+  })
 
   return (
     <Modal isOpen={isModalOpen}>
@@ -66,7 +73,7 @@ export default function DeleteConcept({
             No
           </button>
           <button
-            onClick={() => deleteTopic()}
+            onClick={() => deleteTopicMutation.mutate()}
             className={`
               w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem] 
               hover:bg-[#2E2E2E]

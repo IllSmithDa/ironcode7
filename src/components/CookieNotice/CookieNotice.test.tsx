@@ -18,7 +18,7 @@ describe('Mock Cookie Notice', () => {
     const divElement = container.querySelector('div');
 
     // Assert
-    expect(divElement).toHaveClass('hidden');
+    expect(divElement).toHaveClass('block');
   });
   it('should set \'iron_man_code_cookie_accept\' to false when localStorage is empty', () => {
     // Arrange

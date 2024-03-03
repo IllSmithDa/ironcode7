@@ -5,6 +5,7 @@ import Modal from '../../components/DarkModal/DarkModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export default function EditConcept({
   setEditModal,
@@ -15,9 +16,9 @@ export default function EditConcept({
   setEditModal: (val: boolean) => void,
   updateConcepts: (updatedConcept: ConceptItem) => void,
   isModalOpen: boolean,
-  currentConcept: ConceptItem
+  currentConcept: ConceptItem,
 }) {
-
+  const queryClient = useQueryClient();
   const [conceptText, setConceptText] = useState<string>(currentConcept.text);
   const [err, setErr] = useState<string>();
 
@@ -41,6 +42,15 @@ export default function EditConcept({
       setErr('Error: cannot connect to server. Contact adminstrator for additional support.')
     }
   }
+
+  const editConceptMutation = useMutation({
+    mutationFn:editConcept,
+    onSuccess:() => {
+      console.log('hello');
+      queryClient.invalidateQueries({ queryKey: ['concepts-only']})
+    }
+  })
+
   return (
     <section
       className={`
@@ -94,7 +104,7 @@ export default function EditConcept({
               Cancel
             </button>
             <button 
-              onClick={() => editConcept()}
+              onClick={() => editConceptMutation.mutate()}
               className={`
                 w-[100px] h-[47px] p-[1rem] bg-[#2A2A2A] text-[1.5rem]
                 hover:bg-[#2E2E2E]

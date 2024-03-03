@@ -26,7 +26,6 @@ export default function NewForm() {
       name,
       description
     }
-    console.log(data);
     try {
       const result = await axiosFetch.post(link, data);
       if (result.status === 200) {
