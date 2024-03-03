@@ -1,34 +1,30 @@
-import { ActiveConceptItem, ActiveLanguages, ConceptItem } from '../../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { ActiveConceptItem, ActiveLanguages } from '../../types';
 
 export default function LanguageSelect({
   languages,
   updateLanguages
 }:{
   languages ?: ActiveConceptItem[],
-  updateLanguages: (updateedData: ActiveConceptItem[]) => void
+  updateLanguages: (language: string, newChecked: boolean) => void
 }) {
-
-
+  const queryClient = useQueryClient();
   const handleLanguage = (language: string, newChecked: boolean) => {
     
     // updating local storage languages
     const activeLanguages: ActiveLanguages = JSON.parse(localStorage.getItem('iron_code_languages') as string);
     activeLanguages[language] = newChecked;
     localStorage.setItem('iron_code_languages', JSON.stringify(activeLanguages));
-
-    const result = languages?.map((data: ConceptItem) => {
-      if (data.language === language) {
-        return {
-          ...data,
-          language: data.language,
-          checked: newChecked
-        } 
-      }
-      return data;
-    });
-    if (result?.length) updateLanguages([...result] as ActiveConceptItem[]);
+    updateLanguages(language, newChecked);
   } 
 
+  const updateLanguageMutation = useMutation({
+    mutationFn:async (param: {languageVal: string, checkVal: boolean}) => { handleLanguage(param.languageVal, param.checkVal) },
+    onSuccess:() => {
+      console.log('success')
+      queryClient.invalidateQueries({ queryKey: ['activeConcepts']})
+    }
+  })
 
   const renderData = languages?.map((data) => (
     <li key={data.language}
@@ -41,15 +37,15 @@ export default function LanguageSelect({
         type='checkbox' checked={data.checked}
         onKeyUp={(e) => {
           if (e.key === 'Enter') {
-            handleLanguage(data.language, !data.checked); 
+            updateLanguageMutation.mutate({languageVal:data.language, checkVal:!data.checked})
           }
         }}
         onChange={() => {
-          handleLanguage(data.language, !data.checked)
+          updateLanguageMutation.mutate({languageVal:data.language, checkVal:!data.checked})
         }}
         className={`
           text-[1rem]
-          md:text-[1.5rem]
+          md:text-[1.5rem] cursor-pointer
         `}
       />
       <button
@@ -58,7 +54,7 @@ export default function LanguageSelect({
           md:text-[1.5rem]
         `}
         onClick={() => {
-          handleLanguage(data.language, !data.checked)
+          updateLanguageMutation.mutate({languageVal:data.language, checkVal:!data.checked})
         }}
         tabIndex={-1}
         >

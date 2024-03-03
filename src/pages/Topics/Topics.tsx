@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ActiveConceptItem, ActiveLanguages, ConceptItem, ConceptTopic, Language } from '../../types';
 import LanguageSelect from './LanguageSelect';
 import { axiosFetch } from '../../axios';
@@ -16,9 +16,9 @@ import MobileAds2 from '../../components/Ads/MobileAds2';
 import MobileAds1 from '../../components/Ads/MobileAds1';
 
 export default function Topic() {
-  const [loaded, setLoaded] = useState(false);
+
   const { topicId } = useParams<"topicId">();
-  const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
+  // const [conceptsAndLanguages, setConceptsAndLangauges] = useState<ActiveConceptItem[]>();
   const languages:Language[] = UseAllLanguages();
 
   const TopicDataQuery = useQuery({
@@ -39,16 +39,9 @@ export default function Topic() {
       const conceptLink = `/api/concept/topic-id/${topicId}`;
       const conceptRes = await axiosFetch.get(conceptLink);
       const result: ConceptItem[] = conceptRes.data.data;
+     
+      console.log(result)
 
-      return result;
-    },
-    enabled: !!topicId
-  })
-
-  const conceptItems: ConceptItem[] = ConceptItemsQuery.data as ConceptItem[];
-
-  useEffect(() => {
-    if(conceptItems?.length) {
       let activeLanguages: ActiveLanguages = {};
       if (localStorage.getItem('iron_code_languages') === null) {
         languages.forEach((entry) => {
@@ -59,30 +52,43 @@ export default function Topic() {
         activeLanguages = JSON.parse(localStorage.getItem('iron_code_languages') as string);
       }
       
-      const result:ActiveConceptItem[] = conceptItems.map((entry) => {
+      const activeConcepts:ActiveConceptItem[] = result.map((entry) => {
         return {
           ...entry,
           checked: activeLanguages[entry.language],
         }
       });
-      setConceptsAndLangauges(result);
-      setTimeout(() => setLoaded(true), 200);
-    }
-  }, [conceptItems, languages])
+      // setConceptsAndLangauges(activeConcepts);
+      console.log(activeConcepts);
+      return activeConcepts;
+    },
+    enabled: !!topicId && languages?.length > 0
+  })
+
+  const conceptsAndLanguages: ActiveConceptItem[] = ConceptItemsQuery.data as ActiveConceptItem[];
+
 
   useEffect(() => {
-    if (conceptsAndLanguages?.length && loaded) {
+    if (conceptsAndLanguages?.length) {
       for(let i = 0; i < conceptsAndLanguages.length; i += 1) {
         parseConcepts(conceptsAndLanguages[i].text, `${conceptsAndLanguages[i].id}_code`);
       }
     }
 
-  }, [conceptsAndLanguages, loaded])
+  }, [conceptsAndLanguages])
 
 
-  const updateLanguages = (updatedData: ActiveConceptItem[]) => {
-    setConceptsAndLangauges([...updatedData])
-
+  const updateLanguages = (language: string, newChecked: boolean) => {
+    conceptsAndLanguages?.map((data: ConceptItem) => {
+      if (data.language === language) {
+        return {
+          ...data,
+          language: data.language,
+          checked: newChecked
+        } 
+      }
+      return data;
+    });
   }
 
   const renderData = (conceptsAndLanguages as ActiveConceptItem[])?.map((data) => (
@@ -154,11 +160,11 @@ export default function Topic() {
         <p className='fadeInLeft'>{topic?.description}</p>
       </article>
       {
-        loaded ?
-        <section className='my-[2rem]'>
-          <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>
-        </section>:
-         <Loader />
+        ConceptItemsQuery.isLoading ?
+         <Loader />:
+         <section className='my-[2rem]'>
+           <LanguageSelect languages={conceptsAndLanguages} updateLanguages={updateLanguages}/>
+         </section>
       }
       <h4
         className={`
@@ -166,7 +172,8 @@ export default function Topic() {
         `}
       >Examples</h4>
       {
-        loaded?
+        ConceptItemsQuery.isLoading ?
+        <Loader />:
         <section
           key="language-listing"
           className={`
@@ -185,8 +192,7 @@ export default function Topic() {
            >
              <Ads2 />
            </section>
-        </section>:
-        <Loader />
+        </section>
       }
     </section>
   )
