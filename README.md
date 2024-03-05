@@ -1,40 +1,105 @@
-# React + TypeScript + Vite
+### Ironcode 7 ###
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Tech - React, React Query (Tanstack), TypeScript, Axios, Tailwind CSS, Vitest, Cypress (separate project), formik (forms), React Router Dom, yup (form validation), react-helmet-async (meta tags)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+# Tailwind Install
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
+1. npm install -D tailwindcss
+
+2. npx tailwindcss init
+
+  a. creates tailwind config file
+
+3. Make sure tailwind config includes ts and tsx file support 
+
+  a.  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+
+4. As this is a Vite project, update Vite config to include tailwindcss
+
+  a. e.g
+
+  import tailwindcss from "tailwindcss";
+
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
   },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+5. Include the tailwind dependencies into the highest level css file (index.css)
 
+  a. e.g
 
-# Debugging 
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-// For the refresh page 404 error:
+6. Test tailwind by adding classes to elements 
 
-https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router
+  a. e.g removes the bullet points on a tags
 
-Use Vitest 
-https://vitest.dev/
+  <ul>
+    <li className='list-none'>
+      <a href="/"> Home</a>
+    </li>
+    <li className='list-none'>
+      <a href="/about">About</a>
+    </li>
+  </ul>
+
+# Testing libraries installed
+
+  1. vitest
+
+  2. @testing-library/jest-dom
+
+  3. @testing-library/react
+
+  4. @testing-library/user-event
+
+  5. jsdom
+
+  6. @types/jest
+  
+# Optional Test coverage 
+
+  1. @vitest/coverage-v8
+
+  2. @vitest/ui
+
+# Make sure to include all content to make test work
+
+  i.e
+  render(
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <HomeLayout />
+        </BrowserRouter>
+      </HelmetProvider>
+    </QueryClientProvider>
+  );
+
+1. Add test/setup.ts file and import jsdom
+
+  a. import '@testing-library/jest-dom'
+
+# Cypress e2e 
+
+# Install Cypress and startup
+
+  1. npm i --save -dev cypress
+
+  2. use command 'npx cypress open'
+
+  3. Follow prompts on the automatically opened cypress menu
+
+# Tips 
+
+  1. Run Cypress commands as an administrator
+
+    a. https://stackoverflow.com/questions/74723664/cypress-test-runner-intermittent-econnrefused-127-0-0-14200
