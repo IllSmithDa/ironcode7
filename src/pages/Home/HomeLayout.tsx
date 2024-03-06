@@ -16,9 +16,6 @@ export default function HomeLayout() {
       <Helmet>
         <title>IronCodeMan | Home</title>
         <meta name="description" content="Ironcodeman: A reference for Programmers. Select topic or language"/>
-        <meta property="og:description" content="Ironcodeman: A reference for Programmers. Select topic or language" />
-        <meta property="og:title" content="IronCodeMan | Home"  />
-        <meta property="og:url" content="https://ironcodeman.com"/>
       </Helmet>
       <TopicsTab />
       <section
