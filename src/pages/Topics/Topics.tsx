@@ -11,7 +11,6 @@ import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
 import Ads from '../../components/Ads/Ads';
 import Ads2 from '../../components/Ads/Ads2'
-// import MobileAds from '../../components/Ads/MobileAds';
 import MobileAds2 from '../../components/Ads/MobileAds2';
 import MobileAds1 from '../../components/Ads/MobileAds1';
 
@@ -39,8 +38,6 @@ export default function Topic() {
       const conceptLink = `/api/concept/topic-id/${topicId}`;
       const conceptRes = await axiosFetch.get(conceptLink);
       const result: ConceptItem[] = conceptRes.data.data;
-     
-      console.log(result)
 
       let activeLanguages: ActiveLanguages = {};
       if (localStorage.getItem('iron_code_languages') === null) {
@@ -59,7 +56,6 @@ export default function Topic() {
         }
       });
       // setConceptsAndLangauges(activeConcepts);
-      console.log(activeConcepts);
       return activeConcepts;
     },
     enabled: !!topicId && languages?.length > 0
