@@ -11,9 +11,6 @@ export default function About() {
       <Helmet>
         <title>{`IronCodeMan | About`}</title>
         <meta name="description" content="Iron Code Man a reference for programmers. It is not a in depth tutorial on every programming language but instead is a resource on the specific syntax of everyday programming languages that helps users remember or familiarize similar concepts from different programming languages. Most programming languages have similar concepts such as variables, printing text, object oriented programming (classes) but the details are often slightly different such as lack of brackets, use of indentations, or simply capitzliaing S in String when declaring a vraiable to be a string type." />
-        <meta property="og:title" content="IronCodeMan | About"/>
-        <meta property="og:description" content="Iron Code Man a reference for programmers. It is not a in depth tutorial on every programming language but instead is a resource on the specific syntax of everyday programming languages that helps users remember or familiarize similar concepts from different programming languages. Most programming languages have similar concepts such as variables, printing text, object oriented programming (classes) but the details are often slightly different such as lack of brackets, use of indentations, or simply capitzliaing S in String when declaring a vraiable to be a string type. " />
-        <meta property="og:url" content="https://ironcodeman.com/about"/>
       </Helmet>
       <section className={`
         w-[90%] mx-[auto] border-box p-[2.5rem] mt-[2.5rem] bg-[#E1E1E1]

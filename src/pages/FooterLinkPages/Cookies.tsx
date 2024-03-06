@@ -11,9 +11,6 @@ export default function Cookies() {
       <Helmet>
         <title>{`IronCodeMan | Cookiess`}</title>
         <meta name="description" content="Iron Code Man - Cookie Usage. his website (&ldquo;Iron Code Man&ldquo;) uses cookies. By using this website, you consent to the use of cookies in accordance with this Cookie Notice." />
-        <meta property="og:title" content="IronCodeMan | Cookies"/>
-        <meta property="og:description" content="Iron Code Man - Cookie Usage. his website (&ldquo;Iron Code Man&ldquo;) uses cookies. By using this website, you consent to the use of cookies in accordance with this Cookie Notice."  />
-        <meta property="og:url" content="https://ironcodeman.com/cookies"/>
       </Helmet>
       <section className={`
         w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]

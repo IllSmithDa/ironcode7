@@ -12,10 +12,6 @@ export default function Privacy() {
         <title>{`IronCodeMan | Privacy`}</title>
         <meta name="description" content="Iron Code Man - Privacy Policy. This Privacy Policy governs the manner in which Iron Code Man collects, uses, maintains, and discloses information collected from users (each, a &ldquo;User&ldquo;) of the Iron Code Man website (&ldquo;the Website&ldquo;).
         " />
-        <meta property="og:title" content="IronCodeMan | Privacy"/>
-        <meta property="og:description" content="Iron Code Man - Privacy Policy. This Privacy Policy governs the manner in which Iron Code Man collects, uses, maintains, and discloses information collected from users (each, a &ldquo;User&ldquo;) of the Iron Code Man website (&ldquo;the Website&ldquo;).
-        "  />
-        <meta property="og:url" content="https://ironcodeman.com/privacy"/>
       </Helmet>
       <section className={`
         w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]

@@ -10,9 +10,6 @@ export default function Terms() {
       <Helmet>
         <title>{`IronCodeMan | Terms`}</title>
         <meta name="description" content="Iron Code Man - Terms and Conditions. These Terms and Conditions (&ldquo;Terms&ldquo;) govern your use of the Iron Code Man website (&ldquo;the Website&ldquo;). By accessing or using the Website, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not use the Website." />
-        <meta property="og:description" content="Iron Code Man - Terms and Conditions. These Terms and Conditions (&ldquo;Terms&ldquo;) govern your use of the Iron Code Man website (&ldquo;the Website&ldquo;). By accessing or using the Website, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you may not use the Website." />
-        <meta property="og:title" content="IronCodeMan | Terms"  />
-        <meta property="og:url" content="https://ironcodeman.com/terms"/>
       </Helmet>
       <section className={`
         w-[90%] px-[2.5rem] pt-[1px] pb-[2.5rem] mx-[auto] border-box bg-[#E1E1E1]
