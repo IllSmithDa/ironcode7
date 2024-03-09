@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { ActiveConceptItem, ActiveLanguages, ConceptItem, ConceptTopic, Language } from '../../types';
 import LanguageSelect from './LanguageSelect';
 import { axiosFetch } from '../../axios';
@@ -74,7 +74,7 @@ export default function Topic() {
   }, [conceptsAndLanguages])
 
 
-  const updateLanguages = (language: string, newChecked: boolean) => {
+  const updateLanguages = useCallback((language: string, newChecked: boolean) => {
     conceptsAndLanguages?.map((data: ConceptItem) => {
       if (data.language === language) {
         return {
@@ -85,7 +85,8 @@ export default function Topic() {
       }
       return data;
     });
-  }
+  }, [conceptsAndLanguages]);
+  
 
   const renderData = (conceptsAndLanguages as ActiveConceptItem[])?.map((data) => (
     <>

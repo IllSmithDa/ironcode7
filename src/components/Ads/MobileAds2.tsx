@@ -38,15 +38,27 @@ export default function MobileAds2() {
     <>
       {
         ad.id === selectedAd ? 
-        <div className='
-        my-slides
-      '  key={`ad_${ad.id}`}>
-      <a href={ad.link} target='_blank'>
-        <img src={ad.imgLink} className='
-           block aspect-auto
-        ' />
+        <div
+          className='
+            my-slides
+          ' 
+          key={`ad_${ad.id}`}
+        >
+          <a href={ad.link} target='_blank'>
+          <img
+            src={ad.imgLink}
+            className='
+              block aspect-auto
+            '
+          />
       </a>
-      </div>:<></>
+      </div>:
+      <div
+        className='
+          my-slides
+        ' 
+        key={`ad_${ad.id}`}
+      ></div>
       }
     </>
   ))
