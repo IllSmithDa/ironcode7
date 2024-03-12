@@ -9,6 +9,7 @@ import { Link, useLocation } from 'react-router-dom';
 import iron from '../../assets/images/iron.svg';
 import LanguageMenu from './LanguageMenu';
 import ProfileDropdown from './ProfileDropdown';
+import UseConceptTopics from '../../hooks/ConceptTopicsHooks';
 
 export default function Navbar({
   darkMode,
@@ -21,15 +22,7 @@ export default function Navbar({
 }) {
   const [isDark, setIsDark] = useState<boolean>();
   const location = useLocation();
-
-  const topicsQuery = useQuery({
-    queryKey:["conceptTopic"],
-    queryFn: async () => {
-      const res = await axiosFetch.get("/api/concept/all-topics");
-      return res.data.data;
-    },
-  }); 
-  const topics:ConceptTopic[] = topicsQuery.data;
+  const topics: ConceptTopic[] = UseConceptTopics();
 
   const selectLanguageQuery = useQuery({
     queryKey:['select-language', languageId],
