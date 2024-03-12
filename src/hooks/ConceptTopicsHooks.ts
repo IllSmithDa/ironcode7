@@ -9,8 +9,24 @@ export default function UseConceptTopics() {
   const conceptTopicsQuery =  useQuery({
     queryKey:["conceptTopics"],
     queryFn: async () => {
-      const res = await axiosFetch.get("/api/concept/all-topics");
-      return res.data.data;
+      // const res = await axiosFetch.get("/api/concept/all-topics");
+      // return res.data.data;
+      const res = await axiosFetch.post("/api/concept/all-topics", {
+          query: `
+              query GetAllTopics {
+                topics {
+                  id
+                  name
+                  description
+                  rank
+                  category
+                  created_at
+                }
+              }
+          
+          `
+      })
+      return res.data.data.topics;
     },
   });
   const concepts: ConceptTopic[] = conceptTopicsQuery.data;
