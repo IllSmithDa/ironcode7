@@ -25,7 +25,7 @@ export default function DeleteTopics({
     try {
       const updatedTopics = (topics as ConceptTopic []).filter((topic) => topic.id !== selectedTopic?.id);
       updateEditList([...updatedTopics]);
-      const url = `/api/concept/delete-topic/${selectedTopic?.id}`;
+      const url = `/api/concept/delete-topic-entry/${selectedTopic?.id}`;
       await axiosFetch.delete(url);
       setModalState(false);
     }catch(err) {

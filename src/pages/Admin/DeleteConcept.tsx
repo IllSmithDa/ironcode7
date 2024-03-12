@@ -23,7 +23,7 @@ export default function DeleteConcept({
   const deleteTopic = async () => {
     try {
       delConceptItem(selectedConcept);
-      const url = `/api/concept/delete-id/${selectedConcept?.id}`;
+      const url = `/api/concept/delete-concept-entry/${selectedConcept?.id}`;
       await axiosFetch.delete(url);
       setModalState(false);
     }catch(err) {

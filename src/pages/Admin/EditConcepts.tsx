@@ -34,7 +34,7 @@ export default function EditConcept({
         text: conceptText,
       }
       updateConcepts(updatedConcept);
-      const url = `/api/concept/update-item`;
+      const url = `/api/concept/update-entry`;
       await axiosFetch.put(url, updatedConcept);
       setErr('');
       setEditModal(false);

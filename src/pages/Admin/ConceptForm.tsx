@@ -15,7 +15,7 @@ export default function ConceptForm() {
   const languages = UseAllLanguages();
   const concepts  = UseConceptTopics();
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const link = '/api/concept/create-item'
+  const link = '/api/concept/create-entry'
 
   const handleNewConcept = async(event:  React.SyntheticEvent) => {
     event.preventDefault();

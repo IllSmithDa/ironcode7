@@ -9,6 +9,19 @@ export default function UseConceptTopics() {
   const conceptTopicsQuery =  useQuery({
     queryKey:["conceptTopics"],
     queryFn: async () => {
+      const res = await axiosFetch.get("/api/concept/all-topics");
+      return res.data.data;
+    },
+  });
+  const concepts: ConceptTopic[] = conceptTopicsQuery.data;
+  return concepts;
+}
+
+// Graph QL version of the data fethcing
+export function UseTestConceptTopics() {
+  const conceptTopicsQuery =  useQuery({
+    queryKey:["conceptTopics"],
+    queryFn: async () => {
       // const res = await axiosFetch.get("/api/concept/all-topics");
       // return res.data.data;
       const res = await axiosFetch.post("/api/concept/all-topics", {
