@@ -46,3 +46,29 @@ export function UseTestConceptTopics() {
   return concepts;
 }
 
+export function UseTestTopicsById(topicId: string){
+  const TopicDataQuery = useQuery({
+    queryKey:["topicData", topicId],
+    queryFn: async() => {
+      const topicRes = await axiosFetch.post(`/api/concept/test-get-topic/`, {
+        query:`
+          query TestTopicsById {
+            topic (id: ${topicId}) {
+              id
+              name
+              description
+              rank
+              category
+              created_at
+            }
+          }
+        `
+      });
+      const result = topicRes.data.data;
+      return result;
+    },
+    enabled: !!topicId
+  })
+  const topic: ConceptTopic = TopicDataQuery.data;
+  return topic;
+}

@@ -13,6 +13,7 @@ import Ads from '../../components/Ads/Ads';
 import Ads2 from '../../components/Ads/Ads2'
 import MobileAds2 from '../../components/Ads/MobileAds2';
 import MobileAds1 from '../../components/Ads/MobileAds1';
+// import { UseTestTopicsById } from '../../hooks/ConceptTopicsHooks';
 
 export default function Topic() {
 
@@ -31,7 +32,11 @@ export default function Topic() {
   })
 
   const topic: ConceptTopic = TopicDataQuery.data as ConceptTopic;
-  
+  // console.log(topic);
+
+  // const testTopic = UseTestTopicsById(topicId as string);
+  // console.log(testTopic);
+
   const ConceptItemsQuery = useQuery({
     queryKey: ["activeConcepts", topicId],
     queryFn: async () => {
