@@ -141,13 +141,16 @@ export default function LanguageMenu({
         <></>
       }
       {
-        desktopDropdown ? 
-        <div className={`
-          fixed z-[50] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
-        `} onClick={() => {
-          setDesktopDropdown(false);
-        }}></div>:
-        <></>
+        desktopDropdown &&
+        <div
+          className={`
+            fixed z-[50] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+          `}
+          onClick={() => {
+            setDesktopDropdown(false);
+          }}
+        >
+        </div>
       }
 
     </section>

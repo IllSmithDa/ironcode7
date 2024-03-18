@@ -176,9 +176,8 @@ export default function Navbar({
           </li>
           <li  className='app-icons'>
               {
-                user?.username && location.pathname === "/admin"? 
-                <ProfileDropdown username={user.username} />:
-                <></>
+                user?.username && location.pathname === "/admin" &&
+                <ProfileDropdown username={user.username} />
               }
               </li>
         </ul>

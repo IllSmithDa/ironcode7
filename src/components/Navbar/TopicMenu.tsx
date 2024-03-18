@@ -107,7 +107,7 @@ export default function TopicMenu({
           `}
         />
       </button>
-      {navOpen ?
+      {navOpen &&
         <section
           className={`
             z-[150] absolute bg-[#DDD] w-[100vw] h-[100vh] top-0 left-0 overflow-y-scroll px-[1rem] pt-[1rem] pb-[4rem]
@@ -180,8 +180,7 @@ export default function TopicMenu({
               </section>
             )
           })}
-        </section>:
-        <></>
+        </section>
       }
     </>
   )

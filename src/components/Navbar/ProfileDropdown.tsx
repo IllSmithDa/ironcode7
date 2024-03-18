@@ -18,7 +18,7 @@ export default function ProfileDropdown({ username }: { username: string}) {
     <>
       <li className='app-icons'>
         {
-          username ?
+          username &&
           <button
             onClick={() => setToggleModal(!toggleModal)}
             className={`
@@ -31,11 +31,10 @@ export default function ProfileDropdown({ username }: { username: string}) {
               aria-label='light mode icon'
               className='text-[2.5rem] cursor-pointer hover:text-[#DDD] '
             />
-          </button>:
-          <></>
+          </button>
         }
         {
-          toggleModal ?
+          toggleModal &&
           <section
             className={`
               absolute bg-[#181818] w-[300px] right-0 z-[100] p-[2rem] h-[500px]
@@ -60,18 +59,20 @@ export default function ProfileDropdown({ username }: { username: string}) {
             >  
               Logout
             </button>
-          </section>:
-          <></>
+          </section>
         }
       </li>
       {
-        toggleModal? 
-        <div className={`
-          fixed z-[25] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
-        `} onClick={() => {
-          setToggleModal(false);
-        }}></div>:
-        <></>
+        toggleModal &&
+        <div 
+          className={`
+            fixed z-[25] left-0 top-0 w-[100%] h-[100%] justify-center flex-col overflow-auto
+          `}
+          onClick={() => {
+            setToggleModal(false);
+          }}
+        >
+        </div>
       }
     </>
   )
