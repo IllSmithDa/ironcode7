@@ -131,6 +131,7 @@ export default function Navbar({
             flex
           `}
         >
+          {/*
           <li>
             {
               isDark ?
@@ -168,6 +169,7 @@ export default function Navbar({
               </button>
             }
           </li>
+          */}
           <li>              
             <LanguageMenu 
               selectedId={languageId}

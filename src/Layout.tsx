@@ -12,7 +12,8 @@ export default function Layout() {
     if (localStorage.getItem('iron_man_code_dark') === null) {
       localStorage.setItem('iron_man_code_dark', JSON.stringify(true))
     }
-    const dark:boolean = JSON.parse(localStorage.getItem('iron_man_code_dark') as string) as boolean;
+    // const dark:boolean = JSON.parse(localStorage.getItem('iron_man_code_dark') as string) as boolean;
+    const dark = true;
     setIsDark(dark);
     if (dark) {
       document.documentElement.classList.add('dark')
