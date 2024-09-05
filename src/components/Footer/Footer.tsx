@@ -5,7 +5,7 @@ import Ads from "../Ads/Ads";
 import MobileAds1 from "../Ads/MobileAds1";
 
 export default function Footer({ adname }: {adname: string}) {
-
+  /*
   const renderAds = () =>  {
     switch(adname) {
       case 'HomeAds':
@@ -56,7 +56,7 @@ export default function Footer({ adname }: {adname: string}) {
         )    
     } 
   }
-
+  */
   return (
     <>
     <section className={`

@@ -29,7 +29,7 @@ export default function NoMatch({msg}: {
       >
         Go Home 🡆
       </Link> 
-      <Footer />
+      <Footer adname='HomeAds' />
     </div>
   )
 }

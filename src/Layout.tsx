@@ -3,12 +3,12 @@ import {  Outlet, useParams } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import { useEffect, useState } from "react";
 import CookieNotice from "./components/CookieNotice/CookieNotice";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 
 export default function Layout() {
   const { topicId } = useParams<"topicId">();
   const { languageId } = useParams<"languageId">();
-  const [isDark, setIsDark] = useState<boolean>();
+  // const [isDark, setIsDark] = useState<boolean>();
 
   useEffect(() => {
     if (localStorage.getItem('iron_man_code_dark') === null) {
@@ -16,7 +16,7 @@ export default function Layout() {
     }
     // const dark:boolean = JSON.parse(localStorage.getItem('iron_man_code_dark') as string) as boolean;
     const dark = true;
-    setIsDark(dark);
+    // setIsDark(dark);
     if (dark) {
       document.documentElement.classList.add('dark')
     } else {
@@ -33,7 +33,7 @@ export default function Layout() {
       `}
     >
       <CookieNotice />
-      <Navbar darkMode={isDark ?? true} topicId={topicId} languageId={languageId} />
+      <Navbar /*darkMode={isDark ?? true} */ topicId={topicId} languageId={languageId} />
       <div
         className={`
           mt-[47px]

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import  { useEffect, useState } from 'react'
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+// import  { useEffect, useState } from 'react'
+// import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';
 import { useQuery } from '@tanstack/react-query';
 import TopicMenu from './TopicMenu';
 import { ConceptTopic, User } from '../../types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation } from 'react-router-dom';
 import iron from '../../assets/images/iron.svg';
 import LanguageMenu from './LanguageMenu';
@@ -13,15 +13,15 @@ import ProfileDropdown from './ProfileDropdown';
 import UseConceptTopics from '../../hooks/ConceptTopicsHooks';
 
 export default function Navbar({
-  darkMode,
+  // darkMode,
   topicId,
   languageId,
 }: {
-  darkMode: boolean,
+  // darkMode ?: boolean,
   topicId ?: string,
   languageId ?: string
 }) {
-  const [isDark, setIsDark] = useState<boolean>();
+  // const [isDark, setIsDark] = useState<boolean>();
   const location = useLocation();
   const topics: ConceptTopic[] = UseConceptTopics();
 
@@ -37,10 +37,11 @@ export default function Navbar({
 
   const languageName = selectLanguageQuery.data;
 
+  /*
   useEffect(() => {
     setIsDark(darkMode);
   }, [darkMode])
-  
+  */
   const userQuery = useQuery({
     queryKey: ['user-exists'],
     queryFn: async() => {
@@ -55,6 +56,7 @@ export default function Navbar({
 
   const user:User = userQuery.data;
 
+  /*
   const toggleDarkMode = (val :boolean) => {
     localStorage.setItem('iron_man_code_dark', JSON.stringify(val))
     if (val) {
@@ -64,7 +66,7 @@ export default function Navbar({
     }
     setIsDark(val);
   }
-
+  */
 
   return (
     <section

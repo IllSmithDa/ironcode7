@@ -8,10 +8,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
-import Ads from '../../components/Ads/Ads';
+// import Ads from '../../components/Ads/Ads';
 import Ads2 from '../../components/Ads/Ads2';
 import MobileAds2 from '../../components/Ads/MobileAds2';
-import MobileAds1 from '../../components/Ads/MobileAds1';
+// import MobileAds1 from '../../components/Ads/MobileAds1';
 
 export default function Languages() {
   // const [isLoading, setIsLoading] = useState(true);
