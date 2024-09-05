@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
-import HomeAds from "../Ads/HomeAds";
-import Ads from "../Ads/Ads";
-import MobileAds1 from "../Ads/MobileAds1";
+// import HomeAds from "../Ads/HomeAds";
+// import Ads from "../Ads/Ads";
+// import MobileAds1 from "../Ads/MobileAds1";
 
-export default function Footer({ adname }: {adname: string}) {
+export default function Footer(/*{ adname }: {adname : string} */) {
   /*
   const renderAds = () =>  {
     switch(adname) {

@@ -24,7 +24,7 @@ export default function HomeLayout() {
         `}
       >      
         <Outlet />
-        <Footer adname='HomeAds' />
+        <Footer /*adname='HomeAds' */ />
       </section>
     </div>
   )

@@ -164,7 +164,7 @@ export default function Login() {
       >
         {renderForm}
       </Formik>
-      <Footer adname='HomeAds'/>
+      <Footer /* adname='HomeAds' *//>
     </section>
   )
 }

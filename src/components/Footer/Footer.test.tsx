@@ -10,7 +10,7 @@ describe('Mock Footer component', () => {
   it('should render a section element with specific classes', () => {
     render(
       <BrowserRouter>
-        <Footer adname='HomeAds' />
+        <Footer /* adname='HomeAds'*/ />
       </BrowserRouter>
     );
     const linkElements = screen.getAllByRole('link');

@@ -21,7 +21,7 @@ export default function TopicLayout() {
         `}
       >
         <Outlet />
-        <Footer adname='TopicAds' />
+        <Footer /*adname='TopicAds' */ />
       </section>
     </div>
   )
