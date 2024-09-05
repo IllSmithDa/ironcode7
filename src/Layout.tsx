@@ -11,9 +11,11 @@ export default function Layout() {
   // const [isDark, setIsDark] = useState<boolean>();
 
   useEffect(() => {
+    /*
     if (localStorage.getItem('iron_man_code_dark') === null) {
       localStorage.setItem('iron_man_code_dark', JSON.stringify(true))
     }
+      */
     // const dark:boolean = JSON.parse(localStorage.getItem('iron_man_code_dark') as string) as boolean;
     const dark = true;
     // setIsDark(dark);
