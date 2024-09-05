@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {  Outlet, useParams } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import { useEffect, useState } from "react";
 import CookieNotice from "./components/CookieNotice/CookieNotice";
+import Footer from "./components/Footer/Footer";
 
 export default function Layout() {
   const { topicId } = useParams<"topicId">();

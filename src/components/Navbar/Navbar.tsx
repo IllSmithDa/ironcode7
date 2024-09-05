@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import  { useEffect, useState } from 'react'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { axiosFetch } from '../../axios';

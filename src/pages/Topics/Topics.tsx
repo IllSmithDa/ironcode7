@@ -10,8 +10,6 @@ import Loader from '../../components/Loader/Loader';
 import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
 import Ads from '../../components/Ads/Ads';
-import Ads2 from '../../components/Ads/Ads2'
-import MobileAds2 from '../../components/Ads/MobileAds2';
 import MobileAds1 from '../../components/Ads/MobileAds1';
 // import { UseTestTopicsById } from '../../hooks/ConceptTopicsHooks';
 
@@ -179,21 +177,11 @@ export default function Topic() {
         <section
           key="language-listing"
           className={`
-            pb-[20rem] block flex-wrap gap-[2rem]
+            pb-[25rem] block flex-wrap gap-[2rem]
             xl:flex
           `}
         >
           {renderData}
-          <section
-             className='flex justify-center w-[100%] mt-[2rem] lg:hidden'
-           >
-             <MobileAds2 />
-           </section>
-           <section
-             className='lg:flex justify-center py-[2rem] w-[100%] hidden'
-           >
-             <Ads2 />
-           </section>
         </section>
       }
     </section>

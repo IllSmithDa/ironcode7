@@ -16,7 +16,7 @@ export default function LanguageLayout() {
         `}
       >
         <Outlet />
-        <Footer />
+        <Footer adname="LanguageAds" />
       </section>
     </div>
   )

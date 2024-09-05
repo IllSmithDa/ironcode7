@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { axiosFetch } from '../../axios';
 import Loader from '../../components/Loader/Loader';
 import { ConceptItem, Language } from '../../types';
@@ -220,16 +221,6 @@ export default function Languages() {
       <ul>
         {renderData()}
       </ul>
-      <section
-        className='xl:hidden flex justify-center w-[100%] my-[2rem]'
-      >
-        <MobileAds1 />
-      </section>
-      <section
-        className='lg:flex justify-center w-[100%] mb-[4rem] hidden' 
-      >
-        <Ads />
-      </section>
       {
         categoryDrop ? 
         <div
