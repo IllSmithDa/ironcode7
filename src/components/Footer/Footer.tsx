@@ -60,7 +60,8 @@ export default function Footer(/*{ adname }: {adname : string} */) {
   return (
     <>
     <section className={`
-      absolute mt-[200px] bottom-0 left-[50%] translate-y-[-50%] translate-x-[-50%] w-[100%]
+      absolute mt-[200px] bottom-0 left-[50%] translate-y-[-50%] translate-x-[-50%] w-[100%]             bg-[#AAA]
+            dark:bg-[#111]
     `}>
 
       <ul 

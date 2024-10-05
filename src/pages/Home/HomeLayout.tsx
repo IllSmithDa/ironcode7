@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Footer from '../../components/Footer/Footer';
 import TopicsTab from '../../components/TopicsTab/TopicsTab';
 
 export default function HomeLayout() {
@@ -24,7 +23,6 @@ export default function HomeLayout() {
         `}
       >      
         <Outlet />
-        <Footer /*adname='HomeAds' */ />
       </section>
     </div>
   )

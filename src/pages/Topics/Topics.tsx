@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet-async';
 import NoMatch from '../NoMatch/NoMatch';
 import Ads from '../../components/Ads/Ads';
 import MobileAds1 from '../../components/Ads/MobileAds1';
+
 // import { UseTestTopicsById } from '../../hooks/ConceptTopicsHooks';
 
 export default function Topic() {
@@ -97,12 +98,24 @@ export default function Topic() {
         data.checked ? 
         <article
           key={data.language}
+          /*
           className={`
-            w-[100%]  bg-[#EAEAEA] p-[1.5rem] mt-[2rem] h-[max]
+            w-[100%]  bg-[#EAEAEA] p-[1.5rem]
             lg:w-[auto] xl:mt-0
             dark:bg-[#272727]
             fadeInLeft
           `}
+          */
+          className={`
+            dark:bg-[#272727]
+            fadeInLeft
+            box-border
+            inline-block
+            p-[1.5rem]
+            mb-[1rem]
+            w-[100%]
+            `
+          }
         >
           <h4>{data.language}</h4>
           <pre
@@ -176,14 +189,21 @@ export default function Topic() {
         <Loader />:
         <section
           key="language-listing"
+
+          /*
           className={`
             pb-[25rem] block flex-wrap gap-[2rem]
             xl:flex
           `}
+          */
+         className={
+          `columns-[350px]`
+         }
         >
           {renderData}
         </section>
       }
+
     </section>
   )
 }

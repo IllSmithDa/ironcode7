@@ -3,6 +3,7 @@ import {  Outlet, useParams } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import { useEffect, /* useState */ } from "react";
 import CookieNotice from "./components/CookieNotice/CookieNotice";
+import Footer from "./components/Footer/Footer";
 // import Footer from "./components/Footer/Footer";
 
 export default function Layout() {
@@ -27,6 +28,7 @@ export default function Layout() {
   }, [])
 
   return (
+    <div>
     <main
       className={`
       bg-[#AAA]
@@ -44,5 +46,16 @@ export default function Layout() {
         <Outlet />
       </div>
     </main>
+          <div
+          className={`
+            bg-[#AAA]
+            dark:bg-[#111]
+            relative
+            mt-[150px]
+          `} 
+        >
+          <Footer /*adname="LanguageAds" */ />
+        </div>
+        </div>
   )
 }
